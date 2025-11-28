@@ -272,16 +272,13 @@ jobs:
         Write-Host "Configuring CMake for Windows..."
         $llvmPath = "C:\Program Files\LLVM"
         
-        # Search for any LLVM CMake configuration files
-        Write-Host "Searching for LLVM CMake files..."
-        $cmakeFiles = Get-ChildItem "$llvmPath" -Recurse -Filter "*.cmake" -ErrorAction SilentlyContinue | 
-                      Where-Object { $_.Name -match "LLVM.*Config" } | 
-                      Select-Object -First 1
+        # Search specifically for LLVMConfig.cmake
+        Write-Host "Searching for LLVMConfig.cmake..."
+        $cmakeConfigFile = Get-ChildItem "$llvmPath" -Recurse -Filter "LLVMConfig.cmake" -ErrorAction SilentlyContinue | Select-Object -First 1
         
-        if ($cmakeFiles) {
-          $configPath = $cmakeFiles.DirectoryName
-          Write-Host "Found LLVM CMake config at: $configPath"
-          Write-Host "Config file: $($cmakeFiles.Name)"
+        if ($cmakeConfigFile) {
+          $configPath = $cmakeConfigFile.DirectoryName
+          Write-Host "✓ Found LLVMConfig.cmake at: $configPath"
           
           # Try with LLVM_DIR
           cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DLLVM_DIR="$configPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
