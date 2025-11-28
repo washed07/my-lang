@@ -53,13 +53,14 @@ jobs:
     - name: Install LLVM
       run: ${{ matrix.llvm_install }}
 
-    - name: Set LLVM path (Windows)
-      if: runner.os == 'Windows'
-      shell: pwsh
-      run: echo "CMAKE_PREFIX_PATH=C:\Program Files\LLVM" | Out-File -FilePath $env:GITHUB_ENV -Append
-
     - name: Configure CMake
-      run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+      run: |
+        if [ "$RUNNER_OS" == "Windows" ]; then
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="C:/Program Files/LLVM" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        else
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        fi
+      shell: bash
 
     - name: Build
       run: cmake --build build --config ${{ matrix.build_type }} --parallel
@@ -168,7 +169,7 @@ jobs:
           lcov
 
     - name: Configure CMake with coverage
-      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="--coverage -fprofile-arcs -ftest-coverage" -DBUILD_TESTING=ON
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang-18 -DCMAKE_CXX_COMPILER=clang++-18 -DCMAKE_CXX_FLAGS="--coverage" -DCMAKE_C_FLAGS="--coverage" -DBUILD_TESTING=ON
 
     - name: Build with coverage
       run: cmake --build build
