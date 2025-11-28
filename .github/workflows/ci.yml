@@ -216,37 +216,90 @@ jobs:
         }
         
         # Check for CMake config
-        $cmakePath = "$llvmPath\lib\cmake\llvm"
         Write-Host ""
         Write-Host "Checking for CMake configuration..."
-        if (Test-Path "$cmakePath\LLVMConfig.cmake") {
-          Write-Host "✓ LLVMConfig.cmake found at: $cmakePath"
-        } else {
-          Write-Host "⚠ LLVMConfig.cmake not found at: $cmakePath"
-          Write-Host "Searching for LLVM CMake files..."
-          if (Test-Path "$llvmPath\lib\cmake") {
-            $cmakeFiles = Get-ChildItem "$llvmPath\lib\cmake" -Recurse -Filter "*.cmake" -ErrorAction SilentlyContinue | 
-                          Where-Object { $_.Name -like "LLVM*" } | 
-                          Select-Object -First 5
-            if ($cmakeFiles) {
-              $cmakeFiles | ForEach-Object { Write-Host "  Found: $($_.FullName)" }
-            } else {
-              Write-Host "  No LLVM CMake files found"
-            }
+        
+        # Search for LLVMConfig.cmake in various locations
+        $cmakeConfigFound = $false
+        $actualCmakePath = $null
+        
+        $searchPaths = @(
+          "$llvmPath\lib\cmake\llvm",
+          "$llvmPath\cmake",
+          "$llvmPath\lib\cmake",
+          "$llvmPath\share\llvm\cmake"
+        )
+        
+        foreach ($path in $searchPaths) {
+          if (Test-Path "$path\LLVMConfig.cmake") {
+            Write-Host "✓ LLVMConfig.cmake found at: $path"
+            $actualCmakePath = $path
+            $cmakeConfigFound = $true
+            break
           }
+        }
+        
+        if (-not $cmakeConfigFound) {
+          Write-Host "⚠ LLVMConfig.cmake not found in standard locations"
+          Write-Host "Searching entire LLVM directory..."
+          $found = Get-ChildItem "$llvmPath" -Recurse -Filter "LLVMConfig.cmake" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($found) {
+            $actualCmakePath = $found.DirectoryName
+            Write-Host "✓ Found LLVMConfig.cmake at: $actualCmakePath"
+            $cmakeConfigFound = $true
+          } else {
+            Write-Host "✗ LLVMConfig.cmake not found anywhere in LLVM installation"
+            Write-Host "Available CMake files:"
+            Get-ChildItem "$llvmPath\lib\cmake" -Recurse -Filter "*.cmake" -ErrorAction SilentlyContinue | 
+              Select-Object -First 10 | 
+              ForEach-Object { Write-Host "  $($_.FullName)" }
+          }
+        }
+        
+        # Update LLVM_DIR if we found a different location
+        if ($actualCmakePath -and $actualCmakePath -ne $env:LLVM_DIR) {
+          Write-Host "Updating LLVM_DIR to: $actualCmakePath"
+          echo "LLVM_DIR=$actualCmakePath" | Out-File -FilePath $env:GITHUB_ENV -Append
         }
         
         Write-Host ""
         Write-Host "LLVM installation verified successfully!"
       shell: pwsh
 
-    - name: Configure CMake
+    - name: Configure CMake (Windows)
+      if: runner.os == 'Windows'
       run: |
-        if [ "${{ runner.os }}" == "Windows" ]; then
-          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="C:/Program Files/LLVM" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-        else
-          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
-        fi
+        Write-Host "Configuring CMake for Windows..."
+        $llvmPath = "C:\Program Files\LLVM"
+        
+        # Try to find LLVMConfig.cmake
+        $cmakePaths = @(
+          "$llvmPath\lib\cmake\llvm",
+          "$llvmPath\cmake",
+          "$llvmPath\lib\cmake",
+          "$llvmPath\share\llvm\cmake"
+        )
+        
+        $configPath = $null
+        foreach ($path in $cmakePaths) {
+          if (Test-Path "$path\LLVMConfig.cmake") {
+            $configPath = $path
+            break
+          }
+        }
+        
+        if ($configPath) {
+          Write-Host "Using LLVM CMake config from: $configPath"
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DLLVM_DIR="$configPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        } else {
+          Write-Host "LLVMConfig.cmake not found, using CMAKE_PREFIX_PATH"
+          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="$llvmPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+        }
+      shell: pwsh
+
+    - name: Configure CMake (Unix)
+      if: runner.os != 'Windows'
+      run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       shell: bash
 
     - name: Build
