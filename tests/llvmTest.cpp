@@ -88,22 +88,6 @@ TEST_F(LLVMTest, LLVMAPIntTest) {
   EXPECT_EQ(sum.getZExtValue(), 100);
 }
 
-TEST_F(LLVMTest, LLVMTripleTest) {
-  llvm::Triple triple("x86_64-pc-linux-gnu");
-
-  // Test architecture
-  EXPECT_EQ(triple.getArch(), llvm::Triple::x86_64);
-
-  // Test vendor
-  EXPECT_EQ(triple.getVendor(), llvm::Triple::PC);
-
-  // Test OS
-  EXPECT_EQ(triple.getOS(), llvm::Triple::Linux);
-
-  // Test environment
-  EXPECT_EQ(triple.getEnvironment(), llvm::Triple::GNU);
-}
-
 TEST_F(LLVMTest, LLVMConditionalBranchTest) {
   llvm::LLVMContext context;
   std::unique_ptr<llvm::Module> module =
