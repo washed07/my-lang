@@ -272,28 +272,58 @@ jobs:
         Write-Host "Configuring CMake for Windows..."
         $llvmPath = "C:\Program Files\LLVM"
         
-        # Try to find LLVMConfig.cmake
-        $cmakePaths = @(
-          "$llvmPath\lib\cmake\llvm",
-          "$llvmPath\cmake",
-          "$llvmPath\lib\cmake",
-          "$llvmPath\share\llvm\cmake"
-        )
+        # Search for any LLVM CMake configuration files
+        Write-Host "Searching for LLVM CMake files..."
+        $cmakeFiles = Get-ChildItem "$llvmPath" -Recurse -Filter "*.cmake" -ErrorAction SilentlyContinue | 
+                      Where-Object { $_.Name -match "LLVM.*Config" } | 
+                      Select-Object -First 1
         
-        $configPath = $null
-        foreach ($path in $cmakePaths) {
-          if (Test-Path "$path\LLVMConfig.cmake") {
-            $configPath = $path
-            break
-          }
-        }
-        
-        if ($configPath) {
-          Write-Host "Using LLVM CMake config from: $configPath"
+        if ($cmakeFiles) {
+          $configPath = $cmakeFiles.DirectoryName
+          Write-Host "Found LLVM CMake config at: $configPath"
+          Write-Host "Config file: $($cmakeFiles.Name)"
+          
+          # Try with LLVM_DIR
           cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DLLVM_DIR="$configPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
         } else {
-          Write-Host "LLVMConfig.cmake not found, using CMAKE_PREFIX_PATH"
-          cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="$llvmPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          Write-Host "No LLVM CMake config files found."
+          Write-Host "The Chocolatey LLVM package may not include CMake development files."
+          Write-Host "Installing LLVM from GitHub releases with full development support..."
+          
+          # Download LLVM with full development files from GitHub
+          $llvmVersion = "18.1.8"
+          $llvmUrl = "https://github.com/llvm/llvm-project/releases/download/llvmorg-$llvmVersion/LLVM-$llvmVersion-win64.exe"
+          $installer = "$env:TEMP\llvm-installer.exe"
+          
+          Write-Host "Downloading LLVM $llvmVersion from GitHub..."
+          try {
+            Invoke-WebRequest -Uri $llvmUrl -OutFile $installer -UseBasicParsing -ErrorAction Stop
+            
+            Write-Host "Installing LLVM..."
+            Start-Process -FilePath $installer -ArgumentList "/S" -Wait -NoNewWindow
+            Start-Sleep -Seconds 15
+          } catch {
+            Write-Host "Failed to download from GitHub releases: $_"
+            Write-Host "Trying to force reinstall via Chocolatey with all features..."
+            choco uninstall llvm -y
+            choco install llvm --version=18.1.8 -y --force --install-arguments="/AllUsers /S"
+            Start-Sleep -Seconds 15
+          }
+          
+          # Update path
+          $llvmPath = "C:\Program Files\LLVM"
+          Write-Host "LLVM installed to: $llvmPath"
+          
+          # Search again
+          $cmakeFiles = Get-ChildItem "$llvmPath" -Recurse -Filter "LLVMConfig.cmake" -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($cmakeFiles) {
+            $configPath = $cmakeFiles.DirectoryName
+            Write-Host "Found LLVMConfig.cmake at: $configPath"
+            cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DLLVM_DIR="$configPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          } else {
+            Write-Host "ERROR: Still cannot find LLVMConfig.cmake after installation"
+            cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="$llvmPath" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+          }
         }
       shell: pwsh
 
