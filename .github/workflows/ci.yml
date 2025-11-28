@@ -167,27 +167,77 @@ jobs:
       if: runner.os == 'Windows'
       run: |
         Write-Host "Verifying LLVM installation..."
-        Write-Host "LLVM_ROOT: $env:LLVM_ROOT"
-        Write-Host "LLVM_DIR: $env:LLVM_DIR"
+        Write-Host "Environment variables:"
+        Write-Host "  LLVM_ROOT: $env:LLVM_ROOT"
+        Write-Host "  LLVM_DIR: $env:LLVM_DIR"
+        Write-Host ""
         
-        if (Test-Path "$env:LLVM_ROOT\bin\llvm-config.exe") {
-          Write-Host "LLVM found at: $env:LLVM_ROOT"
-          & "$env:LLVM_ROOT\bin\llvm-config.exe" --version
-          Write-Host "CMake config path: $env:LLVM_DIR"
-          
-          if (Test-Path "$env:LLVM_DIR\LLVMConfig.cmake") {
-            Write-Host "✓ LLVMConfig.cmake found!"
-          } else {
-            Write-Host "WARNING: LLVMConfig.cmake not found at expected location"
-            Write-Host "Searching for LLVM CMake files..."
-            if (Test-Path "$env:LLVM_ROOT\lib\cmake") {
-              Get-ChildItem "$env:LLVM_ROOT\lib\cmake" -Recurse -Filter "LLVM*.cmake" | Select-Object -First 10 | ForEach-Object { Write-Host $_.FullName }
+        # Find LLVM installation
+        $llvmPath = $null
+        
+        # Check environment variable location first
+        if ($env:LLVM_ROOT -and (Test-Path "$env:LLVM_ROOT\bin\clang.exe")) {
+          $llvmPath = $env:LLVM_ROOT
+        } 
+        # Check if clang is in PATH
+        elseif (Get-Command clang -ErrorAction SilentlyContinue) {
+          $clangCmd = Get-Command clang
+          $llvmPath = Split-Path (Split-Path $clangCmd.Source)
+          Write-Host "Found LLVM via PATH at: $llvmPath"
+        }
+        # Check standard locations
+        else {
+          $checkPaths = @("C:\Program Files\LLVM", "C:\tools\llvm")
+          foreach ($path in $checkPaths) {
+            if (Test-Path "$path\bin\clang.exe") {
+              $llvmPath = $path
+              Write-Host "Found LLVM at: $llvmPath"
+              break
             }
           }
-        } else {
-          Write-Host "ERROR: LLVM not found at $env:LLVM_ROOT"
+        }
+        
+        if (-not $llvmPath) {
+          Write-Host "ERROR: Cannot find LLVM installation"
+          Write-Host "Searched locations:"
+          Write-Host "  - $env:LLVM_ROOT"
+          Write-Host "  - C:\Program Files\LLVM"
+          Write-Host "  - C:\tools\llvm"
+          Write-Host "  - PATH"
           exit 1
         }
+        
+        Write-Host "✓ LLVM installation found at: $llvmPath"
+        
+        # Check for clang
+        if (Test-Path "$llvmPath\bin\clang.exe") {
+          $version = & "$llvmPath\bin\clang.exe" --version | Select-Object -First 1
+          Write-Host "✓ Clang version: $version"
+        }
+        
+        # Check for CMake config
+        $cmakePath = "$llvmPath\lib\cmake\llvm"
+        Write-Host ""
+        Write-Host "Checking for CMake configuration..."
+        if (Test-Path "$cmakePath\LLVMConfig.cmake") {
+          Write-Host "✓ LLVMConfig.cmake found at: $cmakePath"
+        } else {
+          Write-Host "⚠ LLVMConfig.cmake not found at: $cmakePath"
+          Write-Host "Searching for LLVM CMake files..."
+          if (Test-Path "$llvmPath\lib\cmake") {
+            $cmakeFiles = Get-ChildItem "$llvmPath\lib\cmake" -Recurse -Filter "*.cmake" -ErrorAction SilentlyContinue | 
+                          Where-Object { $_.Name -like "LLVM*" } | 
+                          Select-Object -First 5
+            if ($cmakeFiles) {
+              $cmakeFiles | ForEach-Object { Write-Host "  Found: $($_.FullName)" }
+            } else {
+              Write-Host "  No LLVM CMake files found"
+            }
+          }
+        }
+        
+        Write-Host ""
+        Write-Host "LLVM installation verified successfully!"
       shell: pwsh
 
     - name: Configure CMake
