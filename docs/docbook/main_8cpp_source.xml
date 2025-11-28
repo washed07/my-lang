@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_8cpp_source" xml:lang="en-US">
+<title>main.cpp</title>
+<indexterm><primary>src/main.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="_main_8cpp_source_1l00001"/>00001 <emphasis role="preprocessor">#include&#32;&lt;iostream&gt;</emphasis>
+<anchor xml:id="_main_8cpp_source_1l00002"/>00002 
+<anchor xml:id="_main_8cpp_source_1l00009"/><link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">00009</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_main_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>()&#32;{
+<anchor xml:id="_main_8cpp_source_1l00010"/>00010 &#32;&#32;std::cout&#32;&lt;&lt;&#32;<emphasis role="stringliteral">&quot;Hello,&#32;My&#32;Language!&quot;</emphasis>&#32;&lt;&lt;&#32;std::endl;
+<anchor xml:id="_main_8cpp_source_1l00011"/>00011 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="_main_8cpp_source_1l00012"/>00012 }
+</programlisting></section>

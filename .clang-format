@@ -1,0 +1,2 @@
+# my-lang .clang-format configuration file
+BasedOnStyle: LLVM

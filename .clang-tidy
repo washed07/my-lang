@@ -1,0 +1,219 @@
+---
+# my-lang .clang-tidy configuration file
+
+# Naming Convention Summary:
+#   Variables/Functions: camelCase
+#   Constants:           kPascalCase
+#   Types/Classes:       PascalCase
+#   Unions:              uPascalCase
+#   Enums:               ePascalCase
+#   Enum Constants:      PascalCase
+#   Macros:              UPPER_CASE
+#   Namespaces:          snake_case
+#   Private Members:     camelCase_
+#   Global Variables:    gPascalCase
+#   Static Variables:    sPascalCase
+
+Checks: >
+  readability-identifier-naming,
+  -clang-diagnostic-*,
+  -clang-analyzer-*
+
+CheckOptions:
+  # ============================================================================
+  # Variables
+  # ============================================================================
+  
+  # Local Variables - camelCase
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  
+  # Global Variables - gPascalCase
+  - key: readability-identifier-naming.GlobalVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.GlobalVariablePrefix
+    value: 'g'
+  
+  # Static Variables - sPascalCase
+  - key: readability-identifier-naming.StaticVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticVariablePrefix
+    value: 's'
+  
+  # ============================================================================
+  # Constants
+  # ============================================================================
+  
+  # Constants - kPascalCase
+  - key: readability-identifier-naming.ConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantPrefix
+    value: 'k'
+  
+  # Global Constants - kPascalCase
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.GlobalConstantPrefix
+    value: 'k'
+  
+  # Static Constants - kPascalCase
+  - key: readability-identifier-naming.StaticConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticConstantPrefix
+    value: 'k'
+  
+  # Constexpr Variables - kPascalCase
+  - key: readability-identifier-naming.ConstexprVariableCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstexprVariablePrefix
+    value: 'k'
+  
+  # Constexpr Functions - camelCase
+  - key: readability-identifier-naming.ConstexprFunctionCase
+    value: camelBack
+  
+  # Constexpr Methods - camelCase
+  - key: readability-identifier-naming.ConstexprMethodCase
+    value: camelBack
+  
+  # ============================================================================
+  # Functions
+  # ============================================================================
+  
+  # Functions - camelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  
+  # Methods - camelCase
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.PublicMethodCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMethodCase
+    value: camelBack
+  - key: readability-identifier-naming.ProtectedMethodCase
+    value: camelBack
+  
+  # Parameters - camelCase
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+  
+  # ============================================================================
+  # Types
+  # ============================================================================
+  
+  # Classes - PascalCase
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  
+  # Structs - PascalCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  
+  # Unions - uPascalCase
+  - key: readability-identifier-naming.UnionCase
+    value: CamelCase
+  - key: readability-identifier-naming.UnionPrefix
+    value: 'u'
+  
+  # Enums - ePascalCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumPrefix
+    value: 'e'
+  
+  # Enum Constants/Variants - PascalCase
+  - key: readability-identifier-naming.EnumConstantCase
+    value: CamelCase
+  
+  # Scoped Enum Constants (enum class) - PascalCase
+  - key: readability-identifier-naming.ScopedEnumConstantCase
+    value: CamelCase
+  
+  # Type Aliases - PascalCase
+  - key: readability-identifier-naming.TypedefCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypeAliasCase
+    value: CamelCase
+  
+  # ============================================================================
+  # Members
+  # ============================================================================
+  
+  # Public Members - PascalCase
+  - key: readability-identifier-naming.PublicMemberCase
+    value: CamelCase
+  
+  # Protected Members - PascalCase
+  - key: readability-identifier-naming.ProtectedMemberCase
+    value: CamelCase
+  
+  # Private Members - camelCase with trailing underscore (LLVM style)
+  - key: readability-identifier-naming.PrivateMemberCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: '_'
+  
+  # Constant Members - kPascalCase
+  - key: readability-identifier-naming.ConstantMemberCase
+    value: CamelCase
+  - key: readability-identifier-naming.ConstantMemberPrefix
+    value: 'k'
+  
+  # Static Members - sPascalCase
+  - key: readability-identifier-naming.StaticMemberCase
+    value: CamelCase
+  - key: readability-identifier-naming.StaticMemberPrefix
+    value: 's'
+  
+  # ============================================================================
+  # Templates
+  # ============================================================================
+  
+  # Template Parameters - PascalCase
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypeTemplateParameterCase
+    value: CamelCase
+  - key: readability-identifier-naming.ValueTemplateParameterCase
+    value: CamelCase
+  - key: readability-identifier-naming.TemplateTemplateParameterCase
+    value: CamelCase
+  
+  # ============================================================================
+  # Preprocessor
+  # ============================================================================
+  
+  # Macros - UPPER_CASE
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+  
+  # ============================================================================
+  # Namespaces
+  # ============================================================================
+  
+  # Namespaces - snake_case
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+  
+  # ============================================================================
+  # Special Cases
+  # ============================================================================
+  
+  # Inline Namespaces - snake_case
+  - key: readability-identifier-naming.InlineNamespaceCase
+    value: lower_case
+  
+  # Abstract Classes - PascalCase (no special prefix)
+  - key: readability-identifier-naming.AbstractClassCase
+    value: CamelCase
+  
+  # Virtual Methods - camelCase
+  - key: readability-identifier-naming.VirtualMethodCase
+    value: camelBack
+
+WarningsAsErrors: checks
+
+HeaderFilterRegex: '.*\.(h|hpp|hxx|H|HPP|HXX)$'
+
+FormatStyle: llvm
