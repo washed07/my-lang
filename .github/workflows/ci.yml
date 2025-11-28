@@ -32,42 +32,64 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              Write-Host "Searching for LLVM installation..."
-              $possiblePaths = @(
-                "C:\Program Files\LLVM",
-                "C:\Program Files (x86)\LLVM",
-                "C:\hostedtoolcache\windows\LLVM"
-              )
+              Write-Host "Checking for existing LLVM installation..."
               
-              $llvmPath = $null
-              foreach ($path in $possiblePaths) {
-                Write-Host "Checking: $path"
-                if (Test-Path $path) {
-                  Write-Host "Found LLVM at: $path"
-                  $llvmPath = $path
-                  break
+              # First check if llvm-config is in PATH
+              $llvmConfig = Get-Command llvm-config -ErrorAction SilentlyContinue
+              if ($llvmConfig) {
+                $llvmPath = Split-Path (Split-Path $llvmConfig.Source)
+                Write-Host "Found LLVM in PATH at: $llvmPath"
+                $version = & llvm-config --version
+                Write-Host "LLVM version: $version"
+              } else {
+                # Check common installation paths
+                $possiblePaths = @(
+                  "C:\Program Files\LLVM",
+                  "C:\Program Files (x86)\LLVM",
+                  "C:\hostedtoolcache\windows\LLVM"
+                )
+                
+                $llvmPath = $null
+                foreach ($path in $possiblePaths) {
+                  if (Test-Path "$path\bin\llvm-config.exe") {
+                    $llvmPath = $path
+                    Write-Host "Found LLVM at: $llvmPath"
+                    break
+                  }
+                }
+                
+                # If still not found, install it
+                if (-not $llvmPath) {
+                  Write-Host "LLVM not found. Installing via Chocolatey..."
+                  choco install llvm -y --no-progress
+                  
+                  # Wait for installation to complete
+                  Start-Sleep -Seconds 10
+                  
+                  # Refresh environment and check again
+                  $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+                  
+                  $llvmConfig = Get-Command llvm-config -ErrorAction SilentlyContinue
+                  if ($llvmConfig) {
+                    $llvmPath = Split-Path (Split-Path $llvmConfig.Source)
+                  } else {
+                    $llvmPath = "C:\Program Files\LLVM"
+                  }
+                  
+                  Write-Host "LLVM installed at: $llvmPath"
                 }
               }
               
-              if (-not $llvmPath) {
-                Write-Host "LLVM not found in common locations. Searching entire C: drive..."
-                $found = Get-ChildItem -Path "C:\" -Filter "llvm-config.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-                if ($found) {
-                  $llvmPath = Split-Path (Split-Path $found.FullName)
-                  Write-Host "Found LLVM at: $llvmPath"
-                } else {
-                  Write-Host "Installing LLVM..."
-                  choco install llvm -y
-                  Start-Sleep -Seconds 5
-                  $llvmPath = "C:\Program Files\LLVM"
-                }
-              }
-              
+              # Verify the installation
               if (Test-Path "$llvmPath\bin\llvm-config.exe") {
-                $version = & "$llvmPath\bin\llvm-config.exe" --version 2>$null
-                Write-Host "Using LLVM version: $version"
+                $version = & "$llvmPath\bin\llvm-config.exe" --version
+                Write-Host "Successfully configured LLVM version: $version"
+              } else {
+                Write-Host "ERROR: LLVM installation verification failed"
+                exit 1
               }
               
+              # Set environment variables for subsequent steps
               echo "LLVM_DIR=$llvmPath\lib\cmake\llvm" | Out-File -FilePath $env:GITHUB_ENV -Append
               echo "LLVM_ROOT=$llvmPath" | Out-File -FilePath $env:GITHUB_ENV -Append
               echo "$llvmPath\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
