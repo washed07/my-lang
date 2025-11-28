@@ -1,4 +1,8 @@
+#include <algorithm>
 #include <gtest/gtest.h>
+#include <stdexcept>
+#include <string>
+#include <vector>
 
 class ExampleTest : public ::testing::Test {
 protected:

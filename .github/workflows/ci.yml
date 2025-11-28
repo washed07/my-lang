@@ -32,7 +32,9 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
+              choco install llvm --version=18.1.8 -y
               echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" | Out-File -FilePath $env:GITHUB_ENV -Append
+              echo "C:\Program Files\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
     steps:
     - name: Checkout code
@@ -55,7 +57,7 @@ jobs:
 
     - name: Configure CMake
       run: |
-        if [ "$RUNNER_OS" == "Windows" ]; then
+        if [ "${{ runner.os }}" == "Windows" ]; then
           cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_PREFIX_PATH="C:/Program Files/LLVM" -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
         else
           cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
