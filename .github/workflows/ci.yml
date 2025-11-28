@@ -58,34 +58,77 @@ jobs:
                   }
                 }
                 
-                # If still not found, install it
+                # If still not found, install/ensure it
                 if (-not $llvmPath) {
                   Write-Host "LLVM not found. Installing via Chocolatey..."
-                  choco install llvm -y --no-progress
+                  choco install llvm -y --no-progress --force
                   
                   # Wait for installation to complete
-                  Start-Sleep -Seconds 10
+                  Start-Sleep -Seconds 15
                   
-                  # Refresh environment and check again
+                  # Refresh environment variables
                   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
                   
+                  # Try to find llvm-config after installation
                   $llvmConfig = Get-Command llvm-config -ErrorAction SilentlyContinue
                   if ($llvmConfig) {
                     $llvmPath = Split-Path (Split-Path $llvmConfig.Source)
+                    Write-Host "Found LLVM at: $llvmPath"
                   } else {
-                    $llvmPath = "C:\Program Files\LLVM"
+                    # Search for it manually
+                    Write-Host "Searching for LLVM installation..."
+                    $searchPaths = @("C:\Program Files\LLVM", "C:\tools\llvm")
+                    foreach ($sp in $searchPaths) {
+                      Write-Host "Checking $sp..."
+                      if (Test-Path "$sp\bin\clang.exe") {
+                        $llvmPath = $sp
+                        Write-Host "Found LLVM at: $llvmPath"
+                        break
+                      }
+                    }
+                    
+                    if (-not $llvmPath) {
+                      Write-Host "Searching entire filesystem for LLVM..."
+                      $clangExe = Get-ChildItem -Path "C:\" -Filter "clang.exe" -Recurse -ErrorAction SilentlyContinue | 
+                                  Where-Object { $_.FullName -like "*LLVM*bin*" } | 
+                                  Select-Object -First 1
+                      if ($clangExe) {
+                        $llvmPath = Split-Path (Split-Path $clangExe.FullName)
+                        Write-Host "Found LLVM at: $llvmPath"
+                      }
+                    }
                   }
-                  
-                  Write-Host "LLVM installed at: $llvmPath"
                 }
               }
               
               # Verify the installation
-              if (Test-Path "$llvmPath\bin\llvm-config.exe") {
-                $version = & "$llvmPath\bin\llvm-config.exe" --version
-                Write-Host "Successfully configured LLVM version: $version"
+              if (-not $llvmPath) {
+                Write-Host "ERROR: Could not determine LLVM installation path"
+                exit 1
+              }
+              
+              Write-Host "LLVM path determined as: $llvmPath"
+              
+              # Look for any LLVM executables to verify installation
+              $clangPath = "$llvmPath\bin\clang.exe"
+              $llvmConfigPath = "$llvmPath\bin\llvm-config.exe"
+              
+              if (Test-Path $clangPath) {
+                Write-Host "✓ Found clang.exe"
+                $version = & $clangPath --version | Select-Object -First 1
+                Write-Host "Version: $version"
+              } elseif (Test-Path $llvmConfigPath) {
+                Write-Host "✓ Found llvm-config.exe"
+                $version = & $llvmConfigPath --version
+                Write-Host "Version: $version"
               } else {
-                Write-Host "ERROR: LLVM installation verification failed"
+                Write-Host "ERROR: No LLVM executables found at $llvmPath\bin"
+                Write-Host "Directory contents:"
+                if (Test-Path "$llvmPath\bin") {
+                  Get-ChildItem "$llvmPath\bin" | Select-Object -First 20 | ForEach-Object { Write-Host "  $_" }
+                } else {
+                  Write-Host "  Directory does not exist!"
+                }
                 exit 1
               }
               
