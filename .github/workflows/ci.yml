@@ -32,7 +32,6 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              choco install llvm --version=18.1.8 -y
               echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" | Out-File -FilePath $env:GITHUB_ENV -Append
 
     steps:
@@ -175,8 +174,8 @@ jobs:
 
     - name: Generate coverage report
       run: |
-        lcov --directory build --capture --output-file coverage.info
-        lcov --remove coverage.info '/usr/*' '*/tests/*' '*/examples/*' --output-file coverage.info
+        lcov --gcov-tool gcov-18 --directory build --capture --output-file coverage.info
+        lcov --gcov-tool gcov-18 --remove coverage.info '/usr/*' '*/tests/*' '*/examples/*' --output-file coverage.info
         lcov --list coverage.info
 
     - name: Upload coverage to Codecov
