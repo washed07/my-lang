@@ -60,8 +60,36 @@ jobs:
           C:\Program Files\LLVM
         key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}
 
-    - name: Install LLVM
+    - name: Install LLVM (Unix)
+      if: runner.os != 'Windows'
       run: ${{ matrix.llvm_install }}
+      shell: bash
+
+    - name: Install LLVM (Windows)
+      if: runner.os == 'Windows'
+      run: ${{ matrix.llvm_install }}
+      shell: pwsh
+
+    - name: Verify LLVM Installation (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        Write-Host "Checking LLVM installation..."
+        $llvmPath = "C:\Program Files\LLVM"
+        if (Test-Path "$llvmPath\bin\llvm-config.exe") {
+          Write-Host "LLVM found at: $llvmPath"
+          & "$llvmPath\bin\llvm-config.exe" --version
+          Write-Host "CMake config should be at: $llvmPath\lib\cmake\llvm"
+          if (Test-Path "$llvmPath\lib\cmake\llvm\LLVMConfig.cmake") {
+            Write-Host "LLVMConfig.cmake found!"
+          } else {
+            Write-Host "WARNING: LLVMConfig.cmake not found!"
+            Get-ChildItem "$llvmPath\lib\cmake" -Recurse -Filter "*.cmake" | Select-Object -First 10
+          }
+        } else {
+          Write-Host "ERROR: LLVM not found at expected location"
+          exit 1
+        }
+      shell: pwsh
 
     - name: Configure CMake
       run: |
