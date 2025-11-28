@@ -32,17 +32,45 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              $llvmPath = "C:\Program Files\LLVM"
-              if (Test-Path $llvmPath) {
-                Write-Host "LLVM already installed at $llvmPath"
-                $llvmVersion = (Get-Command "$llvmPath\bin\llvm-config.exe" -ErrorAction SilentlyContinue).FileVersionInfo.ProductVersion
-                Write-Host "Using LLVM version: $llvmVersion"
-              } else {
-                Write-Host "Installing LLVM 18.1.8..."
-                choco install llvm --version=18.1.8 -y
+              Write-Host "Searching for LLVM installation..."
+              $possiblePaths = @(
+                "C:\Program Files\LLVM",
+                "C:\Program Files (x86)\LLVM",
+                "C:\hostedtoolcache\windows\LLVM"
+              )
+              
+              $llvmPath = $null
+              foreach ($path in $possiblePaths) {
+                Write-Host "Checking: $path"
+                if (Test-Path $path) {
+                  Write-Host "Found LLVM at: $path"
+                  $llvmPath = $path
+                  break
+                }
               }
-              echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" | Out-File -FilePath $env:GITHUB_ENV -Append
-              echo "C:\Program Files\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
+              
+              if (-not $llvmPath) {
+                Write-Host "LLVM not found in common locations. Searching entire C: drive..."
+                $found = Get-ChildItem -Path "C:\" -Filter "llvm-config.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+                if ($found) {
+                  $llvmPath = Split-Path (Split-Path $found.FullName)
+                  Write-Host "Found LLVM at: $llvmPath"
+                } else {
+                  Write-Host "Installing LLVM..."
+                  choco install llvm -y
+                  Start-Sleep -Seconds 5
+                  $llvmPath = "C:\Program Files\LLVM"
+                }
+              }
+              
+              if (Test-Path "$llvmPath\bin\llvm-config.exe") {
+                $version = & "$llvmPath\bin\llvm-config.exe" --version 2>$null
+                Write-Host "Using LLVM version: $version"
+              }
+              
+              echo "LLVM_DIR=$llvmPath\lib\cmake\llvm" | Out-File -FilePath $env:GITHUB_ENV -Append
+              echo "LLVM_ROOT=$llvmPath" | Out-File -FilePath $env:GITHUB_ENV -Append
+              echo "$llvmPath\bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
     steps:
     - name: Checkout code
@@ -73,20 +101,26 @@ jobs:
     - name: Verify LLVM Installation (Windows)
       if: runner.os == 'Windows'
       run: |
-        Write-Host "Checking LLVM installation..."
-        $llvmPath = "C:\Program Files\LLVM"
-        if (Test-Path "$llvmPath\bin\llvm-config.exe") {
-          Write-Host "LLVM found at: $llvmPath"
-          & "$llvmPath\bin\llvm-config.exe" --version
-          Write-Host "CMake config should be at: $llvmPath\lib\cmake\llvm"
-          if (Test-Path "$llvmPath\lib\cmake\llvm\LLVMConfig.cmake") {
-            Write-Host "LLVMConfig.cmake found!"
+        Write-Host "Verifying LLVM installation..."
+        Write-Host "LLVM_ROOT: $env:LLVM_ROOT"
+        Write-Host "LLVM_DIR: $env:LLVM_DIR"
+        
+        if (Test-Path "$env:LLVM_ROOT\bin\llvm-config.exe") {
+          Write-Host "LLVM found at: $env:LLVM_ROOT"
+          & "$env:LLVM_ROOT\bin\llvm-config.exe" --version
+          Write-Host "CMake config path: $env:LLVM_DIR"
+          
+          if (Test-Path "$env:LLVM_DIR\LLVMConfig.cmake") {
+            Write-Host "✓ LLVMConfig.cmake found!"
           } else {
-            Write-Host "WARNING: LLVMConfig.cmake not found!"
-            Get-ChildItem "$llvmPath\lib\cmake" -Recurse -Filter "*.cmake" | Select-Object -First 10
+            Write-Host "WARNING: LLVMConfig.cmake not found at expected location"
+            Write-Host "Searching for LLVM CMake files..."
+            if (Test-Path "$env:LLVM_ROOT\lib\cmake") {
+              Get-ChildItem "$env:LLVM_ROOT\lib\cmake" -Recurse -Filter "LLVM*.cmake" | Select-Object -First 10 | ForEach-Object { Write-Host $_.FullName }
+            }
           }
         } else {
-          Write-Host "ERROR: LLVM not found at expected location"
+          Write-Host "ERROR: LLVM not found at $env:LLVM_ROOT"
           exit 1
         }
       shell: pwsh
