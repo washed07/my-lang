@@ -51,7 +51,6 @@ jobs:
         key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}
 
     - name: Install LLVM
-      if: steps.cache-llvm.outputs.cache-hit != 'true'
       run: ${{ matrix.llvm_install }}
 
     - name: Configure CMake
@@ -174,8 +173,8 @@ jobs:
 
     - name: Generate coverage report
       run: |
-        lcov --gcov-tool gcov-18 --directory build --capture --output-file coverage.info
-        lcov --gcov-tool gcov-18 --remove coverage.info '/usr/*' '*/tests/*' '*/examples/*' --output-file coverage.info
+        lcov --gcov-tool "llvm-cov-18 gcov" --directory build --capture --output-file coverage.info
+        lcov --gcov-tool "llvm-cov-18 gcov" --remove coverage.info '/usr/*' '*/tests/*' '*/examples/*' --output-file coverage.info
         lcov --list coverage.info
 
     - name: Upload coverage to Codecov
