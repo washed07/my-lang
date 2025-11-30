@@ -32,36 +32,48 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              # Check if LLVM is already installed
+              # Check if LLVM is already installed in standard location
               if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
-                Write-Host "LLVM already installed, using existing installation"
+                Write-Host "LLVM already installed at C:\Program Files\LLVM"
                 echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
                 echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
               } else {
                 Write-Host "Installing LLVM via Chocolatey..."
                 choco install llvm --version=18.1.8 --allow-downgrade
                 
-                # Set environment variables - try multiple possible locations
-                if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
-                  echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
-                } elseif (Test-Path "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
-                  echo "LLVM_DIR=C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
-                  echo "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\bin" >> $env:GITHUB_PATH
-                } else {
-                  # Find LLVM installation automatically
-                  $llvmConfig = Get-ChildItem "C:\" -Recurse -Name "LLVMConfig.cmake" -ErrorAction SilentlyContinue | Select-Object -First 1
-                  if ($llvmConfig) {
-                    $llvmDir = Split-Path $llvmConfig -Parent
-                    echo "LLVM_DIR=$llvmDir" >> $env:GITHUB_ENV
-                    Write-Host "Found LLVM at: $llvmDir"
+                # Check common installation locations in order of preference
+                $llvmPaths = @(
+                  "C:\Program Files\LLVM\lib\cmake\llvm",
+                  "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm",
+                  "C:\tools\llvm\lib\cmake\llvm"
+                )
+                
+                $foundPath = $null
+                foreach ($path in $llvmPaths) {
+                  if (Test-Path "$path\LLVMConfig.cmake") {
+                    $foundPath = $path
+                    break
                   }
                 }
                 
-                echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
+                if ($foundPath) {
+                  echo "LLVM_DIR=$foundPath" >> $env:GITHUB_ENV
+                  $binPath = Split-Path (Split-Path (Split-Path $foundPath)) + "\bin"
+                  echo "$binPath" >> $env:GITHUB_PATH
+                  Write-Host "LLVM found at: $foundPath"
+                } else {
+                  Write-Host "ERROR: LLVM installation not found in expected locations"
+                  exit 1
+                }
               }
               
-              # Verify installation
-              Get-ChildItem "C:\" -Recurse -Name "*Config.cmake" -ErrorAction SilentlyContinue | Where-Object { $_ -like "*LLVM*" } | Select-Object -First 5
+              # Verify the installation
+              Write-Host "Verifying LLVM installation..."
+              if (Test-Path "$env:LLVM_DIR\LLVMConfig.cmake") {
+                Write-Host "✓ LLVM CMake configuration found"
+              } else {
+                Write-Host "✗ LLVM CMake configuration NOT found"
+              }
 
     steps:
     - name: Checkout code
