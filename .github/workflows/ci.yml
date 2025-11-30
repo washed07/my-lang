@@ -91,10 +91,32 @@ jobs:
                   echo "$binPath" >> $env:GITHUB_PATH
                   Write-Host "LLVM configured successfully at: $foundPath"
                 } else {
-                  Write-Host "ERROR: LLVM installation not found. Listing Program Files contents:"
-                  Get-ChildItem "C:\Program Files" -Name "*LLVM*" -Directory -ErrorAction SilentlyContinue
-                  Get-ChildItem "C:\Program Files (x86)" -Name "*LLVM*" -Directory -ErrorAction SilentlyContinue 2>$null
-                  exit 1
+                  Write-Host "LLVM directory found but CMake files not in expected location. Searching within LLVM installation..."
+                  
+                  # Search for LLVMConfig.cmake within the LLVM installation
+                  $llvmInstallDir = "C:\Program Files\LLVM"
+                  if (Test-Path $llvmInstallDir) {
+                    Write-Host "Searching for LLVMConfig.cmake in $llvmInstallDir..."
+                    $configFiles = Get-ChildItem $llvmInstallDir -Recurse -Name "LLVMConfig.cmake" -ErrorAction SilentlyContinue
+                    
+                    if ($configFiles.Count -gt 0) {
+                      $configPath = $configFiles[0]
+                      $fullConfigPath = Join-Path $llvmInstallDir $configPath
+                      $llvmDir = Split-Path $fullConfigPath -Parent
+                      
+                      echo "LLVM_DIR=$llvmDir" >> $env:GITHUB_ENV
+                      echo "$llvmInstallDir\bin" >> $env:GITHUB_PATH
+                      Write-Host "✓ Found LLVM CMake config at: $llvmDir"
+                    } else {
+                      Write-Host "✗ LLVMConfig.cmake not found in LLVM installation"
+                      Write-Host "LLVM directory structure:"
+                      Get-ChildItem $llvmInstallDir -Directory | Select-Object -First 10 | ForEach-Object { Write-Host "  $_" }
+                      exit 1
+                    }
+                  } else {
+                    Write-Host "ERROR: LLVM installation directory not found"
+                    exit 1
+                  }
                 }
               }
               
