@@ -32,9 +32,27 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              choco install llvm --version=18.1.8 --allow-downgrade
+              # Download and install LLVM 18 pre-built binaries for Windows
+              $llvmUrl = "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-win64.exe"
+              $llvmInstaller = "LLVM-18.1.8-win64.exe"
+              
+              Write-Host "Downloading LLVM..."
+              Invoke-WebRequest -Uri $llvmUrl -OutFile $llvmInstaller
+              
+              Write-Host "Installing LLVM..."
+              Start-Process -FilePath $llvmInstaller -ArgumentList "/S" -Wait
+              
+              # Set environment variables
               echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
               echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
+              
+              # Verify installation
+              if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+                Write-Host "LLVM CMake config found successfully"
+              } else {
+                Write-Host "Warning: LLVM CMake config not found at expected location"
+                Get-ChildItem "C:\Program Files\LLVM" -Recurse -Name "*Config.cmake" | Select-Object -First 10
+              }
 
     steps:
     - name: Checkout code
@@ -49,7 +67,6 @@ jobs:
         path: |
           ~/.llvm
           ~/Library/Caches/Homebrew/llvm*
-          C:\ProgramData\chocolatey\lib\llvm
           C:\Program Files\LLVM
         key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}
 
