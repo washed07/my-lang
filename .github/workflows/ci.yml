@@ -38,11 +38,20 @@ jobs:
                 echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
                 echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
               } else {
-                Write-Host "Installing LLVM via Chocolatey..."
-                choco install llvm --version=18.1.8 --allow-downgrade
+                Write-Host "Installing LLVM pre-built binaries..."
+                
+                # Download and install LLVM pre-built binaries with CMake support
+                $llvmUrl = "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-win64.exe"
+                $llvmInstaller = "$env:TEMP\LLVM-18.1.8-win64.exe"
+                
+                Write-Host "Downloading LLVM installer..."
+                Invoke-WebRequest -Uri $llvmUrl -OutFile $llvmInstaller -UseBasicParsing
+                
+                Write-Host "Installing LLVM (this may take a few minutes)..."
+                Start-Process -FilePath $llvmInstaller -ArgumentList "/S" -Wait -NoNewWindow
                 
                 # Wait a moment for installation to complete
-                Start-Sleep -Seconds 5
+                Start-Sleep -Seconds 10
                 
                 # Check common installation locations in order of preference
                 $llvmPaths = @(
