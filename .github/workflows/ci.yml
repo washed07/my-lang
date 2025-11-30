@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         build_type: [Release, Debug]
         include:
           - os: ubuntu-latest
@@ -30,6 +30,11 @@ jobs:
             llvm_install: |
               brew install llvm@18
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
+          - os: windows-latest
+            llvm_install: |
+              choco install llvm --version=18.1.8 --allow-downgrade
+              echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
+              echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
 
     steps:
     - name: Checkout code
@@ -44,15 +49,29 @@ jobs:
         path: |
           ~/.llvm
           ~/Library/Caches/Homebrew/llvm*
+          C:\ProgramData\chocolatey\lib\llvm
+          C:\Program Files\LLVM
         key: ${{ runner.os }}-llvm-${{ env.LLVM_VERSION }}
 
-    - name: Install LLVM
+    - name: Install LLVM (Linux/macOS)
+      if: runner.os != 'Windows'
       run: ${{ matrix.llvm_install }}
       shell: bash
 
-    - name: Configure CMake
+    - name: Install LLVM (Windows)
+      if: runner.os == 'Windows'
+      run: ${{ matrix.llvm_install }}
+      shell: pwsh
+
+    - name: Configure CMake (Linux/macOS)
+      if: runner.os != 'Windows'
       run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       shell: bash
+
+    - name: Configure CMake (Windows)
+      if: runner.os == 'Windows'
+      run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G "Visual Studio 17 2022"
+      shell: pwsh
 
     - name: Build
       run: cmake --build build --config ${{ matrix.build_type }} --parallel

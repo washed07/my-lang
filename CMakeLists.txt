@@ -26,7 +26,6 @@ else()
     endif()
 endif()
 
-# Find LLVM
 find_package(LLVM REQUIRED CONFIG)
 
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
@@ -36,10 +35,6 @@ include_directories(${LLVM_INCLUDE_DIRS})
 separate_arguments(LLVM_DEFINITIONS_LIST NATIVE_COMMAND ${LLVM_DEFINITIONS})
 add_definitions(${LLVM_DEFINITIONS_LIST})
 
-# Link against LLVM's static libraries to avoid DIA SDK dependency
-set(LLVM_LINK_LLVM_DYLIB OFF)
-
-# LLVM components needed for a compiler with IRBuilder (minimal set to avoid dependencies)
 llvm_map_components_to_libnames(llvm_libs 
     Core
     Support
@@ -55,22 +50,9 @@ if(BUILD_TESTING)
         GIT_REPOSITORY https://github.com/google/googletest.git
         GIT_TAG v1.15.2
     )
-    # For Windows: Prevent overriding the parent project's compiler/linker settings
-    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-    
-    # Disable warnings-as-errors for Google Test when using clang-cl
-    set(gtest_disable_pthreads ON CACHE BOOL "" FORCE)
-    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND MSVC)
-        set(CMAKE_CXX_FLAGS_BACKUP "${CMAKE_CXX_FLAGS}")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=character-conversion")
-    endif()
     
     FetchContent_MakeAvailable(googletest)
-    
-    # Restore original flags
-    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND MSVC)
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_BACKUP}")
-    endif()
+  
     
     enable_testing()
     add_subdirectory(tests)
