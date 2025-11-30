@@ -41,18 +41,47 @@ jobs:
                 Write-Host "Installing LLVM via Chocolatey..."
                 choco install llvm --version=18.1.8 --allow-downgrade
                 
+                # Wait a moment for installation to complete
+                Start-Sleep -Seconds 5
+                
                 # Check common installation locations in order of preference
                 $llvmPaths = @(
                   "C:\Program Files\LLVM\lib\cmake\llvm",
+                  "C:\Program Files (x86)\LLVM\lib\cmake\llvm",
                   "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm",
                   "C:\tools\llvm\lib\cmake\llvm"
                 )
                 
+                Write-Host "Searching for LLVM installation..."
                 $foundPath = $null
                 foreach ($path in $llvmPaths) {
+                  Write-Host "Checking: $path"
                   if (Test-Path "$path\LLVMConfig.cmake") {
                     $foundPath = $path
+                    Write-Host "✓ Found LLVM at: $path"
                     break
+                  } else {
+                    Write-Host "✗ Not found at: $path"
+                  }
+                }
+                
+                # If not found in expected locations, do a targeted search
+                if (-not $foundPath) {
+                  Write-Host "Searching in Program Files directories..."
+                  $programFilesPaths = @("C:\Program Files", "C:\Program Files (x86)")
+                  foreach ($programFiles in $programFilesPaths) {
+                    if (Test-Path $programFiles) {
+                      $llvmDirs = Get-ChildItem $programFiles -Name "*LLVM*" -Directory -ErrorAction SilentlyContinue
+                      foreach ($dir in $llvmDirs) {
+                        $testPath = "$programFiles\$dir\lib\cmake\llvm"
+                        if (Test-Path "$testPath\LLVMConfig.cmake") {
+                          $foundPath = $testPath
+                          Write-Host "✓ Found LLVM at: $testPath"
+                          break
+                        }
+                      }
+                      if ($foundPath) { break }
+                    }
                   }
                 }
                 
@@ -60,9 +89,11 @@ jobs:
                   echo "LLVM_DIR=$foundPath" >> $env:GITHUB_ENV
                   $binPath = Split-Path (Split-Path (Split-Path $foundPath)) + "\bin"
                   echo "$binPath" >> $env:GITHUB_PATH
-                  Write-Host "LLVM found at: $foundPath"
+                  Write-Host "LLVM configured successfully at: $foundPath"
                 } else {
-                  Write-Host "ERROR: LLVM installation not found in expected locations"
+                  Write-Host "ERROR: LLVM installation not found. Listing Program Files contents:"
+                  Get-ChildItem "C:\Program Files" -Name "*LLVM*" -Directory -ErrorAction SilentlyContinue
+                  Get-ChildItem "C:\Program Files (x86)" -Name "*LLVM*" -Directory -ErrorAction SilentlyContinue 2>$null
                   exit 1
                 }
               }

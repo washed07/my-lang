@@ -26,7 +26,7 @@ else()
     endif()
 endif()
 
-set(LLVM_DIR ""C:/Program Files/LLVM/cmake"")
+set(LLVM_DIR "C:/Program Files/LLVM/cmake")
 find_package(LLVM REQUIRED CONFIG)
 
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
