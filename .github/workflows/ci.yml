@@ -32,27 +32,36 @@ jobs:
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
           - os: windows-latest
             llvm_install: |
-              # Download and install LLVM 18 pre-built binaries for Windows
-              $llvmUrl = "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/LLVM-18.1.8-win64.exe"
-              $llvmInstaller = "LLVM-18.1.8-win64.exe"
-              
-              Write-Host "Downloading LLVM..."
-              Invoke-WebRequest -Uri $llvmUrl -OutFile $llvmInstaller
-              
-              Write-Host "Installing LLVM..."
-              Start-Process -FilePath $llvmInstaller -ArgumentList "/S" -Wait
-              
-              # Set environment variables
-              echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
-              echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
+              # Check if LLVM is already installed
+              if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+                Write-Host "LLVM already installed, using existing installation"
+                echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
+                echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
+              } else {
+                Write-Host "Installing LLVM via Chocolatey..."
+                choco install llvm --version=18.1.8 --allow-downgrade
+                
+                # Set environment variables - try multiple possible locations
+                if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+                  echo "LLVM_DIR=C:\Program Files\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
+                } elseif (Test-Path "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+                  echo "LLVM_DIR=C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\lib\cmake\llvm" >> $env:GITHUB_ENV
+                  echo "C:\ProgramData\chocolatey\lib\llvm\tools\LLVM\bin" >> $env:GITHUB_PATH
+                } else {
+                  # Find LLVM installation automatically
+                  $llvmConfig = Get-ChildItem "C:\" -Recurse -Name "LLVMConfig.cmake" -ErrorAction SilentlyContinue | Select-Object -First 1
+                  if ($llvmConfig) {
+                    $llvmDir = Split-Path $llvmConfig -Parent
+                    echo "LLVM_DIR=$llvmDir" >> $env:GITHUB_ENV
+                    Write-Host "Found LLVM at: $llvmDir"
+                  }
+                }
+                
+                echo "C:\Program Files\LLVM\bin" >> $env:GITHUB_PATH
+              }
               
               # Verify installation
-              if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
-                Write-Host "LLVM CMake config found successfully"
-              } else {
-                Write-Host "Warning: LLVM CMake config not found at expected location"
-                Get-ChildItem "C:\Program Files\LLVM" -Recurse -Name "*Config.cmake" | Select-Object -First 10
-              }
+              Get-ChildItem "C:\" -Recurse -Name "*Config.cmake" -ErrorAction SilentlyContinue | Where-Object { $_ -like "*LLVM*" } | Select-Object -First 5
 
     steps:
     - name: Checkout code
@@ -87,7 +96,15 @@ jobs:
 
     - name: Configure CMake (Windows)
       if: runner.os == 'Windows'
-      run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G "Visual Studio 17 2022"
+      run: |
+        # Ensure LLVM_DIR is set properly
+        if (-not $env:LLVM_DIR) {
+          if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+            $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
+          }
+        }
+        Write-Host "LLVM_DIR set to: $env:LLVM_DIR"
+        cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -G "Visual Studio 17 2022"
       shell: pwsh
 
     - name: Build
