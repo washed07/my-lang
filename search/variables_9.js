@@ -1,19 +1,5 @@
 var searchData=
 [
-  ['last_5fcolumn_0',['last_column',['../structml_1_1LocationCache.html#a32026e691d071960f614fc7f63c667de',1,'ml::LocationCache']]],
-  ['last_5ffile_5fid_1',['last_file_id',['../structml_1_1LocationCache.html#a9cb222f7e79ed19fee05da5f1ba5c286',1,'ml::LocationCache']]],
-  ['last_5fline_2',['last_line',['../structml_1_1LocationCache.html#a131d5d670c66709cd76765f46df7c4b1',1,'ml::LocationCache']]],
-  ['last_5fline_5fstart_3',['last_line_start',['../structml_1_1LocationCache.html#a7b78275faeff0b9a651f870e7c1aa501',1,'ml::LocationCache']]],
-  ['last_5flocation_4',['last_location',['../structml_1_1LocationCache.html#a19310f62770a611e8868a819689e9aba',1,'ml::LocationCache']]],
-  ['level_5',['Level',['../structml_1_1DiagnosticInfo.html#a59ebfc29383e8390318ef1997a1405d8',1,'ml::DiagnosticInfo']]],
-  ['lexingtimems_6',['lexingTimeMs',['../structml_1_1LexerStats.html#a461cd1e489ec90d930c47f2cc76e4932',1,'ml::LexerStats']]],
-  ['linecomputationcount_7',['lineComputationCount',['../structml_1_1SourceManagerStats.html#a683908c174585205fd3f33b28ab8d23e',1,'ml::SourceManagerStats']]],
-  ['linecount_8',['lineCount',['../structml_1_1LexerStats.html#ad8102ee68a520037668bb2bc1be8fb64',1,'ml::LexerStats']]],
-  ['lineoffsets_9',['lineOffsets',['../structml_1_1FileInfo.html#a5575f9de387d7df7eceb07f1414c794f',1,'ml::FileInfo']]],
-  ['lineoffsetscomputed_10',['lineOffsetsComputed',['../structml_1_1FileInfo.html#a155a0518f100da27fc932b7312b5f004',1,'ml::FileInfo']]],
-  ['literalcount_11',['literalCount',['../structml_1_1LexerStats.html#ac4feb66f8bf8bf00ddd16d013c9a7ff4',1,'ml::LexerStats']]],
-  ['location_12',['location',['../structml_1_1FullSourceLoc.html#ac3ab3b09b44e26c247375a7b19356b56',1,'ml::FullSourceLoc']]],
-  ['locationcreatecount_13',['locationCreateCount',['../structml_1_1SourceManagerStats.html#a690f10360d2e1c70c1daea932f6a88c4',1,'ml::SourceManagerStats']]],
-  ['lookupcount_14',['lookupCount',['../structml_1_1StringInternerStats.html#ad1ffe67076652322c8877946ec5ee520',1,'ml::StringInternerStats']]],
-  ['lookuptablehits_15',['lookupTableHits',['../structml_1_1LexerStats.html#a5bdf2be89d709edc1365cea997c766b5',1,'ml::LexerStats']]]
+  ['memory_0',['memory',['../structml_1_1ArenaChunk.html#a00610bcd9cb80ab65d2808a6b941953d',1,'ml::ArenaChunk']]],
+  ['memoryusedcount_1',['memoryUsedCount',['../structml_1_1StringInternerStats.html#a4986a954b38cbe6ca377bd96def44faf',1,'ml::StringInternerStats']]]
 ];

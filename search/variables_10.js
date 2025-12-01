@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['tokencount_0',['tokenCount',['../structml_1_1LexerStats.html#af81f17ec8b5bab7050943880d2b120e7',1,'ml::LexerStats']]],
-  ['tokennames_1',['TokenNames',['../namespaceml.html#aa0efb0abe8b91ff5a88ad7737d473515',1,'ml']]],
-  ['tokenspellings_2',['TokenSpellings',['../namespaceml.html#aa901dbea38282882b54599c6e31d320c',1,'ml']]]
+  ['uniquestringcount_0',['uniqueStringCount',['../structml_1_1StringInternerStats.html#aecf4e9b28f9beef6e059018e430a14f2',1,'ml::StringInternerStats']]],
+  ['used_1',['used',['../structml_1_1ArenaChunk.html#a1d0ddbfbae9480a602c3b8a4ad7ed0d2',1,'ml::ArenaChunk']]]
 ];

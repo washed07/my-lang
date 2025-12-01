@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['offset_0',['offset',['../structml_1_1FileInfo.html#a51a2cb23da4148e87e4f178c1997858c',1,'ml::FileInfo']]]
+  ['peakusage_0',['peakUsage',['../structml_1_1ArenaStats.html#a8bf1ae1df550c58d15b7aa74a2745645',1,'ml::ArenaStats']]]
 ];

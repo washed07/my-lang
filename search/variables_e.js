@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['range_0',['range',['../structml_1_1Diagnostic_1_1FixItHint.html#a34866171056188f36de4253b30854b74',1,'ml::Diagnostic::FixItHint']]],
-  ['readaheadsize_1',['readAheadSize',['../structml_1_1LexerOptions.html#ad8ae70874a660556c3459380303a5267',1,'ml::LexerOptions']]],
-  ['replacement_2',['replacement',['../structml_1_1Diagnostic_1_1FixItHint.html#a8fca3560d713551a57fb7f38cdd1256a',1,'ml::Diagnostic::FixItHint']]],
-  ['requestedcount_3',['requestedCount',['../structml_1_1ArenaStats.html#a84ff51717412177a18fd4e97440da76e',1,'ml::ArenaStats']]],
-  ['retaincomments_4',['retainComments',['../structml_1_1LexerOptions.html#afa7e09b864c47ec77735d3ebed35c295',1,'ml::LexerOptions']]],
-  ['retainwhitespace_5',['retainWhitespace',['../structml_1_1LexerOptions.html#a0d2ee50ac34a349c00532d33102d7d73',1,'ml::LexerOptions']]]
+  ['shortmessage_0',['ShortMessage',['../structml_1_1DiagnosticInfo.html#adf4c3af47cda8f9b1844e5fad0fff21d',1,'ml::DiagnosticInfo']]],
+  ['simdoperations_1',['simdOperations',['../structml_1_1LexerStats.html#a25074c5d7b33c7dda7fe63a02feffea8',1,'ml::LexerStats']]],
+  ['size_2',['size',['../structml_1_1ArenaChunk.html#ae8cca45df6761cac74e31b8cfd0de846',1,'ml::ArenaChunk']]],
+  ['sourcesize_3',['sourceSize',['../structml_1_1SourceManagerStats.html#a4d922d3bc1ccd9cd3ad0e7d9537b3621',1,'ml::SourceManagerStats']]],
+  ['srcmgr_4',['srcMgr',['../structml_1_1FullSourceLoc.html#ac42c9390366d3a8ed884034ff225c913',1,'ml::FullSourceLoc']]],
+  ['strictmode_5',['strictMode',['../structml_1_1LexerOptions.html#a3e752940e0c97d40d2b66bfc1a92e7be',1,'ml::LexerOptions']]]
 ];

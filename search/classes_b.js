@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['sourcelocation_0',['SourceLocation',['../classml_1_1SourceLocation.html',1,'ml']]],
-  ['sourcemanager_1',['SourceManager',['../classml_1_1SourceManager.html',1,'ml']]],
-  ['sourcemanagerstats_2',['SourceManagerStats',['../structml_1_1SourceManagerStats.html',1,'ml']]],
-  ['sourcerange_3',['SourceRange',['../classml_1_1SourceRange.html',1,'ml']]],
-  ['stringinterner_4',['StringInterner',['../classml_1_1StringInterner.html',1,'ml']]],
-  ['stringinternerstats_5',['StringInternerStats',['../structml_1_1StringInternerStats.html',1,'ml']]]
+  ['textdiagnosticconsumer_0',['TextDiagnosticConsumer',['../classml_1_1TextDiagnosticConsumer.html',1,'ml']]],
+  ['token_1',['Token',['../classml_1_1Token.html',1,'ml']]],
+  ['tokeninfo_2',['TokenInfo',['../classml_1_1TokenInfo.html',1,'ml']]],
+  ['tokenmanager_3',['TokenManager',['../classml_1_1TokenManager.html',1,'ml']]],
+  ['tokenstream_4',['TokenStream',['../classml_1_1TokenManager_1_1TokenStream.html',1,'ml::TokenManager']]]
 ];
