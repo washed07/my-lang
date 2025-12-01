@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-latest, windows-latest]
         build_type: [Release, Debug]
         include:
           - os: ubuntu-latest
@@ -30,6 +30,8 @@ jobs:
             llvm_install: |
               brew install llvm@18
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
+          - os: windows-latest
+            llvm_install: |
 
     steps:
     - name: Checkout code
@@ -52,10 +54,49 @@ jobs:
       run: ${{ matrix.llvm_install }}
       shell: bash
 
+    - name: Install LLVM (Windows)
+      if: runner.os == 'Windows'
+      run: ${{ matrix.llvm_install }}
+      shell: pwsh
+
     - name: Configure CMake (Linux/macOS)
       if: runner.os != 'Windows'
       run: cmake -B build -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DBUILD_TESTING=ON -DBUILD_EXAMPLES=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
       shell: bash
+
+    - name: Configure CMake (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        # Ensure LLVM_DIR is set properly
+        if (-not $env:LLVM_DIR) {
+          # Check for pre-installed LLVM
+          if (Test-Path "C:\Program Files\LLVM\lib\cmake\llvm\LLVMConfig.cmake") {
+            $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
+          }
+          # Check for vcpkg LLVM
+          elseif (Test-Path "C:\vcpkg\installed\x64-windows\share\llvm\LLVMConfig.cmake") {
+            $env:LLVM_DIR = "C:\vcpkg\installed\x64-windows\share\llvm"
+            $env:CMAKE_TOOLCHAIN_FILE = "C:\vcpkg\scripts\buildsystems\vcpkg.cmake"
+          }
+        }
+        Write-Host "LLVM_DIR set to: $env:LLVM_DIR"
+        
+        $cmakeArgs = @(
+          "-B", "build"
+          "-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}"
+          "-DBUILD_TESTING=ON"
+          "-DBUILD_EXAMPLES=ON"
+          "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+          "-G", "Visual Studio 17 2022"
+        )
+        
+        if ($env:CMAKE_TOOLCHAIN_FILE) {
+          $cmakeArgs += "-DCMAKE_TOOLCHAIN_FILE=$env:CMAKE_TOOLCHAIN_FILE"
+          Write-Host "Using vcpkg toolchain: $env:CMAKE_TOOLCHAIN_FILE"
+        }
+        
+        cmake @cmakeArgs
+      shell: pwsh
 
     - name: Build
       run: cmake --build build --config ${{ matrix.build_type }} --parallel
