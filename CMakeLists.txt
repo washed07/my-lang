@@ -26,7 +26,6 @@ else()
     endif()
 endif()
 
-set(LLVM_DIR "C:/Program Files/LLVM/cmake")
 find_package(LLVM REQUIRED CONFIG)
 
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
@@ -52,8 +51,21 @@ if(BUILD_TESTING)
         GIT_TAG v1.15.2
     )
     
+    # Disable warnings as errors for Google Test when using Clang
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    
+    # Temporarily disable warnings as errors for Google Test
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        set(CMAKE_CXX_FLAGS_BACKUP "${CMAKE_CXX_FLAGS}")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-error=character-conversion")
+    endif()
+    
     FetchContent_MakeAvailable(googletest)
-  
+    
+    # Restore original flags after Google Test is configured
+    if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_BACKUP}")
+    endif()
     
     enable_testing()
     add_subdirectory(tests)
