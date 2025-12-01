@@ -17,8 +17,8 @@ namespace ml {
 
 /**
  * \struct ArenaStats ArenaAllocator.hpp "ml/Basic/ArenaAllocator.hpp"
- * \brief Stores statistics about \ref ArenaAllocator usage.
- * \details This structure holds various statistics about the memory usage
+ * \brief A container for statistics about \ref ArenaAllocator usage.
+ * \details Holds various statistics about the memory usage
  * of an \ref ArenaAllocator instance, including:
  * \li Total allocated bytes,
  * \li Requested bytes,
@@ -102,7 +102,7 @@ struct ArenaStats {
 
 /**
  * \struct ArenaChunk ArenaAllocator.hpp "ml/Basic/ArenaAllocator.hpp"
- * \brief Represents a single memory chunk in a \ref ArenaAllocator.
+ * \brief A chunk of memory managed by \ref ArenaAllocator.
  * \details Encapsulates a contiguous block of memory managed by
  * the \ref ArenaAllocator. It tracks the size of the chunk, the amount of
  * memory used, and provides methods for allocation within the chunk.
@@ -182,7 +182,7 @@ struct ArenaChunk {
 /**
  * \class ArenaAllocator ArenaAllocator.hpp "ml/Basic/ArenaAllocator.hpp"
  * \brief An allocator using arena allocation strategy.
- * \details Mnages memory in large chunks to provide fast allocation and
+ * \details Manages memory in large chunks to provide fast allocation and
  * deallocation of small to medium-sized objects, minimizing fragmentation and
  * overhead. It is particularly well-suited for compiler use cases where many
  * temporary objects are created.
@@ -368,7 +368,14 @@ private:
   void updateStats(size_t requested, size_t allocated) const;
 };
 
-/// RAII helper for temporary arena allocation scope
+/**
+ * \class ArenaScope ArenaAllocator.hpp "ml/Basic/ArenaAllocator.hpp"
+ * \brief A scope guard for arena allocation.
+ * \details Saves the state of an \ref ArenaAllocator upon construction
+ * and can restore it upon destruction. This is useful for managing
+ * temporary allocations within a specific scope.
+ * \see ArenaAllocator for context.
+ */
 class ArenaScope {
 public:
   explicit ArenaScope(ArenaAllocator &arena) : arena(arena) {

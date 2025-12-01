@@ -13,56 +13,107 @@
 
 namespace ml {
 
-// Forward declaration
 class ArenaAllocator;
 
-/// A handle to an interned string. This is a lightweight object that can be
-/// copied efficiently and compared by pointer equality.
+/**
+ * \brief An interned string handle.
+ * \details Represents a unique interned string stored in the
+ * \ref StringInterner. Provides fast comparison via pointer equality
+ * and access to the underlying string data.
+ * \see StringInterner for managing interned strings.
+ */
 class InternedString {
 public:
   InternedString() : ptr(nullptr) {}
 
-  /// Get the string data as a C-style string.
+  /**
+   * \brief Get the C-style string pointer.
+   * \return A pointer to the null-terminated string.
+   */
   const char *c_str() const { return ptr ? ptr : ""; }
 
-  /// Get the string data as a string_view.
+  /**
+   * \brief Get the string as a string view.
+   * \return A string view representing the interned string.
+   */
   std::string_view str() const {
     return ptr ? std::string_view(ptr) : std::string_view();
   }
 
-  /// Get the length of the string.
+  /**
+   * \brief Get the length of the interned string.
+   * \return The length of the string in characters.
+   * \deprecated Use \ref length() instead.
+   * \see length()
+   */
   size_t size() const { return str().size(); }
+
+  /**
+   * \brief Get the length of the interned string.
+   * \return The length of the string in characters.
+   */
   size_t length() const { return size(); }
+
+  /**
+   * \brief Check if the interned string is empty.
+   * \return True if the string is empty, false otherwise.
+   */
   bool empty() const { return ptr == nullptr || *ptr == '\0'; }
 
-  /// Comparison operators - these are fast pointer comparisons!
+  /**
+   * \brief Pointer comparison operators for fast equality checks.
+   */
   bool operator==(const InternedString &other) const {
     return ptr == other.ptr;
   }
+
+  /**
+   * \brief Pointer comparison operators for fast equality checks.
+   */
   bool operator!=(const InternedString &other) const {
     return ptr != other.ptr;
   }
+
+  /**
+   * \brief Pointer comparison for ordering.
+   */
   bool operator<(const InternedString &other) const { return ptr < other.ptr; }
 
-  /// String comparison (slower than pointer comparison)
+  /**
+   * \brief Compare with a string view for equality.
+   * \param other The string view to compare with.
+   * \see operator==(const InternedString &) const for pointer comparison.
+   * \note Use pointer comparison for best performance when possible.
+   */
   bool equals(std::string_view other) const { return str() == other; }
 
-  /// Check if this is a valid interned string
+  /**
+   * \brief Check if the interned string is valid.
+   * \return True if valid, false otherwise.
+   */
   bool isValid() const { return ptr != nullptr; }
 
-  /// Get a hash value for this interned string (fast)
+  /**
+   * \brief Get the hash value of the interned string.
+   * \return The hash value based on the string pointer.
+   */
   size_t getHash() const { return std::hash<const char *>{}(ptr); }
 
-  /// Convert to std::string (creates a copy)
+  /**
+   * \brief Convert to string.
+   * \return A string copy of the interned string.
+   */
   std::string toString() const { return std::string(str()); }
 
-  /// Implicit conversion to string_view
   operator std::string_view() const { return str(); }
 
 private:
   friend class StringInterner;
   explicit InternedString(const char *ptr) : ptr(ptr) {}
 
+  /**
+   * \brief The pointer to the interned string data.
+   */
   const char *ptr;
 };
 
