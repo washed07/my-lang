@@ -30,6 +30,7 @@ jobs:
             llvm_install: |
               brew install llvm@18
               echo "LLVM_DIR=$(brew --prefix llvm@18)/lib/cmake/llvm" >> $GITHUB_ENV
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
