@@ -98,6 +98,9 @@ $(document).ready(function(){initNavTree('classml_1_1InternedString.html',''); i
 </div><!--header-->
 <div class="contents">
 
+<p>An interned string handle.  
+ <a href="classml_1_1InternedString.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -105,39 +108,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae9dac38bf9575d487ba37ba3c4313d54" id="r_ae9dac38bf9575d487ba37ba3c4313d54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#ae9dac38bf9575d487ba37ba3c4313d54">InternedString</a> ()</td></tr>
 <tr class="separator:ae9dac38bf9575d487ba37ba3c4313d54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1355b6a17941fc4f73903dd97dce857b" id="r_a1355b6a17941fc4f73903dd97dce857b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#a1355b6a17941fc4f73903dd97dce857b">c_str</a> () const</td></tr>
-<tr class="memdesc:a1355b6a17941fc4f73903dd97dce857b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string data as a C-style string.  <br /></td></tr>
+<tr class="memdesc:a1355b6a17941fc4f73903dd97dce857b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the C-style string pointer.  <br /></td></tr>
 <tr class="separator:a1355b6a17941fc4f73903dd97dce857b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab68206854e797e75257512b2fc059b53" id="r_ab68206854e797e75257512b2fc059b53"><td class="memItemLeft" align="right" valign="top">std::string_view&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#ab68206854e797e75257512b2fc059b53">str</a> () const</td></tr>
-<tr class="memdesc:ab68206854e797e75257512b2fc059b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string data as a string_view.  <br /></td></tr>
+<tr class="memdesc:ab68206854e797e75257512b2fc059b53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the string as a string view.  <br /></td></tr>
 <tr class="separator:ab68206854e797e75257512b2fc059b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee4392dca5eb6b46cfc50df4af8b4cd7" id="r_aee4392dca5eb6b46cfc50df4af8b4cd7"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#aee4392dca5eb6b46cfc50df4af8b4cd7">size</a> () const</td></tr>
-<tr class="memdesc:aee4392dca5eb6b46cfc50df4af8b4cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the string.  <br /></td></tr>
+<tr class="memdesc:aee4392dca5eb6b46cfc50df4af8b4cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the interned string.  <br /></td></tr>
 <tr class="separator:aee4392dca5eb6b46cfc50df4af8b4cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add9bcc9f7b2ce40ccb9466f0bcda6e24" id="r_add9bcc9f7b2ce40ccb9466f0bcda6e24"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#add9bcc9f7b2ce40ccb9466f0bcda6e24">length</a> () const</td></tr>
+<tr class="memdesc:add9bcc9f7b2ce40ccb9466f0bcda6e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the length of the interned string.  <br /></td></tr>
 <tr class="separator:add9bcc9f7b2ce40ccb9466f0bcda6e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41547ebd743fade5387adface1b0840f" id="r_a41547ebd743fade5387adface1b0840f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#a41547ebd743fade5387adface1b0840f">empty</a> () const</td></tr>
+<tr class="memdesc:a41547ebd743fade5387adface1b0840f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the interned string is empty.  <br /></td></tr>
 <tr class="separator:a41547ebd743fade5387adface1b0840f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad37e65477aff9eda57714810dd2800af" id="r_ad37e65477aff9eda57714810dd2800af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#ad37e65477aff9eda57714810dd2800af">operator==</a> (const <a class="el" href="classml_1_1InternedString.html">InternedString</a> &amp;other) const</td></tr>
-<tr class="memdesc:ad37e65477aff9eda57714810dd2800af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison operators - these are fast pointer comparisons!  <br /></td></tr>
+<tr class="memdesc:ad37e65477aff9eda57714810dd2800af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer comparison operators for fast equality checks.  <br /></td></tr>
 <tr class="separator:ad37e65477aff9eda57714810dd2800af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5880289687a3e6649902ebbf318b8326" id="r_a5880289687a3e6649902ebbf318b8326"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#a5880289687a3e6649902ebbf318b8326">operator!=</a> (const <a class="el" href="classml_1_1InternedString.html">InternedString</a> &amp;other) const</td></tr>
+<tr class="memdesc:a5880289687a3e6649902ebbf318b8326"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer comparison operators for fast equality checks.  <br /></td></tr>
 <tr class="separator:a5880289687a3e6649902ebbf318b8326"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d4dd565f4d6f59244c7081ff193722" id="r_ad0d4dd565f4d6f59244c7081ff193722"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#ad0d4dd565f4d6f59244c7081ff193722">operator&lt;</a> (const <a class="el" href="classml_1_1InternedString.html">InternedString</a> &amp;other) const</td></tr>
+<tr class="memdesc:ad0d4dd565f4d6f59244c7081ff193722"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer comparison for ordering.  <br /></td></tr>
 <tr class="separator:ad0d4dd565f4d6f59244c7081ff193722"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcefab722183a2db0689be8de066b806" id="r_afcefab722183a2db0689be8de066b806"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#afcefab722183a2db0689be8de066b806">equals</a> (std::string_view other) const</td></tr>
-<tr class="memdesc:afcefab722183a2db0689be8de066b806"><td class="mdescLeft">&#160;</td><td class="mdescRight">String comparison (slower than pointer comparison)  <br /></td></tr>
+<tr class="memdesc:afcefab722183a2db0689be8de066b806"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare with a string view for equality.  <br /></td></tr>
 <tr class="separator:afcefab722183a2db0689be8de066b806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5e18f6b35ab71667ec1ef587a8b0bd" id="r_acb5e18f6b35ab71667ec1ef587a8b0bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#acb5e18f6b35ab71667ec1ef587a8b0bd">isValid</a> () const</td></tr>
-<tr class="memdesc:acb5e18f6b35ab71667ec1ef587a8b0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if this is a valid interned string.  <br /></td></tr>
+<tr class="memdesc:acb5e18f6b35ab71667ec1ef587a8b0bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the interned string is valid.  <br /></td></tr>
 <tr class="separator:acb5e18f6b35ab71667ec1ef587a8b0bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752a8d16e0ea97ffb0b7544537ea80de" id="r_a752a8d16e0ea97ffb0b7544537ea80de"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#a752a8d16e0ea97ffb0b7544537ea80de">getHash</a> () const</td></tr>
-<tr class="memdesc:a752a8d16e0ea97ffb0b7544537ea80de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a hash value for this interned string (fast)  <br /></td></tr>
+<tr class="memdesc:a752a8d16e0ea97ffb0b7544537ea80de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the hash value of the interned string.  <br /></td></tr>
 <tr class="separator:a752a8d16e0ea97ffb0b7544537ea80de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2214e1189ab981420d5ce79f75b02bb6" id="r_a2214e1189ab981420d5ce79f75b02bb6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#a2214e1189ab981420d5ce79f75b02bb6">toString</a> () const</td></tr>
-<tr class="memdesc:a2214e1189ab981420d5ce79f75b02bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert to std::string (creates a copy)  <br /></td></tr>
+<tr class="memdesc:a2214e1189ab981420d5ce79f75b02bb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert to string.  <br /></td></tr>
 <tr class="separator:a2214e1189ab981420d5ce79f75b02bb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4884bd9454d75b8df21e24e4b65587f" id="r_ae4884bd9454d75b8df21e24e4b65587f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html#ae4884bd9454d75b8df21e24e4b65587f">operator std::string_view</a> () const</td></tr>
-<tr class="memdesc:ae4884bd9454d75b8df21e24e4b65587f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit conversion to string_view.  <br /></td></tr>
 <tr class="separator:ae4884bd9454d75b8df21e24e4b65587f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
@@ -146,9 +152,10 @@ Friends</h2></td></tr>
 <tr class="separator:aa43ad6916b87177856e649fa2108b7bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A handle to an interned string. This is a lightweight object that can be copied efficiently and compared by pointer equality. </p>
+<div class="textblock"><p>An interned string handle. </p>
+<p>Represents a unique interned string stored in the <a class="el" href="classml_1_1StringInterner.html">StringInterner</a>. Provides fast comparison via pointer equality and access to the underlying string data. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html">StringInterner</a> for managing interned strings. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00021">21</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00025">25</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae9dac38bf9575d487ba37ba3c4313d54" name="ae9dac38bf9575d487ba37ba3c4313d54"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae9dac38bf9575d487ba37ba3c4313d54">&#9670;&#160;</a></span>InternedString()</h2>
@@ -173,7 +180,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00023">23</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00027">27</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -201,9 +208,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the string data as a C-style string. </p>
+<p>Get the C-style string pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the null-terminated string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00026">26</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00033">33</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,7 +238,10 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00036">36</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Check if the interned string is empty. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the string is empty, false otherwise. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00061">61</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -258,11 +269,19 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>String comparison (slower than pointer comparison) </p>
+<p>Compare with a string view for equality. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>The string view to compare with. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1InternedString.html#ad37e65477aff9eda57714810dd2800af" title="Pointer comparison operators for fast equality checks.">operator==(const InternedString &amp;) const </a>for pointer comparison. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Use pointer comparison for best performance when possible. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00048">48</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00088">88</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00029">str()</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00039">str()</a>.</p>
 
 </div>
 </div>
@@ -289,11 +308,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get a hash value for this interned string (fast) </p>
+<p>Get the hash value of the interned string. </p>
+<dl class="section return"><dt>Returns</dt><dd>The hash value based on the string pointer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00054">54</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00100">100</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00081">ml::InternedStringHash::operator()()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00132">ml::InternedStringHash::operator()()</a>.</p>
 
 </div>
 </div>
@@ -320,9 +340,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check if this is a valid interned string. </p>
+<p>Check if the interned string is valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if valid, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00051">51</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00094">94</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Token_8cpp_source.html#l00410">ml::operator&lt;&lt;()</a>.</p>
 
 </div>
 </div>
@@ -349,9 +372,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00035">35</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Get the length of the interned string. </p>
+<dl class="section return"><dt>Returns</dt><dd>The length of the string in characters. </dd></dl>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00034">size()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00055">55</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00049">size()</a>.</p>
 
 </div>
 </div>
@@ -378,11 +404,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implicit conversion to string_view. </p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00108">108</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00060">60</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
-
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00029">str()</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00039">str()</a>.</p>
 
 </div>
 </div>
@@ -410,7 +434,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00042">42</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Pointer comparison operators for fast equality checks. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00073">73</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +464,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00045">45</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Pointer comparison for ordering. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00080">80</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -466,9 +494,9 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Comparison operators - these are fast pointer comparisons! </p>
+<p>Pointer comparison operators for fast equality checks. </p>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00039">39</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00066">66</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -495,13 +523,16 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the length of the string. </p>
+<p>Get the length of the interned string. </p>
+<dl class="section return"><dt>Returns</dt><dd>The length of the string in characters. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd>Use <a class="el" href="classml_1_1InternedString.html#add9bcc9f7b2ce40ccb9466f0bcda6e24">length()</a> instead. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1InternedString.html#add9bcc9f7b2ce40ccb9466f0bcda6e24" title="Get the length of the interned string.">length()</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00034">34</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00049">49</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00029">str()</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00039">str()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00035">length()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00055">length()</a>.</p>
 
 </div>
 </div>
@@ -528,11 +559,12 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the string data as a string_view. </p>
+<p>Get the string as a string view. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string view representing the interned string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00029">29</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00039">39</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00048">equals()</a>, <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00060">operator std::string_view()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00237">ml::operator&lt;&lt;()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00034">size()</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00057">toString()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="StringInterner_8hpp_source.html#l00088">equals()</a>, <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00108">operator std::string_view()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00288">ml::operator&lt;&lt;()</a>, <a class="el" href="Token_8cpp_source.html#l00410">ml::operator&lt;&lt;()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00049">size()</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00106">toString()</a>.</p>
 
 </div>
 </div>
@@ -559,11 +591,14 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Convert to std::string (creates a copy) </p>
+<p>Convert to string. </p>
+<dl class="section return"><dt>Returns</dt><dd>A string copy of the interned string. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00057">57</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00106">106</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00029">str()</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00039">str()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00050">ml::FullSourceLoc::getFilename()</a>.</p>
 
 </div>
 </div>
@@ -588,7 +623,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00063">63</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00111">111</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>

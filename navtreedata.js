@@ -25,11 +25,13 @@
 var NAVTREE =
 [
   [ "my-lang", "index.html", [
+    [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
@@ -51,6 +53,7 @@ var NAVTREE =
       [ "File List", "files.html", "files_dup" ],
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -59,12 +62,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ArenaAllocator_8hpp.html",
-"classml_1_1Diagnostic.html#a5ea13d0e0d7911e0878e976c3c312819",
-"classml_1_1Lexer.html#a9cb7000dbb6d747dce9379bb3d6185b0",
-"classml_1_1Token.html#a1d8e3191cd18725d8ffae5b722ec1542",
-"namespaceml.html#a07811f32484f95bc7196933289d2d9a4a91d7c88747d4ec172d00ad2b00e31a95",
-"structml_1_1LexerOptions.html#ac2f50cd5181882341058ca4710a89560"
+"ArenaAllocator_8cpp.html",
+"classml_1_1ArenaSTLAllocator.html#aa8edefb556d7ea984dd1a731de6c713e",
+"classml_1_1InternedString.html#ae9dac38bf9575d487ba37ba3c4313d54",
+"classml_1_1StringInterner_1_1const__iterator.html#a47e67f03efb645655db253fe2e46f29f",
+"namespacemembers_type.html",
+"structml_1_1FileManagerStats.html#a137bba371a65a27e78cd7246989e7f82"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

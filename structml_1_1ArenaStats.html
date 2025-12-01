@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('structml_1_1ArenaStats.html',''); init
 </div><!--header-->
 <div class="contents">
 
-<p>Stores statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage.  
+<p>A container for statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage.  
  <a href="structml_1_1ArenaStats.html#details">More...</a></p>
 
 <p><code>#include &quot;<a class="el" href="ArenaAllocator_8hpp_source.html">ml/Basic/ArenaAllocator.hpp</a>&quot;</code></p>
@@ -137,8 +137,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a2cb64d90ff2296ebe88e7250332de03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Stores statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage. </p>
-<p>This structure holds various statistics about the memory usage of an <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> instance, including: </p><ul>
+<div class="textblock"><p>A container for statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage. </p>
+<p>Holds various statistics about the memory usage of an <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> instance, including: </p><ul>
 <li>Total allocated bytes, </li>
 <li>Requested bytes, </li>
 <li>Allocation count, </li>
@@ -181,6 +181,8 @@ Public Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="ArenaAllocator_8hpp_source.html#l00040">allocatedCount</a>, and <a class="el" href="ArenaAllocator_8hpp_source.html#l00047">requestedCount</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
+
 </div>
 </div>
 <a id="a173b5eb5fae3e87bccd51bb692318537" name="a173b5eb5fae3e87bccd51bb692318537"></a>
@@ -213,6 +215,8 @@ Public Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="ArenaAllocator_8hpp_source.html#l00047">requestedCount</a>, and <a class="el" href="ArenaAllocator_8hpp_source.html#l00080">wastedByteCount</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -233,7 +237,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00040">40</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00096">getEfficiency()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00096">getEfficiency()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
 
 </div>
 </div>
@@ -254,6 +258,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00054">54</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00111">ml::ArenaAllocator::clear()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
+
 </div>
 </div>
 <a id="a35341e5277077d464a1fcc1ac90023fe" name="a35341e5277077d464a1fcc1ac90023fe"></a>
@@ -273,6 +279,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00061">61</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
+
 </div>
 </div>
 <a id="a6a317323d148b041256e5889073d58bc" name="a6a317323d148b041256e5889073d58bc"></a>
@@ -290,6 +298,8 @@ Public Attributes</h2></td></tr>
 <p>The current memory usage. </p>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00073">73</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00111">ml::ArenaAllocator::clear()</a>, <a class="el" href="ArenaAllocator_8cpp_source.html#l00122">ml::ArenaAllocator::getStats()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
 
 </div>
 </div>
@@ -310,6 +320,8 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00068">68</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8cpp_source.html#l00122">ml::ArenaAllocator::getStats()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
+
 </div>
 </div>
 <a id="a84ff51717412177a18fd4e97440da76e" name="a84ff51717412177a18fd4e97440da76e"></a>
@@ -329,7 +341,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00047">47</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00096">getEfficiency()</a>, and <a class="el" href="ArenaAllocator_8hpp_source.html#l00086">getFragmentationRatio()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00096">getEfficiency()</a>, <a class="el" href="ArenaAllocator_8hpp_source.html#l00086">getFragmentationRatio()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
 
 </div>
 </div>
@@ -350,7 +362,7 @@ Public Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00080">80</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00086">getFragmentationRatio()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ArenaAllocator_8hpp_source.html#l00086">getFragmentationRatio()</a>, and <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>.</p>
 
 </div>
 </div>

@@ -11,6 +11,7 @@ var searchData=
   ['contains_8',['contains',['../classml_1_1ArenaAllocator.html#a1e4abc885699f991febe1b6417ee68c6',1,'ml::ArenaAllocator::contains()'],['../classml_1_1StringInterner.html#a3c60471eb00aecbdcae30c79c4c07cf0',1,'ml::StringInterner::contains()']]],
   ['createfileid_9',['createfileid',['../classml_1_1SourceManager.html#a9758a5d683256afebf7a4087d4774690',1,'ml::SourceManager::createFileID(const std::string &amp;filename)'],['../classml_1_1SourceManager.html#a60fee14f2d9999cd0cbf8aec62cbbbe5',1,'ml::SourceManager::createFileID(std::shared_ptr&lt; FileEntry &gt; entry)']]],
   ['createfileidwitherror_10',['createFileIDWithError',['../classml_1_1SourceManager.html#ab2388ba94604314e47908fe7ff71a955',1,'ml::SourceManager']]],
-  ['createstream_11',['createStream',['../classml_1_1TokenManager.html#a1ca4b934b79f77478c0b24a5c2e281b6',1,'ml::TokenManager']]],
-  ['current_12',['current',['../classml_1_1TokenManager_1_1TokenStream.html#af9d8f447021b1c92a2da8ca67e9da867',1,'ml::TokenManager::TokenStream']]]
+  ['createoperatorprecedencetable_11',['createOperatorPrecedenceTable',['../namespaceml.html#aa90721345b3259424bbb28c220080bbd',1,'ml']]],
+  ['createstream_12',['createStream',['../classml_1_1TokenManager.html#a1ca4b934b79f77478c0b24a5c2e281b6',1,'ml::TokenManager']]],
+  ['current_13',['current',['../classml_1_1TokenManager_1_1TokenStream.html#af9d8f447021b1c92a2da8ca67e9da867',1,'ml::TokenManager::TokenStream']]]
 ];

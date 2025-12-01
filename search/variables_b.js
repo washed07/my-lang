@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['offset_0',['offset',['../structml_1_1FileInfo.html#a51a2cb23da4148e87e4f178c1997858c',1,'ml::FileInfo']]]
+  ['notecount_0',['noteCount',['../structml_1_1DiagnosticStats.html#aff2012d8789cede098d7023d5f411916',1,'ml::DiagnosticStats']]]
 ];

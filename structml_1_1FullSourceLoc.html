@@ -98,10 +98,10 @@ $(document).ready(function(){initNavTree('structml_1_1FullSourceLoc.html',''); i
 </div><!--header-->
 <div class="contents">
 
-<p>Full source location information for a source location.  
+<p>A source location with additional context from <a class="el" href="classml_1_1SourceManager.html">SourceManager</a>.  
  <a href="structml_1_1FullSourceLoc.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>&gt;</code></p>
+<p><code>#include &quot;<a class="el" href="SourceLocation_8hpp_source.html">ml/Basic/SourceLocation.hpp</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -110,31 +110,43 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3c8393d27bbdaa39cb6255058de20af2" id="r_a3c8393d27bbdaa39cb6255058de20af2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#a3c8393d27bbdaa39cb6255058de20af2">FullSourceLoc</a> (<a class="el" href="classml_1_1SourceLocation.html">SourceLocation</a> loc, const <a class="el" href="classml_1_1SourceManager.html">SourceManager</a> &amp;sm)</td></tr>
 <tr class="separator:a3c8393d27bbdaa39cb6255058de20af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee0f7308c9d08efc740cb4d5ab8b740" id="r_a3ee0f7308c9d08efc740cb4d5ab8b740"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#a3ee0f7308c9d08efc740cb4d5ab8b740">isValid</a> () const</td></tr>
+<tr class="memdesc:a3ee0f7308c9d08efc740cb4d5ab8b740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the <a class="el" href="structml_1_1FullSourceLoc.html" title="A source location with additional context from SourceManager.">FullSourceLoc</a> is valid.  <br /></td></tr>
 <tr class="separator:a3ee0f7308c9d08efc740cb4d5ab8b740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac7d763a2373362444df2b36effb18177" id="r_ac7d763a2373362444df2b36effb18177"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1FileID.html">FileID</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#ac7d763a2373362444df2b36effb18177">getFileID</a> () const</td></tr>
+<tr class="memdesc:ac7d763a2373362444df2b36effb18177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classml_1_1FileID.html" title="A unique identifier for a source file.">FileID</a> of the source location.  <br /></td></tr>
 <tr class="separator:ac7d763a2373362444df2b36effb18177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaea3f3cbd42c6ae2300328b1d91cf48f" id="r_aaea3f3cbd42c6ae2300328b1d91cf48f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#aaea3f3cbd42c6ae2300328b1d91cf48f">getFileOffset</a> () const</td></tr>
+<tr class="memdesc:aaea3f3cbd42c6ae2300328b1d91cf48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the file offset of the source location.  <br /></td></tr>
 <tr class="separator:aaea3f3cbd42c6ae2300328b1d91cf48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6f211b9413c6d33ce2797871e7a0795" id="r_ab6f211b9413c6d33ce2797871e7a0795"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#ab6f211b9413c6d33ce2797871e7a0795">getLineNumber</a> () const</td></tr>
+<tr class="memdesc:ab6f211b9413c6d33ce2797871e7a0795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the associated <a class="el" href="classml_1_1FileEntry.html" title="Represents the contents of a file in memory.">FileEntry</a>.  <br /></td></tr>
 <tr class="separator:ab6f211b9413c6d33ce2797871e7a0795"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85852ea6f63b6821609d7317b39e79b3" id="r_a85852ea6f63b6821609d7317b39e79b3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#a85852ea6f63b6821609d7317b39e79b3">getColumnNumber</a> () const</td></tr>
+<tr class="memdesc:a85852ea6f63b6821609d7317b39e79b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the column number of the source location.  <br /></td></tr>
 <tr class="separator:a85852ea6f63b6821609d7317b39e79b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99aeb7c3e8c6b689b8c7df5cc3f0a4d8" id="r_a99aeb7c3e8c6b689b8c7df5cc3f0a4d8"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#a99aeb7c3e8c6b689b8c7df5cc3f0a4d8">getCharacterData</a> () const</td></tr>
+<tr class="memdesc:a99aeb7c3e8c6b689b8c7df5cc3f0a4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the character data at the source location.  <br /></td></tr>
 <tr class="separator:a99aeb7c3e8c6b689b8c7df5cc3f0a4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafa1f8c3a5ad38a8262f5950be399b22" id="r_aafa1f8c3a5ad38a8262f5950be399b22"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#aafa1f8c3a5ad38a8262f5950be399b22">getFilename</a> () const</td></tr>
+<tr class="memdesc:aafa1f8c3a5ad38a8262f5950be399b22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the filename for the source location.  <br /></td></tr>
 <tr class="separator:aafa1f8c3a5ad38a8262f5950be399b22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ac3ab3b09b44e26c247375a7b19356b56" id="r_ac3ab3b09b44e26c247375a7b19356b56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1SourceLocation.html">SourceLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#ac3ab3b09b44e26c247375a7b19356b56">location</a></td></tr>
+<tr class="memdesc:ac3ab3b09b44e26c247375a7b19356b56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying source location.  <br /></td></tr>
 <tr class="separator:ac3ab3b09b44e26c247375a7b19356b56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac42c9390366d3a8ed884034ff225c913" id="r_ac42c9390366d3a8ed884034ff225c913"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classml_1_1SourceManager.html">SourceManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html#ac42c9390366d3a8ed884034ff225c913">srcMgr</a></td></tr>
+<tr class="memdesc:ac42c9390366d3a8ed884034ff225c913"><td class="mdescLeft">&#160;</td><td class="mdescRight">The associated <a class="el" href="classml_1_1SourceManager.html">SourceManager</a>.  <br /></td></tr>
 <tr class="separator:ac42c9390366d3a8ed884034ff225c913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Full source location information for a source location. </p>
+<div class="textblock"><p>A source location with additional context from <a class="el" href="classml_1_1SourceManager.html">SourceManager</a>. </p>
+<p>Combines a <a class="el" href="classml_1_1SourceLocation.html">SourceLocation</a> with a reference to the <a class="el" href="classml_1_1SourceManager.html">SourceManager</a> to provide enriched information about the location, such as filename, line number, and column number. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1SourceLocation.html" title="A specific location in source code.">SourceLocation</a> for basic <a class="el" href="structml_1_1FullSourceLoc.html#ac3ab3b09b44e26c247375a7b19356b56" title="The underlying source location.">location</a> representation. </dd>
+<dd>
+<a class="el" href="classml_1_1SourceManager.html">SourceManager</a> for context management. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00099">99</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00218">218</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a55e77a592324ac2d83605e188a520904" name="a55e77a592324ac2d83605e188a520904"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a55e77a592324ac2d83605e188a520904">&#9670;&#160;</a></span>FullSourceLoc() <span class="overload">[1/2]</span></h2>
@@ -159,7 +171,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00103">103</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00230">230</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
 
 </div>
 </div>
@@ -197,7 +209,7 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00104">104</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00231">231</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
 
 </div>
 </div>
@@ -217,6 +229,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the character data at the source location. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the character data. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00046">46</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00424">ml::SourceManager::getCharacterData()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
+
 </div>
 </div>
 <a id="a85852ea6f63b6821609d7317b39e79b3" name="a85852ea6f63b6821609d7317b39e79b3"></a>
@@ -233,6 +252,13 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get the column number of the source location. </p>
+<dl class="section return"><dt>Returns</dt><dd>The column number. 1-based </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00042">42</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00360">ml::SourceManager::getColumnNumber()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
 
 </div>
 </div>
@@ -251,6 +277,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the <a class="el" href="classml_1_1FileID.html" title="A unique identifier for a source file.">FileID</a> of the source location. </p>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="classml_1_1FileID.html" title="A unique identifier for a source file.">FileID</a> corresponding to the location. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00030">30</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00197">ml::SourceManager::getFileID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00039">ml::FileID::getInvalidID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
+
 </div>
 </div>
 <a id="aafa1f8c3a5ad38a8262f5950be399b22" name="aafa1f8c3a5ad38a8262f5950be399b22"></a>
@@ -267,6 +300,15 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get the filename for the source location. </p>
+<dl class="section return"><dt>Returns</dt><dd>The filename as a string. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00050">50</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00273">ml::SourceManager::getFilename()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00106">ml::InternedString::toString()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="DiagnosticManager_8cpp_source.html#l00193">ml::TextDiagnosticConsumer::handleDiagnostic()</a>, and <a class="el" href="DiagnosticManager_8cpp_source.html#l00345">ml::JSONDiagnosticConsumer::handleDiagnostic()</a>.</p>
 
 </div>
 </div>
@@ -285,6 +327,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the file offset of the source location. </p>
+<dl class="section return"><dt>Returns</dt><dd>The byte offset within the file. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00034">34</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00249">ml::SourceManager::getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
+
 </div>
 </div>
 <a id="ab6f211b9413c6d33ce2797871e7a0795" name="ab6f211b9413c6d33ce2797871e7a0795"></a>
@@ -301,6 +350,13 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get the associated <a class="el" href="classml_1_1FileEntry.html" title="Represents the contents of a file in memory.">FileEntry</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the <a class="el" href="classml_1_1FileEntry.html" title="Represents the contents of a file in memory.">FileEntry</a> for the location. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00038">38</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00293">ml::SourceManager::getLineNumber()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
 
 </div>
 </div>
@@ -327,9 +383,12 @@ Public Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00107">107</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p>Check if the <a class="el" href="structml_1_1FullSourceLoc.html" title="A source location with additional context from SourceManager.">FullSourceLoc</a> is valid. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if both the location and <a class="el" href="classml_1_1SourceManager.html">SourceManager</a> are valid. </dd></dl>
 
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00041">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00100">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00101">srcMgr</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00238">238</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+
+<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00077">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00223">location</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00228">srcMgr</a>.</p>
 
 </div>
 </div>
@@ -346,9 +405,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00100">100</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p>The underlying source location. </p>
 
-<p class="reference">Referenced by <a class="el" href="SourceLocation_8hpp_source.html#l00107">isValid()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00223">223</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00046">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00042">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00030">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00050">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00034">getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00038">getLineNumber()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00238">isValid()</a>.</p>
 
 </div>
 </div>
@@ -364,14 +425,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00101">101</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+<p>The associated <a class="el" href="classml_1_1SourceManager.html">SourceManager</a>. </p>
 
-<p class="reference">Referenced by <a class="el" href="SourceLocation_8hpp_source.html#l00107">isValid()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceLocation_8hpp_source.html#l00228">228</a> of file <a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00046">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00042">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00030">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00050">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00034">getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00038">getLineNumber()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00238">isValid()</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>include/ml/Basic/<a class="el" href="SourceLocation_8hpp_source.html">SourceLocation.hpp</a></li>
+<li>src/Managers/<a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

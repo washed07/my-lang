@@ -97,10 +97,10 @@ $(document).ready(function(){initNavTree('classml_1_1ArenaScope.html',''); initR
 </div><!--header-->
 <div class="contents">
 
-<p>RAII helper for temporary arena allocation scope.  
+<p>A scope guard for arena allocation.  
  <a href="classml_1_1ArenaScope.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>&gt;</code></p>
+<p><code>#include &quot;<a class="el" href="ArenaAllocator_8hpp_source.html">ml/Basic/ArenaAllocator.hpp</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -110,9 +110,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac3c695aafeaa6070add043b6c5fda259"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>RAII helper for temporary arena allocation scope. </p>
+<div class="textblock"><p>A scope guard for arena allocation. </p>
+<p>Saves the state of an <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> upon construction and can restore it upon destruction. This is useful for managing temporary allocations within a specific scope. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a> for context. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00372">372</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00379">379</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae515432ad34512eae62594d9dd71c233" name="ae515432ad34512eae62594d9dd71c233"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae515432ad34512eae62594d9dd71c233">&#9670;&#160;</a></span>ArenaScope()</h2>
@@ -138,9 +139,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00374">374</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00381">381</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="classml_1_1ArenaAllocator.html#a0072336d36c8fa7f4d54b00949b0127c">ml::ArenaAllocator::getStats()</a>.</p>
+<p class="reference">References <a class="el" href="ArenaAllocator_8cpp_source.html#l00122">ml::ArenaAllocator::getStats()</a>.</p>
 
 </div>
 </div>
@@ -167,7 +168,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00378">378</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00385">385</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
 </div>
 </div>

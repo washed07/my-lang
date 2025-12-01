@@ -94,7 +94,8 @@ $(document).ready(function(){initNavTree('namespaceml.html',''); initResizable()
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">ml Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -105,13 +106,13 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An allocator using arena allocation strategy.  <a href="classml_1_1ArenaAllocator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1ArenaChunk.html">ArenaChunk</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single memory chunk in a <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a>.  <a href="structml_1_1ArenaChunk.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A chunk of memory managed by <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a>.  <a href="structml_1_1ArenaChunk.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1ArenaScope.html">ArenaScope</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RAII helper for temporary arena allocation scope.  <a href="classml_1_1ArenaScope.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A scope guard for arena allocation.  <a href="classml_1_1ArenaScope.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1ArenaStats.html">ArenaStats</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage.  <a href="structml_1_1ArenaStats.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A container for statistics about <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> usage.  <a href="structml_1_1ArenaStats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1ArenaSTLAllocator.html">ArenaSTLAllocator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">STL-compatible allocator using <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a>.  <a href="classml_1_1ArenaSTLAllocator.html#details">More...</a><br /></td></tr>
@@ -141,7 +142,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the contents of a file in memory.  <a href="classml_1_1FileEntry.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1FileID.html">FileID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a unique identifier for a file in the source manager.  <a href="classml_1_1FileID.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A unique identifier for a source file.  <a href="classml_1_1FileID.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FileInfo.html">FileInfo</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Information about a loaded file in the source manager.  <a href="structml_1_1FileInfo.html#details">More...</a><br /></td></tr>
@@ -152,15 +153,18 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about file operations.  <a href="structml_1_1FileManagerStats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1FullSourceLoc.html">FullSourceLoc</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Full source location information for a source location.  <a href="structml_1_1FullSourceLoc.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A source location with additional context from <a class="el" href="classml_1_1SourceManager.html">SourceManager</a>.  <a href="structml_1_1FullSourceLoc.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1InternedString.html">InternedString</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An interned string handle.  <a href="classml_1_1InternedString.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1InternedStringHash.html">InternedStringHash</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for <a class="el" href="classml_1_1InternedString.html">InternedString</a>.  <a href="structml_1_1InternedStringHash.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a>.  <a href="structml_1_1InternedStringHash.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1JSONDiagnosticConsumer.html">JSONDiagnosticConsumer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Built-in JSON diagnostic consumer.  <a href="classml_1_1JSONDiagnosticConsumer.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1KeywordEntry.html">KeywordEntry</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1Lexer.html">Lexer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main lexer class for tokenizing source code.  <a href="classml_1_1Lexer.html#details">More...</a><br /></td></tr>
@@ -171,7 +175,10 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1LexerStats.html">LexerStats</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about lexer performance.  <a href="structml_1_1LexerStats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1LocationCache.html">LocationCache</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1SourceLocation.html">SourceLocation</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A specific location in source code.  <a href="classml_1_1SourceLocation.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1SourceManager.html">SourceManager</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,7 +186,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about source manager operations.  <a href="structml_1_1SourceManagerStats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1SourceRange.html">SourceRange</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a range of source locations.  <a href="classml_1_1SourceRange.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A range between two source locations.  <a href="classml_1_1SourceRange.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html">StringInterner</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -375,7 +382,7 @@ Enumerations</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aac9ce07ed9a855416c45ba5fb4431c2a" id="r_aac9ce07ed9a855416c45ba5fb4431c2a"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#aac9ce07ed9a855416c45ba5fb4431c2a">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classml_1_1InternedString.html">InternedString</a> &amp;str)</td></tr>
-<tr class="memdesc:aac9ce07ed9a855416c45ba5fb4431c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream output operator for <a class="el" href="classml_1_1InternedString.html">InternedString</a>.  <br /></td></tr>
+<tr class="memdesc:aac9ce07ed9a855416c45ba5fb4431c2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream output operator for <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a>.  <br /></td></tr>
 <tr class="separator:aac9ce07ed9a855416c45ba5fb4431c2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96bbcc2303354fbee0e9f6c560b4c833" id="r_a96bbcc2303354fbee0e9f6c560b4c833"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a96bbcc2303354fbee0e9f6c560b4c833">operator&lt;&lt;</a> (std::ostream &amp;os, <a class="el" href="classml_1_1SourceLocation.html">SourceLocation</a> loc)</td></tr>
 <tr class="memdesc:a96bbcc2303354fbee0e9f6c560b4c833"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper functions for working with source locations.  <br /></td></tr>
@@ -399,6 +406,41 @@ Functions</h2></td></tr>
 <tr class="separator:a30d44c29f5c8d1e3e9d464434c29342c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c315b2820e4b464601f3e696db7d202" id="r_a3c315b2820e4b464601f3e696db7d202"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a3c315b2820e4b464601f3e696db7d202">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classml_1_1Token.html">Token</a> &amp;token)</td></tr>
 <tr class="separator:a3c315b2820e4b464601f3e696db7d202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ce2aee19803d510e925bfcbfe7c899" id="r_ab9ce2aee19803d510e925bfcbfe7c899"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#ab9ce2aee19803d510e925bfcbfe7c899">isAlphaFast</a> (unsigned char c)</td></tr>
+<tr class="separator:ab9ce2aee19803d510e925bfcbfe7c899"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a798a0fca712bf3e78ea90e78cd29a2bc" id="r_a798a0fca712bf3e78ea90e78cd29a2bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a798a0fca712bf3e78ea90e78cd29a2bc">isDigitFast</a> (unsigned char c)</td></tr>
+<tr class="separator:a798a0fca712bf3e78ea90e78cd29a2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe83110fc298059657afef6a36f7141" id="r_abfe83110fc298059657afef6a36f7141"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#abfe83110fc298059657afef6a36f7141">isAlnumFast</a> (unsigned char c)</td></tr>
+<tr class="separator:abfe83110fc298059657afef6a36f7141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90d1954b8f6f3ac16953f7b9b64dadb7" id="r_a90d1954b8f6f3ac16953f7b9b64dadb7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a90d1954b8f6f3ac16953f7b9b64dadb7">isWhitespaceFast</a> (unsigned char c)</td></tr>
+<tr class="separator:a90d1954b8f6f3ac16953f7b9b64dadb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a746c757ae43792f7f2f9b116d8d73408" id="r_a746c757ae43792f7f2f9b116d8d73408"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a746c757ae43792f7f2f9b116d8d73408">isNewlineFast</a> (unsigned char c)</td></tr>
+<tr class="separator:a746c757ae43792f7f2f9b116d8d73408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41587be0a80b31240529aa171d4f4079" id="r_a41587be0a80b31240529aa171d4f4079"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a41587be0a80b31240529aa171d4f4079">isHexDigitFast</a> (unsigned char c)</td></tr>
+<tr class="separator:a41587be0a80b31240529aa171d4f4079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1951216015dd79addeee75dfea222346" id="r_a1951216015dd79addeee75dfea222346"><td class="memItemLeft" align="right" valign="top">static std::pair&lt; const char *, size_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a1951216015dd79addeee75dfea222346">skipWhitespaceSimdWithStats</a> (const char *ptr, const char *end)</td></tr>
+<tr class="separator:a1951216015dd79addeee75dfea222346"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588caec8c6d30b380a9b875749389c0c" id="r_a588caec8c6d30b380a9b875749389c0c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a588caec8c6d30b380a9b875749389c0c">skipWhitespaceSimd</a> (const char *ptr, const char *end)</td></tr>
+<tr class="separator:a588caec8c6d30b380a9b875749389c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a370b1fc8699dcc8a0c8aadc5e7f9fca0" id="r_a370b1fc8699dcc8a0c8aadc5e7f9fca0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4">TokenKind</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a370b1fc8699dcc8a0c8aadc5e7f9fca0">getKeywordKindFast</a> (std::string_view text)</td></tr>
+<tr class="separator:a370b1fc8699dcc8a0c8aadc5e7f9fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa90721345b3259424bbb28c220080bbd" id="r_aa90721345b3259424bbb28c220080bbd"><td class="memItemLeft" align="right" valign="top">static std::array&lt; int, static_cast&lt; size_t &gt;(<a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ae93f994f01c537c4e2f7d8528c3eb5e9">TokenKind::Count</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#aa90721345b3259424bbb28c220080bbd">createOperatorPrecedenceTable</a> ()</td></tr>
+<tr class="separator:aa90721345b3259424bbb28c220080bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ad95313588009740bce47f809a5b02250" id="r_ad95313588009740bce47f809a5b02250"><td class="memItemLeft" align="right" valign="top">thread_local <a class="el" href="structml_1_1LocationCache.html">LocationCache</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#ad95313588009740bce47f809a5b02250">g_location_cache</a></td></tr>
+<tr class="separator:ad95313588009740bce47f809a5b02250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e9034180f564532fe93b68bf44438b" id="r_a32e9034180f564532fe93b68bf44438b"><td class="memItemLeft" align="right" valign="top">static constexpr std::array&lt; uint8_t, 256 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#a32e9034180f564532fe93b68bf44438b">CHAR_CLASS_TABLE</a></td></tr>
+<tr class="separator:a32e9034180f564532fe93b68bf44438b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6cfdadcdf1944802ea4c7cac4d32ac5" id="r_ac6cfdadcdf1944802ea4c7cac4d32ac5"><td class="memItemLeft" align="right" valign="top">static constexpr std::array&lt; std::pair&lt; std::string_view, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4">TokenKind</a> &gt;, 27 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#ac6cfdadcdf1944802ea4c7cac4d32ac5">KEYWORD_TABLE</a></td></tr>
+<tr class="separator:ac6cfdadcdf1944802ea4c7cac4d32ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa901dbea38282882b54599c6e31d320c" id="r_aa901dbea38282882b54599c6e31d320c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#aa901dbea38282882b54599c6e31d320c">TokenSpellings</a> []</td></tr>
+<tr class="separator:aa901dbea38282882b54599c6e31d320c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0efb0abe8b91ff5a88ad7737d473515" id="r_aa0efb0abe8b91ff5a88ad7737d473515"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#aa0efb0abe8b91ff5a88ad7737d473515">TokenNames</a> []</td></tr>
+<tr class="separator:aa0efb0abe8b91ff5a88ad7737d473515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac798519d830206ecace51a9d37509d8b" id="r_ac798519d830206ecace51a9d37509d8b"><td class="memItemLeft" align="right" valign="top">static constexpr std::array&lt; <a class="el" href="structml_1_1KeywordEntry.html">KeywordEntry</a>, 26 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html#ac798519d830206ecace51a9d37509d8b">KEYWORD_LOOKUP_TABLE</a></td></tr>
+<tr class="separator:ac798519d830206ecace51a9d37509d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a73d878a3cf31ddb41f00302ae29b707c" name="a73d878a3cf31ddb41f00302ae29b707c"></a>
@@ -423,7 +465,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00483">483</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00490">490</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
 </div>
 </div>
@@ -449,7 +491,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00489">489</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00496">496</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
 </div>
 </div>
@@ -475,7 +517,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00477">477</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ArenaAllocator_8hpp_source.html#l00484">484</a> of file <a class="el" href="ArenaAllocator_8hpp_source.html">ArenaAllocator.hpp</a>.</p>
 
 </div>
 </div>
@@ -773,6 +815,255 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aa90721345b3259424bbb28c220080bbd" name="aa90721345b3259424bbb28c220080bbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa90721345b3259424bbb28c220080bbd">&#9670;&#160;</a></span>createOperatorPrecedenceTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::array&lt; int, static_cast&lt; size_t &gt;(<a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ae93f994f01c537c4e2f7d8528c3eb5e9">TokenKind::Count</a>)&gt; ml::createOperatorPrecedenceTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00279">279</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a341e53def592d09b09f20138324bb306">Amp</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a056a37bdef051b2514494ff463095350">AmpAmp</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4acf0aa280383530e27035f2d533841703">Caret</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ae93f994f01c537c4e2f7d8528c3eb5e9">Count</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4af5f286e73bda105e538310b3190f75c5">Equal</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a7ff62054fd04c01e17aff31f77f7929b">EqualEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a8768a6821cd735aea4f5b0df88c1fc6a">Greater</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a758b05d899def79c9eb864ad4f96be1f">GreaterEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a9eb8d0099a25e125d692c536d075a28e">GreaterGreater</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a1cfdf0e8d0c87a228c1f40d9bee7888b">Less</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ad3e6fdac55bb7b0edd7834c968ba1f38">LessEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ab6fc341d33c45e8865ec7a860e547ad0">LesserLesser</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a453fb623e752c5993f65bc410fd74fe5">Minus</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a40ba3bee7622b0841c9abfa052a20ad9">MinusEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a19bb0af2c3c530538cb41aff7f235b96">NotEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4aadaaee4b22041c27198d410c68d952c9">Percent</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a91d7c88747d4ec172d00ad2b00e31a95">PercentEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a2ab1f3f893823298751fdf60b4e0365a">Pipe</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a2df4b479191039a262bc213667f006f2">PipePipe</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a32ba78fe43257d3e7f88e3935a8ea0d4">Plus</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4af109c0f360ff1c4d2832fdb76cd562fe">PlusEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a358cfe58715d680d9ab09f82e4010cbc">Slash</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ac370916b13f9f2516436e7d77ea32c18">SlashEqual</a>, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a26f93e6e68e28a698377e941cb59f29a">Star</a>, and <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4ad4b24d87e4f9407fef0430e66965eb05">StarEqual</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Token_8cpp_source.html#l00381">ml::TokenInfo::getOperatorPrecedence()</a>.</p>
+
+</div>
+</div>
+<a id="a370b1fc8699dcc8a0c8aadc5e7f9fca0" name="a370b1fc8699dcc8a0c8aadc5e7f9fca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a370b1fc8699dcc8a0c8aadc5e7f9fca0">&#9670;&#160;</a></span>getKeywordKindFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4">TokenKind</a> ml::getKeywordKindFast </td>
+          <td>(</td>
+          <td class="paramtype">std::string_view&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00177">177</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a29ee5d1ebcc033234938a5234f1f2075">Identifier</a>, and <a class="el" href="Lexer_8cpp_source.html#l00149">KEYWORD_TABLE</a>.</p>
+
+</div>
+</div>
+<a id="abfe83110fc298059657afef6a36f7141" name="abfe83110fc298059657afef6a36f7141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe83110fc298059657afef6a36f7141">&#9670;&#160;</a></span>isAlnumFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isAlnumFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00066">66</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+</div>
+</div>
+<a id="ab9ce2aee19803d510e925bfcbfe7c899" name="ab9ce2aee19803d510e925bfcbfe7c899"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ce2aee19803d510e925bfcbfe7c899">&#9670;&#160;</a></span>isAlphaFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isAlphaFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00064">64</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>.</p>
+
+</div>
+</div>
+<a id="a798a0fca712bf3e78ea90e78cd29a2bc" name="a798a0fca712bf3e78ea90e78cd29a2bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a798a0fca712bf3e78ea90e78cd29a2bc">&#9670;&#160;</a></span>isDigitFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isDigitFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00065">65</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>.</p>
+
+</div>
+</div>
+<a id="a41587be0a80b31240529aa171d4f4079" name="a41587be0a80b31240529aa171d4f4079"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41587be0a80b31240529aa171d4f4079">&#9670;&#160;</a></span>isHexDigitFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isHexDigitFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00071">71</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+</div>
+</div>
+<a id="a746c757ae43792f7f2f9b116d8d73408" name="a746c757ae43792f7f2f9b116d8d73408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a746c757ae43792f7f2f9b116d8d73408">&#9670;&#160;</a></span>isNewlineFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isNewlineFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00070">70</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00437">ml::Lexer::skipTrivialOptimized()</a>.</p>
+
+</div>
+</div>
+<a id="a90d1954b8f6f3ac16953f7b9b64dadb7" name="a90d1954b8f6f3ac16953f7b9b64dadb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90d1954b8f6f3ac16953f7b9b64dadb7">&#9670;&#160;</a></span>isWhitespaceFast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ml::isWhitespaceFast </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00067">67</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00024">CHAR_CLASS_TABLE</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>, <a class="el" href="Lexer_8cpp_source.html#l00437">ml::Lexer::skipTrivialOptimized()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00075">skipWhitespaceSimdWithStats()</a>.</p>
+
+</div>
+</div>
 <a id="a523fd892a5b2b16aa9b6d023fd515469" name="a523fd892a5b2b16aa9b6d023fd515469"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a523fd892a5b2b16aa9b6d023fd515469">&#9670;&#160;</a></span>operator&amp;()</h2>
 
@@ -845,11 +1136,11 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Stream output operator for <a class="el" href="classml_1_1InternedString.html">InternedString</a>. </p>
+<p>Stream output operator for <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00237">237</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00288">288</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00029">ml::InternedString::str()</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00039">ml::InternedString::str()</a>.</p>
 
 </div>
 </div>
@@ -878,6 +1169,10 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00410">410</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Token_8hpp_source.html#l00162">ml::Token::getKind()</a>, <a class="el" href="Token_8hpp_source.html#l00166">ml::Token::getText()</a>, <a class="el" href="Token_8cpp_source.html#l00343">ml::TokenInfo::getTokenName()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00094">ml::InternedString::isValid()</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00039">ml::InternedString::str()</a>.</p>
 
 </div>
 </div>
@@ -917,7 +1212,7 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="SourceManager_8hpp_source.html#l00165">165</a> of file <a class="el" href="SourceManager_8hpp_source.html">SourceManager.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00025">ml::FileID::getHashValue()</a>.</p>
+<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>.</p>
 
 </div>
 </div>
@@ -959,7 +1254,7 @@ template&lt;typename T &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="SourceManager_8hpp_source.html#l00161">161</a> of file <a class="el" href="SourceManager_8hpp_source.html">SourceManager.hpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00053">ml::SourceLocation::getRawEncoding()</a>.</p>
+<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00107">ml::SourceLocation::getRawEncoding()</a>.</p>
 
 </div>
 </div>
@@ -990,6 +1285,10 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Stream output for tokens. </p>
+
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00406">406</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Token_8cpp_source.html#l00343">ml::TokenInfo::getTokenName()</a>.</p>
 
 </div>
 </div>
@@ -1069,6 +1368,88 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a588caec8c6d30b380a9b875749389c0c" name="a588caec8c6d30b380a9b875749389c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a588caec8c6d30b380a9b875749389c0c">&#9670;&#160;</a></span>skipWhitespaceSimd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char * ml::skipWhitespaceSimd </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00143">143</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00075">skipWhitespaceSimdWithStats()</a>.</p>
+
+</div>
+</div>
+<a id="a1951216015dd79addeee75dfea222346" name="a1951216015dd79addeee75dfea222346"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1951216015dd79addeee75dfea222346">&#9670;&#160;</a></span>skipWhitespaceSimdWithStats()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static std::pair&lt; const char *, size_t &gt; ml::skipWhitespaceSimdWithStats </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00075">75</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="Lexer_8cpp_source.html#l00067">isWhitespaceFast()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00437">ml::Lexer::skipTrivialOptimized()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00143">skipWhitespaceSimd()</a>.</p>
+
+</div>
+</div>
 <a id="afd16aa6ece7389f2c49a45f7fb8d378c" name="afd16aa6ece7389f2c49a45f7fb8d378c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afd16aa6ece7389f2c49a45f7fb8d378c">&#9670;&#160;</a></span>tokenizeFile()</h2>
 
@@ -1115,6 +1496,10 @@ template&lt;typename T &gt; </div>
 
 <p>Convenience function to tokenize a file. </p>
 
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l01527">1527</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a9556e151da49cd4bcf0352857cb33509">EndOfFile</a>, <a class="el" href="SourceManager_8cpp_source.html#l00259">ml::SourceManager::getFileEntry()</a>, <a class="el" href="Token_8hpp_source.html#l00162">ml::Token::getKind()</a>, <a class="el" href="FileManager_8hpp_source.html#l00031">ml::FileEntry::getSize()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>.</p>
+
 </div>
 </div>
 <a id="ad5441bb5c566b98c5a77631bdd7a9e0b" name="ad5441bb5c566b98c5a77631bdd7a9e0b"></a>
@@ -1156,6 +1541,214 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Convenience function to tokenize a string. </p>
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l01507">1507</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">References <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4a9556e151da49cd4bcf0352857cb33509">EndOfFile</a>, <a class="el" href="Token_8hpp_source.html#l00162">ml::Token::getKind()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l01559">ml::BatchTokenizer::tokenizeParallel()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a32e9034180f564532fe93b68bf44438b" name="a32e9034180f564532fe93b68bf44438b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e9034180f564532fe93b68bf44438b">&#9670;&#160;</a></span>CHAR_CLASS_TABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;uint8_t, 256&gt; ml::CHAR_CLASS_TABLE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00024">24</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00066">isAlnumFast()</a>, <a class="el" href="Lexer_8cpp_source.html#l00064">isAlphaFast()</a>, <a class="el" href="Lexer_8cpp_source.html#l00065">isDigitFast()</a>, <a class="el" href="Lexer_8cpp_source.html#l00071">isHexDigitFast()</a>, <a class="el" href="Lexer_8cpp_source.html#l00070">isNewlineFast()</a>, and <a class="el" href="Lexer_8cpp_source.html#l00067">isWhitespaceFast()</a>.</p>
+
+</div>
+</div>
+<a id="ad95313588009740bce47f809a5b02250" name="ad95313588009740bce47f809a5b02250"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95313588009740bce47f809a5b02250">&#9670;&#160;</a></span>g_location_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">thread_local <a class="el" href="structml_1_1LocationCache.html">LocationCache</a> ml::g_location_cache</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00027">27</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00360">ml::SourceManager::getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00197">ml::SourceManager::getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00293">ml::SourceManager::getLineNumber()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00075">ml::SourceManager::SourceManager()</a>.</p>
+
+</div>
+</div>
+<a id="ac798519d830206ecace51a9d37509d8b" name="ac798519d830206ecace51a9d37509d8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac798519d830206ecace51a9d37509d8b">&#9670;&#160;</a></span>KEYWORD_LOOKUP_TABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;<a class="el" href="structml_1_1KeywordEntry.html">KeywordEntry</a>, 26&gt; ml::KEYWORD_LOOKUP_TABLE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {{<span class="stringliteral">&quot;auto&quot;</span>, TokenKind::Auto},</div>
+<div class="line">     {<span class="stringliteral">&quot;break&quot;</span>, TokenKind::Break},</div>
+<div class="line">     {<span class="stringliteral">&quot;case&quot;</span>, TokenKind::Case},</div>
+<div class="line">     {<span class="stringliteral">&quot;const&quot;</span>, TokenKind::Const},</div>
+<div class="line">     {<span class="stringliteral">&quot;continue&quot;</span>, TokenKind::Continue},</div>
+<div class="line">     {<span class="stringliteral">&quot;default&quot;</span>, TokenKind::Default},</div>
+<div class="line">     {<span class="stringliteral">&quot;do&quot;</span>, TokenKind::Do},</div>
+<div class="line">     {<span class="stringliteral">&quot;else&quot;</span>, TokenKind::Else},</div>
+<div class="line">     {<span class="stringliteral">&quot;enum&quot;</span>, TokenKind::Enum},</div>
+<div class="line">     {<span class="stringliteral">&quot;extern&quot;</span>, TokenKind::Extern},</div>
+<div class="line">     {<span class="stringliteral">&quot;false&quot;</span>, TokenKind::False},</div>
+<div class="line">     {<span class="stringliteral">&quot;for&quot;</span>, TokenKind::For},</div>
+<div class="line">     {<span class="stringliteral">&quot;function&quot;</span>, TokenKind::Fn},</div>
+<div class="line">     {<span class="stringliteral">&quot;if&quot;</span>, TokenKind::If},</div>
+<div class="line">     {<span class="stringliteral">&quot;import&quot;</span>, TokenKind::Import},</div>
+<div class="line">     {<span class="stringliteral">&quot;let&quot;</span>, TokenKind::Let},</div>
+<div class="line">     {<span class="stringliteral">&quot;module&quot;</span>, TokenKind::Mod},</div>
+<div class="line">     {<span class="stringliteral">&quot;mut&quot;</span>, TokenKind::Mut},</div>
+<div class="line">     {<span class="stringliteral">&quot;null&quot;</span>, TokenKind::Null},</div>
+<div class="line">     {<span class="stringliteral">&quot;return&quot;</span>, TokenKind::Return},</div>
+<div class="line">     {<span class="stringliteral">&quot;struct&quot;</span>, TokenKind::Struct},</div>
+<div class="line">     {<span class="stringliteral">&quot;switch&quot;</span>, TokenKind::Switch},</div>
+<div class="line">     {<span class="stringliteral">&quot;true&quot;</span>, TokenKind::True},</div>
+<div class="line">     {<span class="stringliteral">&quot;type&quot;</span>, TokenKind::Type},</div>
+<div class="line">     {<span class="stringliteral">&quot;var&quot;</span>, TokenKind::Var},</div>
+<div class="line">     {<span class="stringliteral">&quot;while&quot;</span>, TokenKind::While}}}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00249">249</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Token_8cpp_source.html#l00355">ml::TokenInfo::getKeywordKind()</a>.</p>
+
+</div>
+</div>
+<a id="ac6cfdadcdf1944802ea4c7cac4d32ac5" name="ac6cfdadcdf1944802ea4c7cac4d32ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6cfdadcdf1944802ea4c7cac4d32ac5">&#9670;&#160;</a></span>KEYWORD_TABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr std::array&lt;std::pair&lt;std::string_view, <a class="el" href="namespaceml.html#a07811f32484f95bc7196933289d2d9a4">TokenKind</a>&gt;, 27&gt; ml::KEYWORD_TABLE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {{{<span class="stringliteral">&quot;auto&quot;</span>, TokenKind::Auto},</div>
+<div class="line">                      {<span class="stringliteral">&quot;break&quot;</span>, TokenKind::Break},</div>
+<div class="line">                      {<span class="stringliteral">&quot;case&quot;</span>, TokenKind::Case},</div>
+<div class="line">                      {<span class="stringliteral">&quot;const&quot;</span>, TokenKind::Const},</div>
+<div class="line">                      {<span class="stringliteral">&quot;continue&quot;</span>, TokenKind::Continue},</div>
+<div class="line">                      {<span class="stringliteral">&quot;default&quot;</span>, TokenKind::Default},</div>
+<div class="line">                      {<span class="stringliteral">&quot;do&quot;</span>, TokenKind::Do},</div>
+<div class="line">                      {<span class="stringliteral">&quot;else&quot;</span>, TokenKind::Else},</div>
+<div class="line">                      {<span class="stringliteral">&quot;enum&quot;</span>, TokenKind::Enum},</div>
+<div class="line">                      {<span class="stringliteral">&quot;extern&quot;</span>, TokenKind::Extern},</div>
+<div class="line">                      {<span class="stringliteral">&quot;false&quot;</span>, TokenKind::False},</div>
+<div class="line">                      {<span class="stringliteral">&quot;for&quot;</span>, TokenKind::For},</div>
+<div class="line">                      {<span class="stringliteral">&quot;fn&quot;</span>, TokenKind::Fn},</div>
+<div class="line">                      {<span class="stringliteral">&quot;if&quot;</span>, TokenKind::If},</div>
+<div class="line">                      {<span class="stringliteral">&quot;import&quot;</span>, TokenKind::Import},</div>
+<div class="line">                      {<span class="stringliteral">&quot;let&quot;</span>, TokenKind::Let},</div>
+<div class="line">                      {<span class="stringliteral">&quot;mod&quot;</span>, TokenKind::Mod},</div>
+<div class="line">                      {<span class="stringliteral">&quot;mut&quot;</span>, TokenKind::Mut},</div>
+<div class="line">                      {<span class="stringliteral">&quot;null&quot;</span>, TokenKind::Null},</div>
+<div class="line">                      {<span class="stringliteral">&quot;return&quot;</span>, TokenKind::Return},</div>
+<div class="line">                      {<span class="stringliteral">&quot;struct&quot;</span>, TokenKind::Struct},</div>
+<div class="line">                      {<span class="stringliteral">&quot;switch&quot;</span>, TokenKind::Switch},</div>
+<div class="line">                      {<span class="stringliteral">&quot;true&quot;</span>, TokenKind::True},</div>
+<div class="line">                      {<span class="stringliteral">&quot;type&quot;</span>, TokenKind::Type},</div>
+<div class="line">                      {<span class="stringliteral">&quot;var&quot;</span>, TokenKind::Var},</div>
+<div class="line">                      {<span class="stringliteral">&quot;while&quot;</span>, TokenKind::While}}}</div>
+</div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="Lexer_8cpp_source.html#l00149">149</a> of file <a class="el" href="Lexer_8cpp_source.html">Lexer.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Lexer_8cpp_source.html#l00177">getKeywordKindFast()</a>.</p>
+
+</div>
+</div>
+<a id="aa0efb0abe8b91ff5a88ad7737d473515" name="aa0efb0abe8b91ff5a88ad7737d473515"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0efb0abe8b91ff5a88ad7737d473515">&#9670;&#160;</a></span>TokenNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ml::TokenNames[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00124">124</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Token_8cpp_source.html#l00343">ml::TokenInfo::getTokenName()</a>.</p>
+
+</div>
+</div>
+<a id="aa901dbea38282882b54599c6e31d320c" name="aa901dbea38282882b54599c6e31d320c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa901dbea38282882b54599c6e31d320c">&#9670;&#160;</a></span>TokenSpellings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* ml::TokenSpellings[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Token_8cpp_source.html#l00010">10</a> of file <a class="el" href="Token_8cpp_source.html">Token.cpp</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="Token_8cpp_source.html#l00335">ml::TokenInfo::getTokenSpelling()</a>.</p>
 
 </div>
 </div>

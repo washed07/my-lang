@@ -6,7 +6,7 @@ var classml_1_1DiagnosticManager =
     [ "DiagnosticManager", "classml_1_1DiagnosticManager.html#af249a9bef401d356892d98dd3f2d7b2c", null ],
     [ "addConsumer", "classml_1_1DiagnosticManager.html#abdcbc1f2367799387d2de00a8ec6c310", null ],
     [ "clearConsumers", "classml_1_1DiagnosticManager.html#ae03296313a3602de1c737e951628e94f", null ],
-    [ "getDiagnosticInfo", "classml_1_1DiagnosticManager.html#a8d33d073617078bf4aeca7bb57f257c8", null ],
+    [ "getDiagnosticInfo", "classml_1_1DiagnosticManager.html#a377d628af9a22eea97c0d7b10ee3e6d4", null ],
     [ "getMaxErrors", "classml_1_1DiagnosticManager.html#a4dc162ae1ccbbe0694aef34b9c45ee2e", null ],
     [ "getStats", "classml_1_1DiagnosticManager.html#a283dda94dde4944eedb9d00d3c822cf8", null ],
     [ "getSuppressNotes", "classml_1_1DiagnosticManager.html#af6f5191fcf44ad2f31e7a4ddef25334c", null ],

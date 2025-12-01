@@ -8,7 +8,7 @@ var searchData=
   ['enableprefetching_5',['enablePrefetching',['../structml_1_1LexerOptions.html#a9790108365f21aaa625a101d55c67d27',1,'ml::LexerOptions']]],
   ['enablesimdoptimizations_6',['enableSimdOptimizations',['../structml_1_1LexerOptions.html#af14aa7f8639e4ab40a0ef0d74c0c1b55',1,'ml::LexerOptions']]],
   ['encoding_7',['Encoding',['../structml_1_1LexerOptions.html#a5cd2b40755099d01ffc126b7415689d4',1,'ml::LexerOptions']]],
-  ['end_8',['end',['../classml_1_1StringInterner.html#a67f2266d7d35717cbbc14ae0afa09558',1,'ml::StringInterner::end()'],['../classml_1_1TokenManager.html#a8ba691ecb72107d41dafc84f63021990',1,'ml::TokenManager::end()'],['../classml_1_1TokenManager.html#a0de2419524e05a28fe6314fe31ba9885',1,'ml::TokenManager::end() const']]],
+  ['end_8',['end',['../classml_1_1StringInterner.html#a87d40db23e1e0529f6578852cde801b7',1,'ml::StringInterner::end()'],['../classml_1_1TokenManager.html#a8ba691ecb72107d41dafc84f63021990',1,'ml::TokenManager::end()'],['../classml_1_1TokenManager.html#a0de2419524e05a28fe6314fe31ba9885',1,'ml::TokenManager::end() const']]],
   ['endoffile_9',['EndOfFile',['../namespaceml.html#a07811f32484f95bc7196933289d2d9a4a9556e151da49cd4bcf0352857cb33509',1,'ml']]],
   ['endsourcefile_10',['endsourcefile',['../classml_1_1DiagnosticConsumer.html#afc9b1045dacf641ff664dede3c9b284f',1,'ml::DiagnosticConsumer::endSourceFile()'],['../classml_1_1JSONDiagnosticConsumer.html#a549b65d1222ff75bac5dfce5eb01b729',1,'ml::JSONDiagnosticConsumer::endSourceFile()']]],
   ['entry_11',['entry',['../structml_1_1FileInfo.html#acfc7a1464c89f5a2669953cb89a29805',1,'ml::FileInfo']]],
