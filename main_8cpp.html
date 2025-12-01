@@ -95,36 +95,52 @@ $(document).ready(function(){initNavTree('main_8cpp.html',''); initResizable(); 
   <div class="headertitle"><div class="title">main.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="ArenaAllocator_8hpp_source.html">ml/Basic/ArenaAllocator.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="StringInterner_8hpp_source.html">ml/Basic/StringInterner.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="DiagnosticManager_8hpp_source.html">ml/Managers/DiagnosticManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="FileManager_8hpp_source.html">ml/Managers/FileManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="SourceManager_8hpp_source.html">ml/Managers/SourceManager.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="Lexer_8hpp_source.html">ml/Parse/Lexer.hpp</a>&quot;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div>
 <p><a href="main_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a51af30a60f9f02777c6396b8247e356f" id="r_a51af30a60f9f02777c6396b8247e356f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a51af30a60f9f02777c6396b8247e356f">main</a> ()</td></tr>
-<tr class="memdesc:a51af30a60f9f02777c6396b8247e356f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point of the My Language compiler.  <br /></td></tr>
-<tr class="separator:a51af30a60f9f02777c6396b8247e356f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a51af30a60f9f02777c6396b8247e356f" name="a51af30a60f9f02777c6396b8247e356f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51af30a60f9f02777c6396b8247e356f">&#9670;&#160;</a></span>main()</h2>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">main </td>
+          <td class="memname">int main </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Entry point of the My Language compiler. </p>
-<dl class="section return"><dt>Returns</dt><dd>Exit code of the program. </dd></dl>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00010">10</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00009">9</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<p class="reference">References <a class="el" href="DiagnosticManager_8cpp_source.html#l00035">ml::DiagnosticManager::addConsumer()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00101">ml::SourceManager::createFileID()</a>, <a class="el" href="Lexer_8hpp_source.html#l00053">ml::LexerOptions::enableFastPath</a>, <a class="el" href="Lexer_8hpp_source.html#l00050">ml::LexerOptions::enableLookupTables</a>, <a class="el" href="Lexer_8hpp_source.html#l00049">ml::LexerOptions::enableSimdOptimizations</a>, <a class="el" href="FileManager_8cpp_source.html#l00044">ml::FileManager::getFile()</a>, <a class="el" href="Lexer_8cpp_source.html#l00402">ml::Lexer::isAtEnd()</a>, <a class="el" href="Lexer_8cpp_source.html#l00232">ml::Lexer::nextToken()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00519">ml::SourceManager::printStats()</a>, <a class="el" href="ArenaAllocator_8cpp_source.html#l00164">ml::ArenaAllocator::printStats()</a>, <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>, <a class="el" href="DiagnosticManager_8cpp_source.html#l00147">ml::DiagnosticManager::printStats()</a>, <a class="el" href="Lexer_8cpp_source.html#l01323">ml::Lexer::printStats()</a>, and <a class="el" href="DiagnosticManager_8hpp_source.html#l00191">ml::DiagnosticManager::setSourceManager()</a>.</p>
 
 </div>
 </div>
