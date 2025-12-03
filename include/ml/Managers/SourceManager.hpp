@@ -163,7 +163,7 @@ inline std::ostream &operator<<(std::ostream &os, SourceLocation loc) {
 }
 
 inline std::ostream &operator<<(std::ostream &os, FileID fid) {
-  return os << "FileID(" << fid.getHashValue() << ")";
+  return os << "FileID(" << fid.get() << ")";
 }
 
 } // namespace ml

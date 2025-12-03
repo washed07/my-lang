@@ -206,7 +206,7 @@ Lexer::Lexer(const SourceManager &srcMgr, FileID fileID,
 
 Lexer::Lexer(std::string_view source, StringInterner &interner,
              DiagnosticManager &diagMgr, const LexerOptions &opts)
-    : srcMgr(nullptr), fid(FileID::getInvalidID()), interner(interner),
+    : srcMgr(nullptr), fid(FileID::getInvalid()), interner(interner),
       diagMgr(diagMgr), options(opts), source(source), currentLine(1),
       baseLocation(SourceLocation::getInvalidLoc()) {
 

@@ -347,7 +347,7 @@ StringInterner::const_iterator StringInterner::end() const {
 }
 
 const char *StringInterner::findOrCreateString(std::string_view str) {
-  return intern(str).c_str();
+  return intern(str).toCStr();
 }
 
 // Hash and equality functions for StringStorage

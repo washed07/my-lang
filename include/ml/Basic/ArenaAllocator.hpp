@@ -192,32 +192,59 @@ struct ArenaChunk {
 class ArenaAllocator {
 public:
   /**
-   * \brief The default chunk size for allocations. 1MB
+   * \brief The default chunk size for allocations. (1MB)
    */
   static constexpr size_t kDefaultChunkSize = 1024 * 1024;
 
   /**
-   * \brief The default alignment for allocations. 16 bytes
+   * \brief The default alignment for allocations. (16 bytes)
    */
   static constexpr size_t kDefaultAlignment = alignof(std::max_align_t);
 
   /**
-   * \brief The maximum allocation size supported by the arena. 512KB
+   * \brief The maximum allocation size supported by the arena. (512KB)
    */
   static constexpr size_t kMaxAllocationSize = 512 * 1024;
 
+  /**
+   * \brief Constructs an ArenaAllocator with optional chunk size.
+   * \param chunkSize The preferred chunk size for allocations
+   */
   explicit ArenaAllocator(size_t chunkSize = kDefaultChunkSize);
+
   ~ArenaAllocator();
 
+  /**
+   * \brief Non-copyable ArenaAllocator.
+   * \details Copying an ArenaAllocator is disallowed to prevent
+   * accidental duplication of memory management state.
+   */
   ArenaAllocator(const ArenaAllocator &) = delete;
+
+  /**
+   * \brief Non-copyable assignment operator.
+   * \see ArenaAllocator(const ArenaAllocator &)
+   */
   ArenaAllocator &operator=(const ArenaAllocator &) = delete;
+
+  /**
+   * \brief Move constructor for ArenaAllocator.
+   * \details Transfers ownership of memory chunks and state.
+   */
   ArenaAllocator(ArenaAllocator &&) noexcept;
+
+  /**
+   * \brief Move assignment operator for ArenaAllocator.
+   * \details Transfers ownership of memory chunks and state.
+   */
   ArenaAllocator &operator=(ArenaAllocator &&) noexcept;
 
   /**
    * \brief Allocates memory with default alignment.
    * \param size The size of memory to allocate
    * \return A pointer to the allocated memory or nullptr if allocation fails.
+   * \note Uses \ref kDefaultAlignment.
+   * \warning Returns \c nullptr on failure.
    */
   void *allocate(size_t size) { return allocate(size, kDefaultAlignment); }
 
@@ -226,6 +253,7 @@ public:
    * \param size The size of memory to allocate
    * \param alignment The required alignment
    * \return A pointer to the allocated memory or nullptr if allocation fails.
+   * \warning Returns \c nullptr on failure.
    */
   void *allocate(size_t size, size_t alignment);
 
@@ -235,6 +263,8 @@ public:
    * \tparam Args The constructor argument types
    * \param args The constructor arguments
    * \return A pointer to the constructed object.
+   * \throws std::bad_alloc if allocation fails.
+   * \warning Object size must not exceed \ref kMaxAllocationSize.
    */
   template <typename T, typename... Args> T *allocate(Args &&...args) {
     static_assert(sizeof(T) <= kMaxAllocationSize,
@@ -253,6 +283,9 @@ public:
    * \tparam T The type of objects to allocate
    * \param count The number of objects to allocate
    * \return A pointer to the allocated array or nullptr if allocation fails.
+   * \throws std::bad_alloc if total size exceeds \ref kMaxAllocationSize, or
+   * allocation fails.
+   * \warning Only supports trivially destructible types.
    */
   template <typename T> T *allocateArray(size_t count) {
     static_assert(std::is_trivially_destructible_v<T>,
@@ -276,8 +309,18 @@ public:
    * \param str The string data
    * \param length The length of the string
    * \return A pointer to the allocated string.
+   * \see allocate(size_t size, size_t alignment) for warnings and details.
+   * \see allocateString(const char *str) for convenience overload.
    */
   char *allocateString(const char *str, size_t length);
+
+  /**
+   * \brief Allocates a null-terminated string in the arena.
+   * \param str The string data
+   * \return A pointer to the allocated string.
+   * \note Uses strlen to determine length.
+   * \see allocateString(const char *str, size_t length) for details.
+   */
   char *allocateString(const char *str) {
     return allocateString(str, strlen(str));
   }
@@ -285,6 +328,7 @@ public:
   /**
    * \brief Resets the arena, freeing all allocated memory.
    * \details This invalidates all previously allocated memory.
+   * \note Allocates a new initial chunk after reset.
    */
   void reset();
 
@@ -309,19 +353,19 @@ public:
   bool contains(const void *ptr) const;
 
   /**
-   * \brief Get total allocated memory
-   * \return Total allocated memory in bytes
+   * \brief Gets the total allocated memory
+   * \return The total allocated memory in bytes
    */
   size_t getTotalAllocated() const;
 
   /**
-   * \brief Get total used memory
-   * \return Total used memory in bytes
+   * \brief Gets the total used memory
+   * \return The total used memory in bytes
    */
   size_t getTotalUsed() const;
 
   /**
-   * \brief Print statistics
+   * \brief Prints statistics
    * \param OS The output stream to print to
    */
   void printStats(std::ostream &OS) const;
@@ -375,6 +419,8 @@ private:
  * and can restore it upon destruction. This is useful for managing
  * temporary allocations within a specific scope.
  * \see ArenaAllocator for context.
+ * \note Currently not in use.
+ * \todo Implement restoration of arena state on destruction.
  */
 class ArenaScope {
 public:
@@ -435,6 +481,9 @@ public:
    * \brief Allocates memory for n objects of type T.
    * \param n The number of objects to allocate.
    * \return A pointer to the allocated memory.
+   * \throw std::bad_alloc if allocation fails.
+   * \see allocate(size_t size, size_t alignment) for warnings and details.
+   * \see allocateString(const char *str) for convenience overload.
    */
   T *allocate(size_type n) {
     if (n > ArenaAllocator::kMaxAllocationSize / sizeof(T)) {
@@ -453,6 +502,7 @@ public:
    * \brief Deallocates memory for n objects of type T.
    * \param ptr Pointer to the memory to deallocate.
    * \param n The number of objects to deallocate.
+   * \note No-op since arena allocator does not support individual deallocation.
    */
   void deallocate(T *ptr, size_type n) {
     // Arena allocator doesn't support individual deallocation

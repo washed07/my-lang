@@ -267,7 +267,7 @@ void TextDiagnosticConsumer::printSourceLine(
 
   // Get the line text (this is a simplified version)
   // In a real implementation, you'd extract the actual line from the source
-  const char *lineStart = fullLoc.getCharacterData();
+  const char *lineStart = fullLoc.getData();
   if (!lineStart)
     return;
 

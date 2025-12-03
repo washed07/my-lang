@@ -19,34 +19,43 @@ public:
   FileID() : id(0) {}
 
   /**
-   * \brief Check if the FileID is valid.
+   * \brief Checks if the FileID is valid.
    * \return True if valid, false otherwise.
-   * \see isInvalid()
+   * \note Invalid if ID is 0.
    */
   bool isValid() const { return id != 0; }
 
   /**
-   * \brief Check if the FileID is invalid.
-   * \return True if invalid, false otherwise.
-   * \see isValid()
+   * \brief Gets an invalid FileID.
+   * \return An invalid FileID instance.
+   * \note Equivalent to \c FileID()
    */
-  bool isInvalid() const { return id == 0; }
+  static FileID getInvalid() { return FileID(); }
 
   /**
-   * \brief Get an invalid FileID.
-   * \return An invalid FileID instance. \c FileID()
+   * \brief Equality comparison.
+   * \param RHS The other FileID to compare with.
+   * \return True if IDs are equal, false otherwise.
    */
-  static FileID getInvalidID() { return FileID(); }
-
   bool operator==(const FileID &RHS) const { return id == RHS.id; }
+
+  /**
+   * \see operator==(const FileID &) const
+   */
   bool operator!=(const FileID &RHS) const { return id != RHS.id; }
+
+  /**
+   * \brief Less-than comparison for ordering.
+   * \param RHS The other FileID to compare with.
+   * \return True if this ID is less than other, false otherwise.
+   */
   bool operator<(const FileID &RHS) const { return id < RHS.id; }
 
   /**
-   * \brief Get the hash value of this FileID.
-   * \return The hash value as a uint32_t.
+   * \brief Gets the encoding.
+   * \return The encoding as a uint32_t.
    */
-  uint32_t getHashValue() const { return id; }
+  uint32_t getEncoding() const { return id; }
 
 private:
   friend class SourceManager;
@@ -54,79 +63,62 @@ private:
 
   /**
    * \brief The unique identifier for the file.
+   * \note Managed by \ref SourceManager.
+   * \warning Do not modify directly.
    */
   uint32_t id;
 };
 
 /**
- * \brief A specific location in source code.
+ * \brief A source location within a file.
  * \details Encapsulates a specific location within a source file,
  * providing an efficient 32-bit representation that can represent locations
  * in files up to 4GB in size.
- * \see SourceManager for usage cases.
+ * \see SourceManager for management and retrieval of source locations.
  */
 class SourceLocation {
 public:
-  SourceLocation() : id(0) {}
+  SourceLocation() : encoding(0) {}
 
   /**
-   * \brief Check if the SourceLocation is valid.
-   * \return True if valid, false otherwise.
-   * \see isInvalid()
+   * \brief Checks if the location is valid.
+   * \return \c true if valid, \c false otherwise.
+   * \note Invalid if \ref encoding is 0.
    */
-  bool isValid() const { return id != 0; }
+  bool isValid() const { return encoding != 0; }
 
   /**
-   * \brief Check if the SourceLocation is invalid.
-   * \return True if invalid, false otherwise.
-   * \see isValid()
+   * \brief Gets an invalid SourceLocation.
+   * \return An invalid SourceLocation instance.
+   * \note Equivalent to \c SourceLocation()
    */
-  bool isInvalid() const { return id == 0; }
+  static SourceLocation getInvalid() { return SourceLocation(); }
 
-  /**
-   * \brief Get an invalid SourceLocation.
-   * \return An invalid SourceLocation instance. \c SourceLocation()
-   */
-  static SourceLocation getInvalidLoc() { return SourceLocation(); }
-
-  bool operator==(const SourceLocation &RHS) const { return id == RHS.id; }
-  bool operator!=(const SourceLocation &RHS) const { return id != RHS.id; }
-  bool operator<(const SourceLocation &RHS) const { return id < RHS.id; }
-
-  /**
-   * \brief Get the hash value of this SourceLocation.
-   * \return The hash value as a uint32_t.
-   */
-  uint32_t getHashValue() const { return id; }
-
-  /**
-   * \brief Get the raw encoding of this SourceLocation.
-   * \return The raw encoding as a uint32_t.
-   * \see getFromRawEncoding(uint32_t) for the inverse operation.
-   */
-  uint32_t getRawEncoding() const { return id; }
-
-  /**
-   * \brief Create a SourceLocation from a raw encoding.
-   * \param encoding The raw encoding as a uint32_t.
-   * \return The corresponding SourceLocation.
-   * \see getRawEncoding() for the inverse operation.
-   */
-  static SourceLocation getFromRawEncoding(uint32_t encoding) {
-    SourceLocation loc;
-    loc.id = encoding;
-    return loc;
+  bool operator==(const SourceLocation &RHS) const {
+    return encoding == RHS.encoding;
+  }
+  bool operator!=(const SourceLocation &RHS) const {
+    return encoding != RHS.encoding;
+  }
+  bool operator<(const SourceLocation &RHS) const {
+    return encoding < RHS.encoding;
   }
 
   /**
-   * \brief Print the source location using the provided SourceManager.
+   * \brief Gets the encoding.
+   * \return The encoding as a uint32_t.
+   */
+  uint32_t getEncoding() const { return encoding; }
+
+  /**
+   * \brief Prints the source location using the provided \ref SourceManager.
    * \param os The output stream to print to.
    * \see printToString(const SourceManager &) const for string representation.
    */
   void print(std::ostream &os, const SourceManager &SM) const;
 
   /**
-   * \brief Get a string representation of the source location.
+   * \brief Gets a string representation of the source location.
    * \param SM The SourceManager to use for context.
    * \return A string representing the source location.
    * \see print(std::ostream &, const SourceManager &) const for printing.
@@ -135,12 +127,14 @@ public:
 
 private:
   friend class SourceManager;
-  explicit SourceLocation(uint32_t id) : id(id) {}
+  explicit SourceLocation(uint32_t id) : encoding(id) {}
 
   /**
    * \brief The encoded source location.
+   * \note Managed by \ref SourceManager.
+   * \warning Do not modify directly.
    */
-  uint32_t id;
+  uint32_t encoding;
 };
 
 /**
@@ -157,42 +151,35 @@ public:
       : begin(begin), end(end) {}
 
   /**
-   * \brief Get the beginning location of the range.
-   * \return The starting SourceLocation.
+   * \brief Gets the beginning location of the range.
+   * \return The starting \ref SourceLocation.
    */
   SourceLocation getBegin() const { return begin; }
 
   /**
-   * \brief Get the ending location of the range.
-   * \return The ending SourceLocation.
+   * \brief Gets the ending location of the range.
+   * \return The ending \ref SourceLocation.
    */
   SourceLocation getEnd() const { return end; }
 
   /**
-   * \brief Set the beginning location of the range.
-   * \param loc The new starting SourceLocation.
+   * \brief Sets the beginning location of the range.
+   * \param loc The new starting \ref SourceLocation.
    */
   void setBegin(SourceLocation loc) { begin = loc; }
 
   /**
-   * \brief Set the ending location of the range.
-   * \param loc The new ending SourceLocation.
+   * \brief Sets the ending location of the range.
+   * \param loc The new ending \ref SourceLocation.
    */
   void setEnd(SourceLocation loc) { end = loc; }
 
   /**
-   * \brief Check if the source range is valid.
+   * \brief Checks if the source range is valid.
    * \return True if both begin and end locations are valid.
-   * \see isInvalid()
+   * \see SourceLocation::isValid() const
    */
   bool isValid() const { return begin.isValid() && end.isValid(); }
-
-  /**
-   * \brief Check if the source range is invalid.
-   * \return True if either begin or end locations are invalid.
-   * \see isValid()
-   */
-  bool isInvalid() const { return !isValid(); }
 
   bool operator==(const SourceRange &RHS) const {
     return begin == RHS.begin && end == RHS.end;
@@ -201,7 +188,7 @@ public:
 
 private:
   /**
-   * \brief The locations defining the range.
+   * \brief The location defining the range.
    */
   SourceLocation begin, end;
 };
@@ -232,43 +219,43 @@ struct FullSourceLoc {
       : location(loc), srcMgr(&sm) {}
 
   /**
-   * \brief Check if the FullSourceLoc is valid.
+   * \brief Checks if the \ref FullSourceLoc is valid.
    * \return True if both the location and SourceManager are valid.
    */
   bool isValid() const { return location.isValid() && srcMgr; }
 
   /**
-   * \brief Get the FileID of the source location.
-   * \return The FileID corresponding to the location.
+   * \brief Gets the \ref FileID of the \ref SourceLocation.
+   * \return The \ref FileID corresponding.
    */
   FileID getFileID() const;
 
   /**
-   * \brief Get the file offset of the source location.
+   * \brief Gets the file offset of the \ref SourceLocation.
    * \return The byte offset within the file.
    */
   uint32_t getFileOffset() const;
 
   /**
-   * \brief Get the associated FileEntry.
-   * \return A pointer to the FileEntry for the location.
+   * \brief Gets the associated \ref FileEntry.
+   * \return A pointer to the \ref FileEntry for the location.
    */
   uint32_t getLineNumber() const;
 
   /**
-   * \brief Get the column number of the source location.
-   * \return The column number. 1-based
+   * \brief Gets the column number of the \ref SourceLocation.
+   * \return The column number (1-based).
    */
   uint32_t getColumnNumber() const;
 
   /**
-   * \brief Get the character data at the source location.
+   * \brief Gets the character data at the \ref SourceLocation.
    * \return A pointer to the character data.
    */
-  const char *getCharacterData() const;
+  const char *getData() const;
 
   /**
-   * \brief Get the filename for the source location.
+   * \brief Gets the filename for the \ref SourceLocation.
    * \return The filename as a string.
    */
   std::string getFilename() const;

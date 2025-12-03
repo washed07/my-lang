@@ -26,7 +26,7 @@ public:
   FileEntry &operator=(const FileEntry &) = delete;
 
   InternedString getFilename() const { return filename; }
-  std::string_view getFilenameView() const { return filename.str(); }
+  std::string_view getFilenameView() const { return filename.toStringView(); }
   const char *getData() const { return data.get(); }
   size_t getSize() const { return size; }
   time_t getModificationTime() const { return modTime; }

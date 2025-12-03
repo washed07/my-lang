@@ -17,7 +17,7 @@ struct LocationCache {
 
   void invalidate() {
     last_location = SourceLocation::getInvalidLoc();
-    last_file_id = FileID::getInvalidID();
+    last_file_id = FileID::getInvalid();
     last_line = 0;
     last_column = 0;
     last_line_start = nullptr;
@@ -28,7 +28,7 @@ thread_local LocationCache g_location_cache;
 
 // FullSourceLoc implementations
 FileID FullSourceLoc::getFileID() const {
-  return srcMgr ? srcMgr->getFileID(location) : FileID::getInvalidID();
+  return srcMgr ? srcMgr->getFileID(location) : FileID::getInvalid();
 }
 
 uint32_t FullSourceLoc::getFileOffset() const {
@@ -43,7 +43,7 @@ uint32_t FullSourceLoc::getColumnNumber() const {
   return srcMgr ? srcMgr->getColumnNumber(location) : 0;
 }
 
-const char *FullSourceLoc::getCharacterData() const {
+const char *FullSourceLoc::getData() const {
   return srcMgr ? srcMgr->getCharacterData(location) : nullptr;
 }
 
@@ -108,7 +108,7 @@ SourceManager::createFileIDWithError(const std::string &filename) {
   // Load the file first to get the FileEntry with interned filename
   auto [entry, error] = fileMgr.getFileWithError(filename);
   if (error) {
-    return {FileID::getInvalidID(), error};
+    return {FileID::getInvalid(), error};
   }
 
   // Fast path: check if file is already loaded using the interned filename
@@ -159,34 +159,31 @@ FileID SourceManager::createFileIDImpl(std::shared_ptr<FileEntry> entry) {
 }
 
 SourceLocation SourceManager::getLocForStartOfFile(FileID fid) const {
-  if (fid.isInvalid() || fid.getHashValue() == 0 ||
-      fid.getHashValue() > loadedFiles.size()) {
+  if (fid.isInvalid() || fid.get() == 0 || fid.get() > loadedFiles.size()) {
     return SourceLocation::getInvalidLoc();
   }
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   return SourceLocation(info.offset);
 }
 
 SourceLocation SourceManager::getLocForEndOfFile(FileID fid) const {
-  if (fid.isInvalid() || fid.getHashValue() == 0 ||
-      fid.getHashValue() > loadedFiles.size()) {
+  if (fid.isInvalid() || fid.get() == 0 || fid.get() > loadedFiles.size()) {
     return SourceLocation::getInvalidLoc();
   }
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   return SourceLocation(info.offset +
                         static_cast<uint32_t>(info.entry->getSize()));
 }
 
 SourceLocation SourceManager::getLocForFileOffset(FileID fid,
                                                   uint32_t offset) const {
-  if (fid.isInvalid() || fid.getHashValue() == 0 ||
-      fid.getHashValue() > loadedFiles.size()) {
+  if (fid.isInvalid() || fid.get() == 0 || fid.get() > loadedFiles.size()) {
     return SourceLocation::getInvalidLoc();
   }
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   if (offset > info.entry->getSize()) {
     return SourceLocation::getInvalidLoc();
   }
@@ -196,7 +193,7 @@ SourceLocation SourceManager::getLocForFileOffset(FileID fid,
 
 FileID SourceManager::getFileID(SourceLocation loc) const {
   if (loc.isInvalid()) {
-    return FileID::getInvalidID();
+    return FileID::getInvalid();
   }
 
   uint32_t locID = loc.getRawEncoding();
@@ -206,7 +203,7 @@ FileID SourceManager::getFileID(SourceLocation loc) const {
       g_location_cache.last_file_id.isValid()) {
 
     const FileInfo &cached_info =
-        loadedFiles[g_location_cache.last_file_id.getHashValue() - 1];
+        loadedFiles[g_location_cache.last_file_id.get() - 1];
     uint32_t file_start = cached_info.offset;
     uint32_t file_end =
         file_start + static_cast<uint32_t>(cached_info.entry->getSize());
@@ -222,7 +219,7 @@ FileID SourceManager::getFileID(SourceLocation loc) const {
       [](uint32_t loc, const FileInfo &info) { return loc < info.offset; });
 
   if (it == loadedFiles.begin()) {
-    return FileID::getInvalidID();
+    return FileID::getInvalid();
   }
 
   --it;
@@ -232,7 +229,7 @@ FileID SourceManager::getFileID(SourceLocation loc) const {
   uint32_t fileEnd = fileStart + static_cast<uint32_t>(it->entry->getSize());
 
   if (locID < fileStart || locID > fileEnd) {
-    return FileID::getInvalidID();
+    return FileID::getInvalid();
   }
 
   // Convert iterator to FileID and cache result
@@ -252,7 +249,7 @@ uint32_t SourceManager::getFileOffset(SourceLocation loc) const {
     return 0;
   }
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   return loc.getRawEncoding() - info.offset;
 }
 
@@ -262,12 +259,11 @@ const FileEntry *SourceManager::getFileEntry(SourceLocation loc) const {
 }
 
 const FileEntry *SourceManager::getFileEntry(FileID fid) const {
-  if (fid.isInvalid() || fid.getHashValue() == 0 ||
-      fid.getHashValue() > loadedFiles.size()) {
+  if (fid.isInvalid() || fid.get() == 0 || fid.get() > loadedFiles.size()) {
     return nullptr;
   }
 
-  return loadedFiles[fid.getHashValue() - 1].entry.get();
+  return loadedFiles[fid.get() - 1].entry.get();
 }
 
 InternedString SourceManager::getFilename(SourceLocation loc) const {
@@ -310,7 +306,7 @@ uint32_t SourceManager::getLineNumber(SourceLocation loc) const {
     if (fid == g_location_cache.last_file_id &&
         g_location_cache.last_line_start) {
       uint32_t offset = getFileOffset(loc);
-      const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+      const FileInfo &info = loadedFiles[fid.get() - 1];
 
       // Check if still on the same line
       const char *current_pos = info.entry->getBufferStart() + offset;
@@ -336,7 +332,7 @@ uint32_t SourceManager::getLineNumber(SourceLocation loc) const {
 
   computeLineOffsets(fid);
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   uint32_t offset = getFileOffset(loc);
 
   uint32_t line = findLineNumber(info.lineOffsets, offset);
@@ -379,7 +375,7 @@ uint32_t SourceManager::getColumnNumber(SourceLocation loc) const {
 
   computeLineOffsets(fid);
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   uint32_t offset = getFileOffset(loc);
 
   uint32_t line = findLineNumber(info.lineOffsets, offset);
@@ -407,7 +403,7 @@ SourceManager::getLineAndColumn(SourceLocation loc) const {
 
   computeLineOffsets(fid);
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   uint32_t offset = getFileOffset(loc);
 
   uint32_t line = findLineNumber(info.lineOffsets, offset);
@@ -506,7 +502,7 @@ SourceLocation SourceManager::advanceSourceLocation(SourceLocation loc,
     return SourceLocation::getInvalidLoc();
   }
 
-  const FileInfo &info = loadedFiles[fid.getHashValue() - 1];
+  const FileInfo &info = loadedFiles[fid.get() - 1];
   uint32_t offset = getFileOffset(loc);
 
   if (offset + numChars > info.entry->getSize()) {
@@ -542,12 +538,11 @@ void SourceManager::clearCache() {
 }
 
 void SourceManager::computeLineOffsets(FileID fid) const {
-  if (fid.isInvalid() || fid.getHashValue() == 0 ||
-      fid.getHashValue() > loadedFiles.size()) {
+  if (fid.isInvalid() || fid.get() == 0 || fid.get() > loadedFiles.size()) {
     return;
   }
 
-  FileInfo &info = const_cast<FileInfo &>(loadedFiles[fid.getHashValue() - 1]);
+  FileInfo &info = const_cast<FileInfo &>(loadedFiles[fid.get() - 1]);
 
   if (info.lineOffsetsComputed) {
     return;

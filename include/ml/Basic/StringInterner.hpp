@@ -6,6 +6,7 @@
 #include <memory>
 #include <mutex>
 #include <shared_mutex>
+#include <string.h>
 #include <string>
 #include <string_view>
 #include <unordered_map>
@@ -16,8 +17,9 @@ namespace ml {
 class ArenaAllocator;
 
 /**
+ * \class InternedString StringInterner.hpp "ml/Basic/StringInterner.hpp"
  * \brief An interned string handle.
- * \details Represents a unique interned string stored in the
+ * \details Represents a unique interned string stored in a
  * \ref StringInterner. Provides fast comparison via pointer equality
  * and access to the underlying string data.
  * \see StringInterner for managing interned strings.
@@ -27,38 +29,49 @@ public:
   InternedString() : ptr(nullptr) {}
 
   /**
-   * \brief Get the C-style string pointer.
+   * \brief Converts to a C-style string.
    * \return A pointer to the null-terminated string.
+   * \note Returns empty string "" if data is a \c nullptr value.
+   * \see getData() for raw data access.
    */
-  const char *c_str() const { return ptr ? ptr : ""; }
+  const char *toCStr() const { return ptr ? ptr : ""; }
 
   /**
-   * \brief Get the string as a string view.
-   * \return A string view representing the interned string.
+   * \brief Gets the string data.
+   * \return The underlying string data.
+   * \note Returns \c nullptr if string is invalid.
+   * \see toCStr() for safe access.
    */
-  std::string_view str() const {
+  const char *getData() const { return ptr; }
+
+  /**
+   * \brief Converts to a \c std::string_view.
+   * \return A \c std::string_view copy.
+   * \note Returns empty view if data is a \c nullptr value.
+   */
+  std::string_view toStringView() const {
     return ptr ? std::string_view(ptr) : std::string_view();
   }
 
   /**
-   * \brief Get the length of the interned string.
-   * \return The length of the string in characters.
+   * \brief Gets string length.
+   * \return Length in characters.
    * \deprecated Use \ref length() instead.
    * \see length()
    */
-  size_t size() const { return str().size(); }
+  size_t size() const { return toStringView().size(); }
 
   /**
-   * \brief Get the length of the interned string.
-   * \return The length of the string in characters.
+   * \brief Gets the string length.
+   * \return Length in characters.
    */
-  size_t length() const { return size(); }
+  size_t length() const { return ptr ? strlen(ptr) : 0; }
 
   /**
-   * \brief Check if the interned string is empty.
-   * \return True if the string is empty, false otherwise.
+   * \brief Checks if the string is empty.
+   * \return \c true if \c nullptr or \c '\0' character, \c false otherwise.
    */
-  bool empty() const { return ptr == nullptr || *ptr == '\0'; }
+  bool isEmpty() const { return ptr == nullptr || *ptr == '\0'; }
 
   /**
    * \brief Pointer comparison operators for fast equality checks.
@@ -80,131 +93,281 @@ public:
   bool operator<(const InternedString &other) const { return ptr < other.ptr; }
 
   /**
-   * \brief Compare with a string view for equality.
-   * \param other The string view to compare with.
+   * \brief Compares with a \c std::string_view for equality.
+   * \param other The \c std::string_view to compare with.
+   * \return \c true if equal, \c false otherwise.
    * \see operator==(const InternedString &) const for pointer comparison.
    * \note Use pointer comparison for best performance when possible.
    */
-  bool equals(std::string_view other) const { return str() == other; }
+  bool equals(std::string_view other) const { return toStringView() == other; }
 
   /**
-   * \brief Check if the interned string is valid.
-   * \return True if valid, false otherwise.
+   * \brief Checks if the string is valid.
+   * \return \c false if \c nullptr, \c true otherwise.
+   * \see isEmpty() for emptiness check.
    */
   bool isValid() const { return ptr != nullptr; }
 
   /**
-   * \brief Get the hash value of the interned string.
-   * \return The hash value based on the string pointer.
+   * \brief Gets the hash value of the string.
+   * \return The hash value of the underlying data.
+   * \note Hash is pointer-based for fast lookup in hash tables.
    */
-  size_t getHash() const { return std::hash<const char *>{}(ptr); }
+  size_t getHashValue() const { return std::hash<const char *>{}(ptr); }
 
   /**
-   * \brief Convert to string.
-   * \return A string copy of the interned string.
+   * \brief Converts to a string.
+   * \return A \c std::string copy.
    */
-  std::string toString() const { return std::string(str()); }
+  std::string toString() const { return std::string(toStringView()); }
 
-  operator std::string_view() const { return str(); }
+  /**
+   * \brief Implicit conversion to \c std::string_view.
+   * \return A \c std::string_view copy.
+   */
+  operator std::string_view() const { return toStringView(); }
 
 private:
   friend class StringInterner;
+
+  /**
+   * \brief Constructs an \c InternedString from a raw pointer.
+   * \param ptr The pointer to the interned string data.
+   */
   explicit InternedString(const char *ptr) : ptr(ptr) {}
 
   /**
-   * \brief The pointer to the interned string data.
+   * \brief A pointer to the interned string data.
+   * \note Managed by \ref StringInterner.
    */
   const char *ptr;
 };
 
-/// Statistics about string interner operations
+/**
+ * \struct StringInternerStats "StringInterner.hpp"
+ * "ml/Basic/StringInterner.hpp"
+ * \brief Statistics about the StringInterner.
+ * \details Tracks various metrics such as number of interned strings,
+ * memory usage, and collision counts.
+ * \see StringInterner::getStats() for retrieving statistics.
+ */
 struct StringInternerStats {
+
+  /**
+   * \brief Total number of intern operations.
+   */
   size_t internCount = 0;
+
+  /**
+   * \brief Total number of lookup operations.
+   */
   size_t lookupCount = 0;
+
+  /**
+   * \brief Number of hash collisions encountered.
+   */
   size_t collisionCount = 0;
+
+  /**
+   * \brief Total memory used for storing interned strings (in bytes).
+   */
   size_t memoryUsedCount = 0;
+
+  /**
+   * \brief Number of unique interned strings.
+   */
   size_t uniqueStringCount = 0;
+
+  /**
+   * \brief Average length of interned strings.
+   */
   double averageLength = 0.0;
 };
 
-/// Hash function for InternedString
+/**
+ * \struct InternedStringHash "StringInterner.hpp" "ml/Basic/StringInterner.hpp"
+ * \brief Hash function for \ref InternedString.
+ */
 struct InternedStringHash {
-  size_t operator()(const InternedString &str) const { return str.getHash(); }
+
+  /**
+   * \brief Computes the hash value for an InternedString.
+   * \param str The InternedString to hash.
+   * \return The hash value.
+   */
+  size_t operator()(const InternedString &str) const {
+    return str.getHashValue();
+  }
 };
 
-/// A high-performance string interner that stores unique strings and provides
-/// fast comparison via pointer equality. This is essential for compiler
-/// performance when dealing with identifiers, keywords, and string literals.
-///
-/// Key features:
-/// - Thread-safe operations
-/// - Fast O(1) equality comparison via pointer comparison
-/// - Memory-efficient storage with automatic deduplication
-/// - Support for string_view to avoid unnecessary allocations
-/// - Statistics and debugging support
+/**
+ * \class StringInterner StringInterner.hpp "ml/Basic/StringInterner.hpp"
+ * \brief A string interner for deduplicating strings.
+ * \details Manages a collection of unique strings, allowing efficient
+ * storage and retrieval (O(1)) via \ref InternedString handles. Supports
+ * optional arena allocation for improved memory locality through the \ref
+ * ArenaAllocator.
+ * \see InternedString for the interned string handle.
+ * \note Thread-safe for concurrent access.
+ * \warning \ref InternedString objects become invalid after \ref clear() is
+ * called.
+ */
 class StringInterner {
 public:
+  /**
+   * \brief Constructs a StringInterner without an ArenaAllocator.
+   * \details Uses standard heap allocation for string storage.
+   * \see StringInterner(ArenaAllocator &arena) for arena-based allocation.
+   */
   StringInterner();
 
-  /// Create a StringInterner that uses an external arena allocator
-  /// for improved memory locality and reduced heap fragmentation
+  /**
+   * \brief Constructs a StringInterner with an ArenaAllocator.
+   * \param arena The ArenaAllocator to use for string storage.
+   * \see ArenaAllocator for memory management.
+   */
   explicit StringInterner(ArenaAllocator &arena);
 
   ~StringInterner();
 
-  // Non-copyable but movable
+  /**
+   * \brief Non-copyable StringInterner.
+   * \details Copying a StringInterner is disallowed to prevent
+   * accidental duplication of internal state and resource management issues.
+   */
   StringInterner(const StringInterner &) = delete;
+
+  /**
+   * \brief Non-copyable assignment operator.
+   * \see StringInterner(const StringInterner &)
+   */
   StringInterner &operator=(const StringInterner &) = delete;
+
+  /**
+   * \brief Move constructor for StringInterner.
+   * \details Transfers ownership of internal state and resources.
+   */
   StringInterner(StringInterner &&other) noexcept;
+
+  /**
+   * \brief Move assignment operator for StringInterner.
+   * \details Transfers ownership of internal state and resources.
+   */
   StringInterner &operator=(StringInterner &&other) noexcept;
 
-  /// Intern a string from various sources
+  /**
+   * \brief Interns a string view.
+   * \param str The string to intern.
+   * \return The handle representing the interned string.
+   */
   InternedString intern(std::string_view str);
+
+  /**
+   * \brief Interns a string.
+   * \param str The string to intern.
+   * \return The handle representing the interned string.
+   * \see intern(std::string_view) for the main implementation.
+   */
   InternedString intern(const std::string &str) {
     return intern(std::string_view(str));
   }
+
+  /**
+   * \brief Interns a C-style string.
+   * \param str The C-style string to intern.
+   * \return The handle representing the interned string.
+   * \see intern(std::string_view) for the main implementation.
+   */
   InternedString intern(const char *str) {
     return intern(std::string_view(str));
   }
+
+  /**
+   * \brief Interns a string with specified length.
+   * \param str The C-style string to intern.
+   * \param len The length of the string.
+   * \return The handle representing the interned string.
+   * \see intern(std::string_view) for the main implementation.
+   */
   InternedString intern(const char *str, size_t len) {
     return intern(std::string_view(str, len));
   }
 
-  /// Lookup a string without interning (returns invalid InternedString if not
-  /// found)
+  /**
+   * \brief Looks up an interned string.
+   * \param str The string to look up.
+   * \return The handle representing the interned string, or invalid if not
+   * found.
+   */
   InternedString lookup(std::string_view str) const;
 
-  /// Check if a string is already interned
+  /**
+   * \brief Checks if a string is interned.
+   * \param str The string to check.
+   * \return True if the string is interned, false otherwise.
+   */
   bool contains(std::string_view str) const;
 
-  /// Get statistics about the interner
+  /**
+   * \brief Gets statistics about the StringInterner.
+   * \return A \ref StringInternerStats object with current statistics.
+   * \see StringInternerStats for details.
+   */
   StringInternerStats getStats() const;
 
-  /// Clear all interned strings (invalidates all InternedString objects)
+  /**
+   * \brief Clears all interned strings.
+   * \details Invalidates all existing \ref InternedString handles.
+   * \note Resets internal state and statistics.
+   */
   void clear();
 
-  /// Get the number of unique strings
+  /**
+   * \brief Gets the number of unique interned strings.
+   * \return The count of unique interned strings.
+   */
   size_t size() const;
 
-  /// Check if the interner is empty
+  /**
+   * \brief Checks if the interner is empty.
+   * \return True if the interner has no interned strings, false otherwise.
+   */
   bool empty() const;
 
-  /// Print statistics to the given stream
+  /**
+   * \brief Prints statistics to the given output stream.
+   * \param os The output stream to print to.
+   */
   void printStats(std::ostream &os) const;
 
-  /// Reserve space for approximately this many strings (optimization)
+  /**
+   * \brief Reserves space for a number of interned strings.
+   * \param count The number of strings to reserve space for.
+   */
   void reserve(size_t count);
 
-  /// Get memory usage in bytes
+  /**
+   * \brief Gets the total memory usage of the interner.
+   * \return The total memory used in bytes.
+   */
   size_t getMemoryUsage() const;
 
-  /// Check if using arena allocation
+  /**
+   * \brief Checks if the interner is using an arena allocator.
+   * \return True if using an arena allocator, false otherwise.
+   */
   bool isUsingArena() const { return arenaAllocator != nullptr; }
 
-  /// Get the arena allocator (if any)
+  /**
+   * \brief Gets the associated ArenaAllocator.
+   * \return Pointer to the ArenaAllocator, or nullptr if not using one.
+   */
   ArenaAllocator *getArena() const { return arenaAllocator; }
 
-  /// Iterator support for debugging/inspection
+  /**
+   * \class const_iterator
+   * \brief Const iterator for iterating over interned strings.
+   */
   class const_iterator {
   public:
     using value_type = InternedString;
@@ -234,16 +397,29 @@ public:
   const_iterator end() const;
 
 private:
-  /// Internal storage for string data
+  /**
+   * \struct StringStorage
+   * \brief Internal storage for an interned string.
+   */
   struct StringStorage {
-    char *data; // Changed to raw pointer for arena compatibility
+    /**
+     * \brief Pointer to the string data.
+     */
+    char *data;
+
+    /**
+     * \brief Size of the string data (in bytes).
+     */
     size_t size;
-    bool usesArena; // Track whether this uses arena allocation
+
+    /**
+     * \brief Indicates if the string uses arena allocation.
+     */
+    bool usesArena;
 
     StringStorage(std::string_view str, ArenaAllocator *arena = nullptr);
     ~StringStorage();
 
-    // Non-copyable but movable
     StringStorage(const StringStorage &) = delete;
     StringStorage &operator=(const StringStorage &) = delete;
     StringStorage(StringStorage &&other) noexcept;
@@ -252,50 +428,76 @@ private:
     const char *c_str() const { return data; }
   };
 
-  /// Find or create storage for a string
+  /**
+   * \brief Finds or creates the storage for a string.
+   * \param str The string to find or create.
+   * \return Pointer to the interned string data.
+   */
   const char *findOrCreateString(std::string_view str);
 
-  /// Arena allocator for improved memory locality (optional)
+  /**
+   * \brief Pointer to the ArenaAllocator used for string storage.
+   * \note nullptr if not using arena allocation.
+   */
   ArenaAllocator *arenaAllocator;
 
-  /// Thread safety
+  /**
+   * \brief Mutex for thread-safe access.
+   */
   mutable std::shared_mutex Mutex;
 
-  /// String storage - we use a set for automatic deduplication
-  /// The strings are stored as unique_ptr<StringStorage> to ensure
-  /// pointer stability even when the container is rehashed
+  /**
+   * \brief Set of all unique StringStorage instances.
+   * \note Manages the lifetime of interned strings.
+   */
   std::unordered_set<std::unique_ptr<StringStorage>> Storage;
 
-  /// Fast lookup map from string content to pointer
+  /**
+   * \brief Map from string views to interned string data pointers.
+   * \note Enables fast lookup of interned strings.
+   */
   std::unordered_map<std::string_view, const char *> LookupMap;
 
-  /// Statistics
+  /**
+   * \brief Statistics about the \ref StringInterner.
+   */
   mutable StringInternerStats stats;
 
-  /// Hash function for StringStorage
+  /**
+   * \brief Hash function for StringStorage
+   */
   struct StringStorageHash {
     size_t operator()(const std::unique_ptr<StringStorage> &storage) const;
   };
 
-  /// Equality function for StringStorage
+  /**
+   * \brief Equality function for StringStorage
+   */
   struct StringStorageEqual {
     bool operator()(const std::unique_ptr<StringStorage> &lhs,
                     const std::unique_ptr<StringStorage> &rhs) const;
   };
 };
 
-/// Stream output operator for InternedString
+/**
+ * \brief Stream output operator for InternedString.
+ * \param os The output stream.
+ * \param str The InternedString to output.
+ * \return The output stream.
+ */
 inline std::ostream &operator<<(std::ostream &os, const InternedString &str) {
-  return os << str.str();
+  return os << str.toStringView();
 }
 
 } // namespace ml
 
-/// Specialize std::hash for InternedString to enable use in standard containers
+/**
+ * \brief Specialization of std::hash for ml::InternedString.
+ */
 namespace std {
 template <> struct hash<ml::InternedString> {
   size_t operator()(const ml::InternedString &str) const noexcept {
-    return str.getHash();
+    return str.getHashValue();
   }
 };
 } // namespace std

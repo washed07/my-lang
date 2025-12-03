@@ -410,7 +410,7 @@ std::ostream &operator<<(std::ostream &os, TokenKind kind) {
 std::ostream &operator<<(std::ostream &os, const Token &token) {
   os << TokenInfo::getTokenName(token.getKind());
   if (token.getText().isValid()) {
-    os << "(" << token.getText().str() << ")";
+    os << "(" << token.getText().toStringView() << ")";
   }
   return os;
 }
