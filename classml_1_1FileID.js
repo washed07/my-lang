@@ -1,9 +1,8 @@
 var classml_1_1FileID =
 [
     [ "FileID", "classml_1_1FileID.html#a97f04401ba73b741ce44851947ab02e4", null ],
-    [ "getHashValue", "classml_1_1FileID.html#a967929f0fd9952b372580be8365e55e4", null ],
-    [ "getInvalidID", "classml_1_1FileID.html#a50353be3e29edcfe291e791cb1cc018a", null ],
-    [ "isInvalid", "classml_1_1FileID.html#a6fd0fd7f52542ee1b080c85150053f17", null ],
+    [ "getEncoding", "classml_1_1FileID.html#a18b17641f521a8123498d8a12705f02e", null ],
+    [ "getInvalid", "classml_1_1FileID.html#aed348446681a357398718eaaee0fb3e3", null ],
     [ "isValid", "classml_1_1FileID.html#ac535120208bbb43a15c8df9c679a6160", null ],
     [ "operator!=", "classml_1_1FileID.html#ad4de57039cf393f1e7e8a9d4fea1598a", null ],
     [ "operator<", "classml_1_1FileID.html#a9598b74ae2bc2be3ca95df65ee2fde76", null ],

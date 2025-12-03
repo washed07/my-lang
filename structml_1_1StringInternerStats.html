@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('structml_1_1StringInternerStats.html',
 </div><!--header-->
 <div class="contents">
 
-<p>Statistics about string interner operations.  
+<p>Statistics about the <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  
  <a href="structml_1_1StringInternerStats.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>&gt;</code></p>
@@ -105,22 +105,30 @@ $(document).ready(function(){initNavTree('structml_1_1StringInternerStats.html',
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a49c579ede4899d83d87b11a651aea378" id="r_a49c579ede4899d83d87b11a651aea378"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#a49c579ede4899d83d87b11a651aea378">internCount</a> = 0</td></tr>
+<tr class="memdesc:a49c579ede4899d83d87b11a651aea378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of intern operations.  <br /></td></tr>
 <tr class="separator:a49c579ede4899d83d87b11a651aea378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1ffe67076652322c8877946ec5ee520" id="r_ad1ffe67076652322c8877946ec5ee520"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#ad1ffe67076652322c8877946ec5ee520">lookupCount</a> = 0</td></tr>
+<tr class="memdesc:ad1ffe67076652322c8877946ec5ee520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of lookup operations.  <br /></td></tr>
 <tr class="separator:ad1ffe67076652322c8877946ec5ee520"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad6541aa38d7701885b9cdf5837e48b27" id="r_ad6541aa38d7701885b9cdf5837e48b27"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#ad6541aa38d7701885b9cdf5837e48b27">collisionCount</a> = 0</td></tr>
+<tr class="memdesc:ad6541aa38d7701885b9cdf5837e48b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of hash collisions encountered.  <br /></td></tr>
 <tr class="separator:ad6541aa38d7701885b9cdf5837e48b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4986a954b38cbe6ca377bd96def44faf" id="r_a4986a954b38cbe6ca377bd96def44faf"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#a4986a954b38cbe6ca377bd96def44faf">memoryUsedCount</a> = 0</td></tr>
+<tr class="memdesc:a4986a954b38cbe6ca377bd96def44faf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total memory used for storing interned strings (in bytes).  <br /></td></tr>
 <tr class="separator:a4986a954b38cbe6ca377bd96def44faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf4e9b28f9beef6e059018e430a14f2" id="r_aecf4e9b28f9beef6e059018e430a14f2"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#aecf4e9b28f9beef6e059018e430a14f2">uniqueStringCount</a> = 0</td></tr>
+<tr class="memdesc:aecf4e9b28f9beef6e059018e430a14f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of unique interned strings.  <br /></td></tr>
 <tr class="separator:aecf4e9b28f9beef6e059018e430a14f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab52427f9067d0ecd3b80da006931b51d" id="r_ab52427f9067d0ecd3b80da006931b51d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html#ab52427f9067d0ecd3b80da006931b51d">averageLength</a> = 0.0</td></tr>
+<tr class="memdesc:ab52427f9067d0ecd3b80da006931b51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Average length of interned strings.  <br /></td></tr>
 <tr class="separator:ab52427f9067d0ecd3b80da006931b51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Statistics about string interner operations. </p>
+<div class="textblock"><p>Statistics about the <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>. </p>
+<p>"ml/Basic/StringInterner.hpp"</p>
+<p>Tracks various metrics such as number of interned strings, memory usage, and collision counts. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#a37159c1e6eac91215560e04db272e40a" title="Gets statistics about the StringInterner.">StringInterner::getStats()</a> for retrieving statistics. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00121">121</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00154">154</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="ab52427f9067d0ecd3b80da006931b51d" name="ab52427f9067d0ecd3b80da006931b51d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab52427f9067d0ecd3b80da006931b51d">&#9670;&#160;</a></span>averageLength</h2>
@@ -134,7 +142,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00127">127</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Average length of interned strings. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00184">184</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 
@@ -152,7 +162,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00124">124</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Number of hash collisions encountered. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00169">169</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 
@@ -170,7 +182,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00122">122</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Total number of intern operations. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00159">159</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 
@@ -188,7 +202,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00123">123</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Total number of lookup operations. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00164">164</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 
@@ -206,7 +222,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00125">125</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Total memory used for storing interned strings (in bytes). </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00174">174</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00291">ml::StringInterner::getMemoryUsage()</a>, <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 
@@ -224,7 +242,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00126">126</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Number of unique interned strings. </p>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00179">179</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringInterner_8cpp_source.html#l00158">ml::StringInterner::intern()</a>, and <a class="el" href="StringInterner_8cpp_source.html#l00265">ml::StringInterner::printStats()</a>.</p>
 

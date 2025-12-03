@@ -28,7 +28,7 @@ var searchData=
   ['lineoffsets_25',['lineOffsets',['../structml_1_1FileInfo.html#a5575f9de387d7df7eceb07f1414c794f',1,'ml::FileInfo']]],
   ['lineoffsetscomputed_26',['lineOffsetsComputed',['../structml_1_1FileInfo.html#a155a0518f100da27fc932b7312b5f004',1,'ml::FileInfo']]],
   ['link_27',['Link',['../namespaceml.html#ae9936d1596c390a2c0e988c941201ac2a97e7c9a7d06eac006a28bf05467fcc8b',1,'ml']]],
-  ['list_28',['Deprecated List',['../deprecated.html',1,'']]],
+  ['list_28',['list',['../deprecated.html',1,'Deprecated List'],['../todo.html',1,'Todo List']]],
   ['literalcount_29',['literalCount',['../structml_1_1LexerStats.html#ac4feb66f8bf8bf00ddd16d013c9a7ff4',1,'ml::LexerStats']]],
   ['location_30',['location',['../structml_1_1FullSourceLoc.html#ac3ab3b09b44e26c247375a7b19356b56',1,'ml::FullSourceLoc']]],
   ['locationcache_31',['LocationCache',['../structml_1_1LocationCache.html',1,'ml']]],

@@ -98,70 +98,83 @@ $(document).ready(function(){initNavTree('classml_1_1StringInterner.html',''); i
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>&gt;</code></p>
+<p>A string interner for deduplicating strings.  
+ <a href="classml_1_1StringInterner.html#details">More...</a></p>
+
+<p><code>#include &quot;<a class="el" href="StringInterner_8hpp_source.html">ml/Basic/StringInterner.hpp</a>&quot;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner_1_1const__iterator.html">const_iterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator support for debugging/inspection.  <a href="classml_1_1StringInterner_1_1const__iterator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const iterator for iterating over interned strings.  <a href="classml_1_1StringInterner_1_1const__iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a32d2a365dcb76bfd7f0703c6c53f98dc" id="r_a32d2a365dcb76bfd7f0703c6c53f98dc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a32d2a365dcb76bfd7f0703c6c53f98dc">StringInterner</a> ()</td></tr>
+<tr class="memdesc:a32d2a365dcb76bfd7f0703c6c53f98dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a> without an <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>.  <br /></td></tr>
 <tr class="separator:a32d2a365dcb76bfd7f0703c6c53f98dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa65f6d8c78dc4297db94048b36397a9d" id="r_aa65f6d8c78dc4297db94048b36397a9d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#aa65f6d8c78dc4297db94048b36397a9d">StringInterner</a> (<a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> &amp;arena)</td></tr>
+<tr class="memdesc:aa65f6d8c78dc4297db94048b36397a9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a> with an <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>.  <br /></td></tr>
 <tr class="separator:aa65f6d8c78dc4297db94048b36397a9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8189f675a9206b2eee466a84b0d82796" id="r_a8189f675a9206b2eee466a84b0d82796"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a8189f675a9206b2eee466a84b0d82796">~StringInterner</a> ()</td></tr>
 <tr class="separator:a8189f675a9206b2eee466a84b0d82796"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a807d2c2eeec439867eb903cca7a2443d" id="r_a807d2c2eeec439867eb903cca7a2443d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a807d2c2eeec439867eb903cca7a2443d">StringInterner</a> (const <a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a807d2c2eeec439867eb903cca7a2443d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-copyable <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  <br /></td></tr>
 <tr class="separator:a807d2c2eeec439867eb903cca7a2443d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2289e1ad21634924f47da1c8e94e3b88" id="r_a2289e1ad21634924f47da1c8e94e3b88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a2289e1ad21634924f47da1c8e94e3b88">operator=</a> (const <a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a2289e1ad21634924f47da1c8e94e3b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Non-copyable assignment operator.  <br /></td></tr>
 <tr class="separator:a2289e1ad21634924f47da1c8e94e3b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89c0a417ba5b84831703a88da9efafb4" id="r_a89c0a417ba5b84831703a88da9efafb4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a89c0a417ba5b84831703a88da9efafb4">StringInterner</a> (<a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a89c0a417ba5b84831703a88da9efafb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor for <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  <br /></td></tr>
 <tr class="separator:a89c0a417ba5b84831703a88da9efafb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6689ea1aea8e7fb788e9cecb24a7f169" id="r_a6689ea1aea8e7fb788e9cecb24a7f169"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a6689ea1aea8e7fb788e9cecb24a7f169">operator=</a> (<a class="el" href="classml_1_1StringInterner.html">StringInterner</a> &amp;&amp;other) noexcept</td></tr>
+<tr class="memdesc:a6689ea1aea8e7fb788e9cecb24a7f169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment operator for <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  <br /></td></tr>
 <tr class="separator:a6689ea1aea8e7fb788e9cecb24a7f169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecaa3fe08de16456193dc17985d98e7f" id="r_aecaa3fe08de16456193dc17985d98e7f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1InternedString.html">InternedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#aecaa3fe08de16456193dc17985d98e7f">intern</a> (std::string_view str)</td></tr>
-<tr class="memdesc:aecaa3fe08de16456193dc17985d98e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Intern a string from various sources.  <br /></td></tr>
+<tr class="memdesc:aecaa3fe08de16456193dc17985d98e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interns a string view.  <br /></td></tr>
 <tr class="separator:aecaa3fe08de16456193dc17985d98e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f645913ee0b5797c772173453176059" id="r_a4f645913ee0b5797c772173453176059"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1InternedString.html">InternedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a4f645913ee0b5797c772173453176059">intern</a> (const std::string &amp;str)</td></tr>
+<tr class="memdesc:a4f645913ee0b5797c772173453176059"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interns a string.  <br /></td></tr>
 <tr class="separator:a4f645913ee0b5797c772173453176059"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5aab44386254c3cf62d6ffa17d039c0" id="r_af5aab44386254c3cf62d6ffa17d039c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1InternedString.html">InternedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#af5aab44386254c3cf62d6ffa17d039c0">intern</a> (const char *str)</td></tr>
+<tr class="memdesc:af5aab44386254c3cf62d6ffa17d039c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interns a C-style string.  <br /></td></tr>
 <tr class="separator:af5aab44386254c3cf62d6ffa17d039c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54e728052524e3e44bd272d7ee9f7d1c" id="r_a54e728052524e3e44bd272d7ee9f7d1c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1InternedString.html">InternedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a54e728052524e3e44bd272d7ee9f7d1c">intern</a> (const char *str, size_t len)</td></tr>
+<tr class="memdesc:a54e728052524e3e44bd272d7ee9f7d1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interns a string with specified length.  <br /></td></tr>
 <tr class="separator:a54e728052524e3e44bd272d7ee9f7d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3bde9d71c8d2f3844796b01e79c74ae" id="r_ab3bde9d71c8d2f3844796b01e79c74ae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1InternedString.html">InternedString</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#ab3bde9d71c8d2f3844796b01e79c74ae">lookup</a> (std::string_view str) const</td></tr>
+<tr class="memdesc:ab3bde9d71c8d2f3844796b01e79c74ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Looks up an interned string.  <br /></td></tr>
 <tr class="separator:ab3bde9d71c8d2f3844796b01e79c74ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c60471eb00aecbdcae30c79c4c07cf0" id="r_a3c60471eb00aecbdcae30c79c4c07cf0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a3c60471eb00aecbdcae30c79c4c07cf0">contains</a> (std::string_view str) const</td></tr>
-<tr class="memdesc:a3c60471eb00aecbdcae30c79c4c07cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a string is already interned.  <br /></td></tr>
+<tr class="memdesc:a3c60471eb00aecbdcae30c79c4c07cf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a string is interned.  <br /></td></tr>
 <tr class="separator:a3c60471eb00aecbdcae30c79c4c07cf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37159c1e6eac91215560e04db272e40a" id="r_a37159c1e6eac91215560e04db272e40a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structml_1_1StringInternerStats.html">StringInternerStats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a37159c1e6eac91215560e04db272e40a">getStats</a> () const</td></tr>
-<tr class="memdesc:a37159c1e6eac91215560e04db272e40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get statistics about the interner.  <br /></td></tr>
+<tr class="memdesc:a37159c1e6eac91215560e04db272e40a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets statistics about the <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  <br /></td></tr>
 <tr class="separator:a37159c1e6eac91215560e04db272e40a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6884f728e3daa07cb60f5694353147e0" id="r_a6884f728e3daa07cb60f5694353147e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a6884f728e3daa07cb60f5694353147e0">clear</a> ()</td></tr>
-<tr class="memdesc:a6884f728e3daa07cb60f5694353147e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all interned strings (invalidates all <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a> objects)  <br /></td></tr>
+<tr class="memdesc:a6884f728e3daa07cb60f5694353147e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears all interned strings.  <br /></td></tr>
 <tr class="separator:a6884f728e3daa07cb60f5694353147e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3ebb44a4c1af2ee4191d459c23ccbec" id="r_aa3ebb44a4c1af2ee4191d459c23ccbec"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#aa3ebb44a4c1af2ee4191d459c23ccbec">size</a> () const</td></tr>
-<tr class="memdesc:aa3ebb44a4c1af2ee4191d459c23ccbec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of unique strings.  <br /></td></tr>
+<tr class="memdesc:aa3ebb44a4c1af2ee4191d459c23ccbec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of unique interned strings.  <br /></td></tr>
 <tr class="separator:aa3ebb44a4c1af2ee4191d459c23ccbec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd5b3ca24dcdd896266b2cce8d555473" id="r_acd5b3ca24dcdd896266b2cce8d555473"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#acd5b3ca24dcdd896266b2cce8d555473">empty</a> () const</td></tr>
-<tr class="memdesc:acd5b3ca24dcdd896266b2cce8d555473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the interner is empty.  <br /></td></tr>
+<tr class="memdesc:acd5b3ca24dcdd896266b2cce8d555473"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the interner is empty.  <br /></td></tr>
 <tr class="separator:acd5b3ca24dcdd896266b2cce8d555473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb5900e0f0f001c76443e05361c92b5e" id="r_acb5900e0f0f001c76443e05361c92b5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#acb5900e0f0f001c76443e05361c92b5e">printStats</a> (std::ostream &amp;os) const</td></tr>
-<tr class="memdesc:acb5900e0f0f001c76443e05361c92b5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print statistics to the given stream.  <br /></td></tr>
+<tr class="memdesc:acb5900e0f0f001c76443e05361c92b5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints statistics to the given output stream.  <br /></td></tr>
 <tr class="separator:acb5900e0f0f001c76443e05361c92b5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab828e2c1627dd07609d4fc831a683060" id="r_ab828e2c1627dd07609d4fc831a683060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#ab828e2c1627dd07609d4fc831a683060">reserve</a> (size_t count)</td></tr>
-<tr class="memdesc:ab828e2c1627dd07609d4fc831a683060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserve space for approximately this many strings (optimization)  <br /></td></tr>
+<tr class="memdesc:ab828e2c1627dd07609d4fc831a683060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reserves space for a number of interned strings.  <br /></td></tr>
 <tr class="separator:ab828e2c1627dd07609d4fc831a683060"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a1e369d4bc97f561a6232d534e2cc58" id="r_a4a1e369d4bc97f561a6232d534e2cc58"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#a4a1e369d4bc97f561a6232d534e2cc58">getMemoryUsage</a> () const</td></tr>
-<tr class="memdesc:a4a1e369d4bc97f561a6232d534e2cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get memory usage in bytes.  <br /></td></tr>
+<tr class="memdesc:a4a1e369d4bc97f561a6232d534e2cc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the total memory usage of the interner.  <br /></td></tr>
 <tr class="separator:a4a1e369d4bc97f561a6232d534e2cc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0d10f14b9c635989e5d8d609db7fd86" id="r_ad0d10f14b9c635989e5d8d609db7fd86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#ad0d10f14b9c635989e5d8d609db7fd86">isUsingArena</a> () const</td></tr>
-<tr class="memdesc:ad0d10f14b9c635989e5d8d609db7fd86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if using arena allocation.  <br /></td></tr>
+<tr class="memdesc:ad0d10f14b9c635989e5d8d609db7fd86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the interner is using an arena allocator.  <br /></td></tr>
 <tr class="separator:ad0d10f14b9c635989e5d8d609db7fd86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add6c5c010de7b9145857d9318009fb2b" id="r_add6c5c010de7b9145857d9318009fb2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#add6c5c010de7b9145857d9318009fb2b">getArena</a> () const</td></tr>
-<tr class="memdesc:add6c5c010de7b9145857d9318009fb2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the arena allocator (if any)  <br /></td></tr>
+<tr class="memdesc:add6c5c010de7b9145857d9318009fb2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the associated <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>.  <br /></td></tr>
 <tr class="separator:add6c5c010de7b9145857d9318009fb2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae682298a5f68b80d91488b116e15cead" id="r_ae682298a5f68b80d91488b116e15cead"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classml_1_1StringInterner_1_1const__iterator.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html#ae682298a5f68b80d91488b116e15cead">begin</a> () const</td></tr>
 <tr class="separator:ae682298a5f68b80d91488b116e15cead"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,16 +182,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a87d40db23e1e0529f6578852cde801b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A high-performance string interner that stores unique strings and provides fast comparison via pointer equality. This is essential for compiler performance when dealing with identifiers, keywords, and string literals.</p>
-<p>Key features:</p><ul>
-<li>Thread-safe operations</li>
-<li>Fast O(1) equality comparison via pointer comparison</li>
-<li>Memory-efficient storage with automatic deduplication</li>
-<li>Support for string_view to avoid unnecessary allocations</li>
-<li>Statistics and debugging support </li>
-</ul>
+<div class="textblock"><p>A string interner for deduplicating strings. </p>
+<p>Manages a collection of unique strings, allowing efficient storage and retrieval (O(1)) via <a class="el" href="classml_1_1InternedString.html">InternedString</a> handles. Supports optional arena allocation for improved memory locality through the <a class="el" href="classml_1_1ArenaAllocator.html">ArenaAllocator</a>. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a> for the interned string handle. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Thread-safe for concurrent access. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd><a class="el" href="classml_1_1InternedString.html">InternedString</a> objects become invalid after <a class="el" href="classml_1_1StringInterner.html#a6884f728e3daa07cb60f5694353147e0">clear()</a> is called. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00145">145</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00215">215</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a32d2a365dcb76bfd7f0703c6c53f98dc" name="a32d2a365dcb76bfd7f0703c6c53f98dc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a32d2a365dcb76bfd7f0703c6c53f98dc">&#9670;&#160;</a></span>StringInterner() <span class="overload">[1/4]</span></h2>
@@ -194,6 +203,9 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructs a <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a> without an <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>. </p>
+<p>Uses standard heap allocation for string storage. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#aa65f6d8c78dc4297db94048b36397a9d" title="Constructs a StringInterner with an ArenaAllocator.">StringInterner(ArenaAllocator &amp;arena)</a> for arena-based allocation. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00123">123</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -222,7 +234,15 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Create a <a class="el" href="classml_1_1StringInterner.html">StringInterner</a> that uses an external arena allocator for improved memory locality and reduced heap fragmentation </p>
+
+<p>Constructs a <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a> with an <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">arena</td><td>The <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a> to use for string storage. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a> for memory management. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00129">129</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -277,6 +297,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Non-copyable <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>. </p>
+<p>Copying a <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a> is disallowed to prevent accidental duplication of internal state and resource management issues. </p>
+
 </div>
 </div>
 <a id="a89c0a417ba5b84831703a88da9efafb4" name="a89c0a417ba5b84831703a88da9efafb4"></a>
@@ -302,6 +325,9 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Move constructor for <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>. </p>
+<p>Transfers ownership of internal state and resources. </p>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00137">137</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -342,7 +368,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Clear all interned strings (invalidates all <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a> objects) </p>
+<p>Clears all interned strings. </p>
+<p>Invalidates all existing <a class="el" href="classml_1_1InternedString.html">InternedString</a> handles. </p><dl class="section note"><dt>Note</dt><dd>Resets internal state and statistics. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00245">245</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -364,7 +391,14 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if a string is already interned. </p>
+<p>Checks if a string is interned. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to check. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the string is interned, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00235">235</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -385,7 +419,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if the interner is empty. </p>
+<p>Checks if the interner is empty. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the interner has no interned strings, false otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00260">260</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -433,9 +468,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the arena allocator (if any) </p>
+<p>Gets the associated <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classml_1_1ArenaAllocator.html" title="An allocator using arena allocation strategy.">ArenaAllocator</a>, or nullptr if not using one. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00205">205</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00365">365</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -454,11 +490,12 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get memory usage in bytes. </p>
+<p>Gets the total memory usage of the interner. </p>
+<dl class="section return"><dt>Returns</dt><dd>The total memory used in bytes. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00291">291</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00125">ml::StringInternerStats::memoryUsedCount</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00174">ml::StringInternerStats::memoryUsedCount</a>.</p>
 
 </div>
 </div>
@@ -477,7 +514,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get statistics about the interner. </p>
+<p>Gets statistics about the <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="structml_1_1StringInternerStats.html">StringInternerStats</a> object with current statistics. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structml_1_1StringInternerStats.html" title="Statistics about the StringInterner.">StringInternerStats</a> for details. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00240">240</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -509,7 +548,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00166">166</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Interns a C-style string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The C-style string to intern. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle representing the interned string. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#aecaa3fe08de16456193dc17985d98e7f" title="Interns a string view.">intern(std::string_view)</a> for the <a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> implementation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00281">281</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">References <a class="el" href="StringInterner_8cpp_source.html#l00158">intern()</a>.</p>
 
@@ -549,7 +598,18 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00169">169</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Interns a string with specified length. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The C-style string to intern. </td></tr>
+    <tr><td class="paramname">len</td><td>The length of the string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle representing the interned string. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#aecaa3fe08de16456193dc17985d98e7f" title="Interns a string view.">intern(std::string_view)</a> for the <a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> implementation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00292">292</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">References <a class="el" href="StringInterner_8cpp_source.html#l00158">intern()</a>.</p>
 
@@ -579,7 +639,17 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00163">163</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p>Interns a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to intern. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle representing the interned string. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#aecaa3fe08de16456193dc17985d98e7f" title="Interns a string view.">intern(std::string_view)</a> for the <a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> implementation. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00271">271</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 <p class="reference">References <a class="el" href="StringInterner_8cpp_source.html#l00158">intern()</a>.</p>
 
@@ -601,13 +671,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Intern a string from various sources. </p>
+<p>Interns a string view. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to intern. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle representing the interned string. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00158">158</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00127">ml::StringInternerStats::averageLength</a>, <a class="el" href="StringInterner_8hpp_source.html#l00124">ml::StringInternerStats::collisionCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00122">ml::StringInternerStats::internCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00123">ml::StringInternerStats::lookupCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00125">ml::StringInternerStats::memoryUsedCount</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00126">ml::StringInternerStats::uniqueStringCount</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00184">ml::StringInternerStats::averageLength</a>, <a class="el" href="StringInterner_8hpp_source.html#l00169">ml::StringInternerStats::collisionCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00159">ml::StringInternerStats::internCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00164">ml::StringInternerStats::lookupCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00174">ml::StringInternerStats::memoryUsedCount</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00179">ml::StringInternerStats::uniqueStringCount</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="FileManager_8cpp_source.html#l00094">ml::FileManager::fileExists()</a>, <a class="el" href="FileManager_8cpp_source.html#l00132">ml::FileManager::getFileModTime()</a>, <a class="el" href="FileManager_8cpp_source.html#l00110">ml::FileManager::getFileSize()</a>, <a class="el" href="FileManager_8cpp_source.html#l00050">ml::FileManager::getFileWithError()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00166">intern()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00169">intern()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00163">intern()</a>, and <a class="el" href="FileManager_8cpp_source.html#l00162">ml::FileManager::removeFromCache()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="FileManager_8cpp_source.html#l00094">ml::FileManager::fileExists()</a>, <a class="el" href="FileManager_8cpp_source.html#l00132">ml::FileManager::getFileModTime()</a>, <a class="el" href="FileManager_8cpp_source.html#l00110">ml::FileManager::getFileSize()</a>, <a class="el" href="FileManager_8cpp_source.html#l00050">ml::FileManager::getFileWithError()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00281">intern()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00292">intern()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00271">intern()</a>, and <a class="el" href="FileManager_8cpp_source.html#l00162">ml::FileManager::removeFromCache()</a>.</p>
 
 </div>
 </div>
@@ -634,9 +711,10 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Check if using arena allocation. </p>
+<p>Checks if the interner is using an arena allocator. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if using an arena allocator, false otherwise. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00202">202</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StringInterner_8hpp_source.html#l00359">359</a> of file <a class="el" href="StringInterner_8hpp_source.html">StringInterner.hpp</a>.</p>
 
 </div>
 </div>
@@ -655,7 +733,15 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lookup a string without interning (returns invalid <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a> if not found) </p>
+
+<p>Looks up an interned string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The string to look up. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The handle representing the interned string, or invalid if not found. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00224">224</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -685,6 +771,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Non-copyable assignment operator. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classml_1_1StringInterner.html#a807d2c2eeec439867eb903cca7a2443d" title="Non-copyable StringInterner.">StringInterner(const StringInterner &amp;)</a> </dd></dl>
+
 </div>
 </div>
 <a id="a6689ea1aea8e7fb788e9cecb24a7f169" name="a6689ea1aea8e7fb788e9cecb24a7f169"></a>
@@ -711,6 +800,9 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Move assignment operator for <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>. </p>
+<p>Transfers ownership of internal state and resources. </p>
+
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00143">143</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
 </div>
@@ -731,11 +823,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Print statistics to the given stream. </p>
+<p>Prints statistics to the given output stream. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>The output stream to print to. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00265">265</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00127">ml::StringInternerStats::averageLength</a>, <a class="el" href="StringInterner_8hpp_source.html#l00124">ml::StringInternerStats::collisionCount</a>, <a class="el" href="StringInterner_8cpp_source.html#l00240">getStats()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00122">ml::StringInternerStats::internCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00123">ml::StringInternerStats::lookupCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00125">ml::StringInternerStats::memoryUsedCount</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00126">ml::StringInternerStats::uniqueStringCount</a>.</p>
+<p class="reference">References <a class="el" href="StringInterner_8hpp_source.html#l00184">ml::StringInternerStats::averageLength</a>, <a class="el" href="StringInterner_8hpp_source.html#l00169">ml::StringInternerStats::collisionCount</a>, <a class="el" href="StringInterner_8cpp_source.html#l00240">getStats()</a>, <a class="el" href="StringInterner_8hpp_source.html#l00159">ml::StringInternerStats::internCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00164">ml::StringInternerStats::lookupCount</a>, <a class="el" href="StringInterner_8hpp_source.html#l00174">ml::StringInternerStats::memoryUsedCount</a>, and <a class="el" href="StringInterner_8hpp_source.html#l00179">ml::StringInternerStats::uniqueStringCount</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="main_8cpp_source.html#l00010">main()</a>.</p>
 
@@ -757,7 +855,13 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Reserve space for approximately this many strings (optimization) </p>
+<p>Reserves space for a number of interned strings. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">count</td><td>The number of strings to reserve space for. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00284">284</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 
@@ -778,7 +882,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the number of unique strings. </p>
+<p>Gets the number of unique interned strings. </p>
+<dl class="section return"><dt>Returns</dt><dd>The count of unique interned strings. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="StringInterner_8cpp_source.html#l00255">255</a> of file <a class="el" href="StringInterner_8cpp_source.html">StringInterner.cpp</a>.</p>
 

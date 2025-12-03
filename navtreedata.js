@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "my-lang", "index.html", [
+    [ "Todo List", "todo.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -65,9 +66,9 @@ var NAVTREEINDEX =
 "ArenaAllocator_8cpp.html",
 "classml_1_1ArenaSTLAllocator.html#aa8edefb556d7ea984dd1a731de6c713e",
 "classml_1_1InternedString.html#ae9dac38bf9575d487ba37ba3c4313d54",
-"classml_1_1StringInterner_1_1const__iterator.html#a47e67f03efb645655db253fe2e46f29f",
-"namespacemembers_type.html",
-"structml_1_1FileManagerStats.html#a137bba371a65a27e78cd7246989e7f82"
+"classml_1_1StringInterner_1_1const__iterator.html#a94317f39dbbe2aac6ada9d527bc75477",
+"namespaceml.html#a07811f32484f95bc7196933289d2d9a4a0f4e1aaabd074689b7d3ead824d1ee8e",
+"structml_1_1FileManagerStats.html#aba91fc7d28da5e3d72cc6e7a2510b87a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

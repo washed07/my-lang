@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('StringInterner_8hpp.html',''); initRes
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;mutex&gt;</code><br />
 <code>#include &lt;shared_mutex&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
@@ -116,15 +117,16 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An interned string handle.  <a href="classml_1_1InternedString.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1StringInternerStats.html">ml::StringInternerStats</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about string interner operations.  <a href="structml_1_1StringInternerStats.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics about the <a class="el" href="classml_1_1StringInterner.html" title="A string interner for deduplicating strings.">StringInterner</a>.  <a href="structml_1_1StringInternerStats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structml_1_1InternedStringHash.html">ml::InternedStringHash</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">InternedString</a>.  <a href="structml_1_1InternedStringHash.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hash function for <a class="el" href="classml_1_1InternedString.html">InternedString</a>.  <a href="structml_1_1InternedStringHash.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner.html">ml::StringInterner</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A string interner for deduplicating strings.  <a href="classml_1_1StringInterner.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classml_1_1StringInterner_1_1const__iterator.html">ml::StringInterner::const_iterator</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator support for debugging/inspection.  <a href="classml_1_1StringInterner_1_1const__iterator.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const iterator for iterating over interned strings.  <a href="classml_1_1StringInterner_1_1const__iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structstd_1_1hash_3_01ml_1_1InternedString_01_4.html">std::hash&lt; ml::InternedString &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,7 +136,7 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceml" id="r_namespaceml"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceml.html">ml</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespacestd" id="r_namespacestd"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacestd.html">std</a></td></tr>
-<tr class="memdesc:namespacestd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialize std::hash for InternedString to enable use in standard containers. <br /></td></tr>
+<tr class="memdesc:namespacestd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specialization of std::hash for <a class="el" href="classml_1_1InternedString.html" title="An interned string handle.">ml::InternedString</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>

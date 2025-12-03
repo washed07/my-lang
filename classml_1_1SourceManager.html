@@ -190,7 +190,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a802291ae4a3b6a87cc4f9934bd0d0949"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages source code files and provides efficient source location services. This class handles the mapping between <a class="el" href="classml_1_1SourceLocation.html" title="A specific location in source code.">SourceLocation</a> objects and actual file positions, line numbers, and column numbers.</p>
+<div class="textblock"><p>Manages source code files and provides efficient source location services. This class handles the mapping between <a class="el" href="classml_1_1SourceLocation.html" title="A source location within a file.">SourceLocation</a> objects and actual file positions, line numbers, and column numbers.</p>
 <p>The <a class="el" href="classml_1_1SourceManager.html">SourceManager</a> is designed to:</p><ul>
 <li>Handle arbitrarily large numbers of files efficiently</li>
 <li>Provide fast source location lookup and conversion</li>
@@ -337,9 +337,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00498">498</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00494">494</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00090">ml::SourceLocation::getInvalidLoc()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00107">ml::SourceLocation::getRawEncoding()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>.</p>
 
 </div>
 </div>
@@ -360,7 +360,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Clear all cached data (but keep file entries alive through <a class="el" href="classml_1_1FileManager.html">FileManager</a>). </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00534">534</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00530">530</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -431,7 +431,7 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00107">107</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="FileManager_8cpp_source.html#l00050">ml::FileManager::getFileWithError()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00039">ml::FileID::getInvalidID()</a>.</p>
+<p class="reference">References <a class="el" href="FileManager_8cpp_source.html#l00050">ml::FileManager::getFileWithError()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::getInvalid()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00101">createFileID()</a>.</p>
 
@@ -455,11 +455,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Get a pointer to the character data at a source location. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00424">424</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00420">420</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="FileManager_8hpp_source.html#l00036">ml::FileEntry::getBufferStart()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00031">ml::FileEntry::getSize()</a>.</p>
+<p class="reference">References <a class="el" href="FileManager_8hpp_source.html#l00036">ml::FileEntry::getBufferStart()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00031">ml::FileEntry::getSize()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00046">ml::FullSourceLoc::getCharacterData()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00442">getSourceText()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00046">ml::FullSourceLoc::getData()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00438">getSourceText()</a>.</p>
 
 </div>
 </div>
@@ -479,9 +479,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00360">360</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00356">356</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00077">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00014">ml::LocationCache::last_column</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00088">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00014">ml::LocationCache::last_column</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00042">ml::FullSourceLoc::getColumnNumber()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00055">ml::SourceLocation::print()</a>.</p>
 
@@ -503,9 +503,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00264">264</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00261">261</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -525,11 +523,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00259">259</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00256">256</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00424">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00278">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00273">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00288">getFilenameView()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00283">getFilenameView()</a>, <a class="el" href="Lexer_8cpp_source.html#l00189">ml::Lexer::Lexer()</a>, and <a class="el" href="Lexer_8cpp_source.html#l01527">ml::tokenizeFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00420">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00274">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00269">getFilename()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00284">getFilenameView()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00279">getFilenameView()</a>, <a class="el" href="Lexer_8cpp_source.html#l00189">ml::Lexer::Lexer()</a>, and <a class="el" href="Lexer_8cpp_source.html#l01527">ml::tokenizeFile()</a>.</p>
 
 </div>
 </div>
@@ -551,11 +549,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Get source location information. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00197">197</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00194">194</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00039">ml::FileID::getInvalidID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00107">ml::SourceLocation::getRawEncoding()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00077">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::getInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00088">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00498">advanceSourceLocation()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00360">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00030">ml::FullSourceLoc::getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00402">getLineAndColumn()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00293">getLineNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00466">getSourceLength()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00442">getSourceText()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00485">isValidSourceLocation()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00494">advanceSourceLocation()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00356">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00030">ml::FullSourceLoc::getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00398">getLineAndColumn()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00289">getLineNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00462">getSourceLength()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00438">getSourceText()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00481">isValidSourceLocation()</a>.</p>
 
 </div>
 </div>
@@ -631,9 +629,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00278">278</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00274">274</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00028">ml::FileEntry::getFilename()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00028">ml::FileEntry::getFilename()</a>.</p>
 
 </div>
 </div>
@@ -655,9 +653,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the filename for a source location. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00273">273</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00269">269</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00028">ml::FileEntry::getFilename()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00028">ml::FileEntry::getFilename()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00050">ml::FullSourceLoc::getFilename()</a>.</p>
 
@@ -679,9 +677,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00288">288</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00284">284</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>.</p>
 
 </div>
 </div>
@@ -701,9 +699,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00283">283</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00279">279</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00259">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00256">getFileEntry()</a>, and <a class="el" href="FileManager_8hpp_source.html#l00029">ml::FileEntry::getFilenameView()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00055">ml::SourceLocation::print()</a>.</p>
 
@@ -725,11 +723,11 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00249">249</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00246">246</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00107">ml::SourceLocation::getRawEncoding()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00498">advanceSourceLocation()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00424">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00360">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00034">ml::FullSourceLoc::getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00402">getLineAndColumn()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00293">getLineNumber()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00466">getSourceLength()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00494">advanceSourceLocation()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00420">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00356">getColumnNumber()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00034">ml::FullSourceLoc::getFileOffset()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00398">getLineAndColumn()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00289">getLineNumber()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00462">getSourceLength()</a>.</p>
 
 </div>
 </div>
@@ -781,9 +779,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00402">402</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00398">398</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
 
 </div>
 </div>
@@ -805,9 +803,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Get line and column numbers (1-based). </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00293">293</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00289">289</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00077">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00013">ml::LocationCache::last_line</a>, <a class="el" href="SourceManager_8cpp_source.html#l00015">ml::LocationCache::last_line_start</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceManager_8cpp_source.html#l00027">ml::g_location_cache</a>, <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00088">ml::SourceLocation::isValid()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00016">ml::LocationCache::last_file_id</a>, <a class="el" href="SourceManager_8cpp_source.html#l00013">ml::LocationCache::last_line</a>, <a class="el" href="SourceManager_8cpp_source.html#l00015">ml::LocationCache::last_line_start</a>, <a class="el" href="SourceManager_8cpp_source.html#l00012">ml::LocationCache::last_location</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00022">ml::FileInfo::lineOffsets</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00038">ml::FullSourceLoc::getLineNumber()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00055">ml::SourceLocation::print()</a>.</p>
 
@@ -829,9 +827,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00171">171</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00170">170</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00090">ml::SourceLocation::getInvalidLoc()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
 
 </div>
 </div>
@@ -861,9 +859,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00182">182</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00180">180</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00090">ml::SourceLocation::getInvalidLoc()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00020">ml::FileInfo::entry</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
 
 </div>
 </div>
@@ -887,7 +885,7 @@ Public Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00161">161</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00049">ml::FileID::getHashValue()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00090">ml::SourceLocation::getInvalidLoc()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00033">ml::FileID::isInvalid()</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00021">ml::FileInfo::offset</a>.</p>
 
 </div>
 </div>
@@ -919,9 +917,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the length of the source text between two locations. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00466">466</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00462">462</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00249">getFileOffset()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00246">getFileOffset()</a>.</p>
 
 </div>
 </div>
@@ -951,9 +949,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00442">442</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00438">438</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00424">getCharacterData()</a>, <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00420">getCharacterData()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>.</p>
 
 </div>
 </div>
@@ -975,11 +973,11 @@ Public Member Functions</h2></td></tr>
 
 <p>Get the source text for a given range. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00438">438</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00434">434</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00163">ml::SourceRange::getBegin()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00169">ml::SourceRange::getEnd()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00438">getSourceText()</a>.</p>
+<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00157">ml::SourceRange::getBegin()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00163">ml::SourceRange::getEnd()</a>, and <a class="el" href="SourceManager_8cpp_source.html#l00434">getSourceText()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00438">getSourceText()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="SourceManager_8cpp_source.html#l00434">getSourceText()</a>.</p>
 
 </div>
 </div>
@@ -998,7 +996,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00529">529</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00525">525</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -1030,9 +1028,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Utility functions for working with source ranges. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00489">489</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
-
-<p class="reference">References <a class="el" href="SourceLocation_8hpp_source.html#l00107">ml::SourceLocation::getRawEncoding()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00084">ml::SourceLocation::isInvalid()</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00485">485</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -1054,9 +1050,9 @@ Public Member Functions</h2></td></tr>
 
 <p>Check if a source location is valid. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00485">485</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00481">481</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00197">getFileID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00077">ml::SourceLocation::isValid()</a>.</p>
+<p class="reference">References <a class="el" href="SourceManager_8cpp_source.html#l00194">getFileID()</a>, <a class="el" href="SourceLocation_8hpp_source.html#l00026">ml::FileID::isValid()</a>, and <a class="el" href="SourceLocation_8hpp_source.html#l00088">ml::SourceLocation::isValid()</a>.</p>
 
 </div>
 </div>
@@ -1131,7 +1127,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Debug and introspection functions. </p>
 
-<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00519">519</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="SourceManager_8cpp_source.html#l00515">515</a> of file <a class="el" href="SourceManager_8cpp_source.html">SourceManager.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="SourceManager_8hpp_source.html#l00032">ml::SourceManagerStats::fileLoadCount</a>, <a class="el" href="SourceManager_8hpp_source.html#l00034">ml::SourceManagerStats::lineComputationCount</a>, <a class="el" href="SourceManager_8hpp_source.html#l00033">ml::SourceManagerStats::locationCreateCount</a>, and <a class="el" href="SourceManager_8hpp_source.html#l00035">ml::SourceManagerStats::sourceSize</a>.</p>
 
